@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="src" path="src/resources"/>
+	<classpathentry kind="src" path="src/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/bitcoinj-core-0.14.5.jar"/>
 	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.21.0.jar"/>
