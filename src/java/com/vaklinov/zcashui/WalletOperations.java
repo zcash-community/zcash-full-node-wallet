@@ -271,7 +271,7 @@ public class WalletOperations
 				"in the backup directory provided to zcld (-exportdir=<dir>).\nFull path is: " + 
 				path + "\n" +
 				"You need to protect this file from unauthorized access. Anyone who\n" +
-				"has access to the private keys can spend the ZENCash balance!",
+				"has access to the private keys can spend the Zclassic balance!",
 				"Wallet private key export...", JOptionPane.INFORMATION_MESSAGE);
 			
 		} catch (Exception e)

@@ -269,7 +269,7 @@ public class SendCashPanel
 					JOptionPane.showMessageDialog(
 							SendCashPanel.this.getRootPane().getParent(), 
 							"An unexpected error occurred when sending cash!\n" + 
-							"Please ensure that the ZENCash daemon is running and\n" +
+							"Please ensure that the Zclassic daemon is running and\n" +
 							"parameters are correct. You may try again later...\n" +
 							errMessage, 
 							"Error in sending cash", JOptionPane.ERROR_MESSAGE);
@@ -744,7 +744,7 @@ public class SendCashPanel
 		    	// Open block explorer
 				Log.info("Transaction ID for block explorer is: " + TXID);
 				// TODO: code duplication with transactions table
-				String urlPrefix = "https://zcl-explorer.com/insight/tx/"
+				String urlPrefix = "https://zcl-explorer.com/insight/tx/";
 				if (installationObserver.isOnTestNet())
 				{
           //TODO zcl testnet explorer

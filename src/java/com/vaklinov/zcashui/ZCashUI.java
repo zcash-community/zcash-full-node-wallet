@@ -71,7 +71,7 @@ import com.vaklinov.zcashui.msg.MessagingPanel;
 
 
 /**
- * Main ZENCash Window.
+ * Main Zclassic Window.
  *
  * @author Ivan Vaklinov <ivan@vaklinov.com>
  */
@@ -523,7 +523,7 @@ public class ZCashUI
         		possiblyCreateZENConfigFile();
         	}
         	
-        	Log.info("Starting ZENCash Swing Wallet ...");
+        	Log.info("Starting Zclassic Swing Wallet ...");
         	Log.info("OS: " + System.getProperty("os.name") + " = " + os);
         	Log.info("Current directory: " + new File(".").getCanonicalPath());
         	Log.info("Class path: " + System.getProperty("java.class.path"));

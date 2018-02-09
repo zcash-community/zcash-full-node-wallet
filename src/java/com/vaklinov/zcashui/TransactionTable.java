@@ -126,10 +126,10 @@ public class TransactionTable
 						txID = txID.replaceAll("\"", ""); // In case it has quotes
 						
 						Log.info("Transaction ID for block explorer is: " + txID);
-						// https://explorer.zcha.in/transactions/<ID>
-						String urlPrefix = "https://explorer.zensystem.io/tx/";
+						String urlPrefix = "http://zcl-explorer.com/insight/tx/";
 						if (installationObserver.isOnTestNet())
 						{
+              //TODO ZCL testnet
 							urlPrefix = "https://explorer-testnet.zen-solutions.io/tx/";
 						}
 						
@@ -172,7 +172,7 @@ public class TransactionTable
 					        JOptionPane.showMessageDialog(
 						            parent,
 						            "The selected transaction does not have as destination a Z (private) \n" +
-						            "address or it is unkonwn (not listed) and thus no memo information \n" +
+						            "address or it is unknown (not listed) and thus no memo information \n" +
 						            "about this transaction is available.",
 						            "Memo information is unavailable",
 						            JOptionPane.ERROR_MESSAGE);
@@ -246,7 +246,7 @@ public class TransactionTable
 			JLabel infoLabel = new JLabel(
 					"<html><span style=\"font-size:0.97em;\">" +
 					"The table shows the information about the transaction with technical details as " +
-					"they appear at ZENCash network level." +
+					"they appear at Zclassic network level." +
 				    "</span>");
 			infoLabel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			tempPanel.add(infoLabel, BorderLayout.CENTER);
