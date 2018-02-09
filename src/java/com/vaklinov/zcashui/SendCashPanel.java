@@ -422,6 +422,7 @@ public class SendCashPanel
 		// ZClassic compatibility
 		if (!installationObserver.isOnTestNet())
 		{
+      //TODO - ZCL
 			if (!(destinationAddress.startsWith("zc") || 
 				  destinationAddress.startsWith("zn") ||
 				  destinationAddress.startsWith("zs")))
@@ -430,9 +431,9 @@ public class SendCashPanel
 
 				JOptionPane.showOptionDialog(
 					SendCashPanel.this.getRootPane().getParent(), 
-					"The destination address to send ZEN to:\n" +
+					"The destination address to send ZCL to:\n" +
 					destinationAddress + "\n"+
-					"does not appear to be a valid ZEN address. ZEN addresses start with zc, zn or zs!", 
+					"does not appear to be a valid ZCL address. TODO ZCL!!! ZEN addresses start with zc, zn or zs!", 
 					"Destination address is incorrect...",
 					JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.ERROR_MESSAGE,
@@ -721,7 +722,7 @@ public class SendCashPanel
 			
 			int option = JOptionPane.showOptionDialog(
 				SendCashPanel.this.getRootPane().getParent(), 
-				"Succesfully sent " + amount + " ZEN from address: \n" +
+				"Succesfully sent " + amount + " ZCL from address: \n" +
 				sourceAddress + "\n" +
 				"to address: \n" +
 				destinationAddress + "\n\n" +
@@ -743,9 +744,10 @@ public class SendCashPanel
 		    	// Open block explorer
 				Log.info("Transaction ID for block explorer is: " + TXID);
 				// TODO: code duplication with transactions table
-				String urlPrefix = "https://explorer.zensystem.io/tx/";
+				String urlPrefix = "https://zcl-explorer.com/insight/tx/"
 				if (installationObserver.isOnTestNet())
 				{
+          //TODO zcl testnet explorer
 					urlPrefix = "https://explorer-testnet.zen-solutions.io/tx/";
 				}
 				Desktop.getDesktop().browse(new URL(urlPrefix + TXID).toURI());

@@ -284,7 +284,7 @@ public class OSUtil
 	}
 
 
-	// Can be used to find zend/zen-cli if it is not found in the same place as the wallet JAR
+	// Can be used to find zcld/zcl-cli if it is not found in the same place as the wallet JAR
 	// Null if not found
 	public static File findZCashCommand(String command)
 		throws IOException
@@ -292,7 +292,7 @@ public class OSUtil
 	    File f;
 	    
 	    // Try with system property zcash.location.dir - may be specified by caller
-	    String ZCashLocationDir = System.getProperty("zen.location.dir");
+	    String ZCashLocationDir = System.getProperty("zclassic.location.dir");
 	    if ((ZCashLocationDir != null) && (ZCashLocationDir.trim().length() > 0))
 	    {
 	        f = new File(ZCashLocationDir + File.separator + command);
@@ -312,11 +312,11 @@ public class OSUtil
 				"/usr/bin/", // Typical Ubuntu
 				"/bin/",
 				"/usr/local/bin/",
-				"/usr/local/zen/bin/",
-				"/usr/lib/zen/bin/",
+				"/usr/local/zclassic/bin/",
+				"/usr/lib/zclassic/bin/",
 				"/opt/local/bin/",
-				"/opt/local/zen/bin/",
-				"/opt/zen/bin/"
+				"/opt/local/zclassic/bin/",
+				"/opt/zclassic/bin/"
 			};
 	
 			for (String d : dirs)
@@ -337,7 +337,7 @@ public class OSUtil
 	    		File pf = new File(programFiles);
 	    		if (pf.exists() && pf.isDirectory())
 	    		{
-	    			File ZDir = new File(pf, "Zen");
+	    			File ZDir = new File(pf, "Zclassic");
 	    			if (ZDir.exists() && ZDir.isDirectory())
 	    			{
 	    				File cf = new File(ZDir, command);

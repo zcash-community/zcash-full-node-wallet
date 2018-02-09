@@ -114,8 +114,8 @@ public class ZCashClientCaller
 		if ((zcashcli == null) || (!zcashcli.exists()))
 		{
 			throw new IOException(
-				"The ZENCash installation directory " + installDir + " needs to contain " +
-				"the command line utilities zend and zen-cli. zen-cli is missing!");
+				"The Zclassic installation directory " + installDir + " needs to contain " +
+				"the command line utilities zcld and zcl-cli. zcl-cli is missing!");
 		}
 		
 		zcashd = new File(dir, OSUtil.getZCashd());
@@ -127,8 +127,8 @@ public class ZCashClientCaller
 		if (zcashd == null || (!zcashd.exists()))
 		{
 		    throw new IOException(
-		    	"The ZENCash command line utility " + zcashcli.getCanonicalPath() + 
-		    	" was found, but zend was not found!");
+		    	"The Zclassic command line utility " + zcashcli.getCanonicalPath() + 
+		    	" was found, but zcld was not found!");
 		}
 	}
 

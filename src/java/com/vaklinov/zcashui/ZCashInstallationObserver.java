@@ -245,7 +245,7 @@ public class ZCashInstallationObserver
 					{
 						info.status = DAEMON_STATUS.RUNNING;
 						foundZCash = true;
-						//System.out.println("zend process data is: " + line);
+						//System.out.println("zcl process data is: " + line);
 					}
 				} else if ((i >= 4) && foundZCash)
 				{
