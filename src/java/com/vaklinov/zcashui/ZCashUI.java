@@ -39,10 +39,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -727,24 +730,24 @@ extends JFrame
 		}
 	}
 
-	private static List<String> getAddNodes() {
+	private static List<String> getAddNodes()   {
 		ClassLoader classLoader = ZCashUI.class.getClassLoader();
-		File f  = new File(classLoader.getResource("config/addnodes.txt").getFile());
+
+		BufferedReader br = null;
+		InputStream is = ZCashUI.class.getResourceAsStream("/config/addnodes.txt");
+		br = new BufferedReader(new InputStreamReader(is));
+		//File f  = new File(classLoader.getResource("/keys/addnodes.txt").getFile());
 
 		List <String> nodes = new ArrayList<>();
-
-
-		try (Scanner scanner = new Scanner(f)) {
-
-			while (scanner.hasNextLine()) {
-				nodes.add(scanner.nextLine());
+		String line;
+		try {
+			while ((line = br.readLine()) != null) {
+				nodes.add(line);
 			}
-
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+
 		return nodes;
 	}
 
