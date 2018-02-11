@@ -179,7 +179,7 @@ public class SendCashPanel
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(destinationAmountField = new JTextField(13));
 		destinationAmountField.setHorizontalAlignment(SwingConstants.RIGHT);
-		tempPanel.add(new JLabel(" ZEN    "));
+		tempPanel.add(new JLabel(" ZCL    "));
 		amountPanel.add(tempPanel, BorderLayout.SOUTH);
 
 		JPanel feePanel = new JPanel(new BorderLayout());
@@ -188,7 +188,7 @@ public class SendCashPanel
 		tempPanel.add(transactionFeeField = new JTextField(13));
 		transactionFeeField.setText("0.0001"); // Default value
 		transactionFeeField.setHorizontalAlignment(SwingConstants.RIGHT);		
-		tempPanel.add(new JLabel(" ZEN"));
+		tempPanel.add(new JLabel(" ZCL"));
 		feePanel.add(tempPanel, BorderLayout.SOUTH);
 
 		amountAndFeePanel.add(amountPanel);
@@ -269,7 +269,7 @@ public class SendCashPanel
 					JOptionPane.showMessageDialog(
 							SendCashPanel.this.getRootPane().getParent(), 
 							"An unexpected error occurred when sending cash!\n" + 
-							"Please ensure that the ZENCash daemon is running and\n" +
+							"Please ensure that the Zclassic daemon is running and\n" +
 							"parameters are correct. You may try again later...\n" +
 							errMessage, 
 							"Error in sending cash", JOptionPane.ERROR_MESSAGE);
@@ -418,14 +418,12 @@ public class SendCashPanel
 			errorMessage = "Destination address is invalid; it is too long.";
 		}
 		
-		// Prevent accidental sending to non-ZEN addresses (which zend supports) probably because of
-		// ZClassic compatibility
+		// Prevent accidental sending to non-ZCL addresses (as seems to be supported by daemon)
 		if (!installationObserver.isOnTestNet())
 		{
       //TODO - ZCL
 			if (!(destinationAddress.startsWith("zc") || 
-				  destinationAddress.startsWith("zn") ||
-				  destinationAddress.startsWith("zs")))
+				  destinationAddress.startsWith("t1")))
 			{
 				Object[] options = { "OK" };
 
@@ -433,7 +431,7 @@ public class SendCashPanel
 					SendCashPanel.this.getRootPane().getParent(), 
 					"The destination address to send ZCL to:\n" +
 					destinationAddress + "\n"+
-					"does not appear to be a valid ZCL address. TODO ZCL!!! ZEN addresses start with zc, zn or zs!", 
+					"does not appear to be a valid ZCL address. ZCL addresses start with t1 or zc!", 
 					"Destination address is incorrect...",
 					JOptionPane.DEFAULT_OPTION, 
 					JOptionPane.ERROR_MESSAGE,
