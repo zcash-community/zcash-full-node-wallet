@@ -107,7 +107,7 @@ extends JFrame
 	private JMenuItem menuItemRemoveContactIdentity;
 	private JMenuItem menuItemMessagingOptions;
 	private JMenuItem menuItemShareFileViaIPFS;
-	private JMenuItem menuItemExportToArizen;
+	//private JMenuItem menuItemExportToArizen;
 
 	private DashboardPanel   dashboard;
 	private AddressesPanel   addresses;
@@ -420,7 +420,9 @@ extends JFrame
 				}
 				);
 
-		menuItemExportToArizen.addActionListener(
+		/*
+		 * menuItemExportToArizen.addActionListener(
+		
 				new ActionListener()
 				{
 					@Override
@@ -430,6 +432,7 @@ extends JFrame
 					}
 				}
 				);
+				*/
 
 		// Close operation
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
