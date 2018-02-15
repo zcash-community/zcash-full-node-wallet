@@ -50,8 +50,9 @@ import javax.swing.border.EtchedBorder;
 
 
 /**
- * Typical about box stuff...
+ * About
  *
+ * @author Jon Layton <me@jonl.io>
  * @author Ivan Vaklinov <ivan@vaklinov.com>
  */
 public class AboutDialog
@@ -69,9 +70,9 @@ public class AboutDialog
 
 		JTabbedPane tabs = new JTabbedPane();
 
-		JPanel copyrigthPanel = new JPanel();
-		copyrigthPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-		copyrigthPanel.setLayout(new BorderLayout(3, 3));
+		JPanel copyrightPanel = new JPanel();
+		copyrightPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		copyrightPanel.setLayout(new BorderLayout(3, 3));
 		JLabel copyrightLabel = new JLabel();
 		
 		copyrightLabel.setText(new String(new byte[] {
@@ -134,7 +135,7 @@ public class AboutDialog
 		    }, "UTF-8")
 		);
 		copyrightLabel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-		copyrigthPanel.add(copyrightLabel, BorderLayout.NORTH);
+		copyrightPanel.add(copyrightLabel, BorderLayout.NORTH);
 		
 		
 		JPanel PD = new JPanel();
@@ -218,10 +219,10 @@ public class AboutDialog
 		});
 		PD2.add(PD3, BorderLayout.EAST);
 		PD.add(PD2, BorderLayout.CENTER);
-		//copyrigthPanel.add(PD, BorderLayout.CENTER); - no donations stuff for ZEN
+		//copyrightPanel.add(PD, BorderLayout.CENTER);
 
 		
-		tabs.add("About", copyrigthPanel);
+		tabs.add("About", copyrightPanel);
 
 		JPanel licensePanel = new JPanel();
 		licensePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -229,6 +230,10 @@ public class AboutDialog
 		JLabel licenseLabel = new JLabel();
 		licenseLabel.setText(
 			"<html><body><pre>" +
+		    " Copyright (c) 2018 Jon Layton &lt;me@jonl.io&gt; \n" +
+        " Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n " +
+			"\n" +
+      "\n"
 		    " Copyright (c) 2016-2017 Ivan Vaklinov &lt;ivan@vaklinov.com&gt; \n" +
 			"\n" +
 			" Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
