@@ -151,7 +151,7 @@ public class MessagingIdentity
 	}
 	
 	
-	public JsonObject toJSONObject(boolean bForMesagingProtocol)
+	public JsonObject toJSONObject(boolean bForMessagingProtocol)
 	{
 		JsonObject obj = new JsonObject();
 		
@@ -166,7 +166,7 @@ public class MessagingIdentity
 		obj.set("facebook",           nonNull(facebook));		
 		obj.set("twitter",            nonNull(twitter));
 		
-		if (!bForMesagingProtocol)
+		if (!bForMessagingProtocol)
 		{
 			obj.set("isanonymous",    isAnonymous);
 			obj.set("isgroup",        isGroup);

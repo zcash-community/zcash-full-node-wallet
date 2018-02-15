@@ -480,7 +480,7 @@ extends JFrame
 								"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n" +
 								"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n" +
 								"THE SOFTWARE.\n\n" +
-								"(This message will be shown only once, per release)",
+								"(This message will only be shown once per release)",
 								"Disclaimer", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});

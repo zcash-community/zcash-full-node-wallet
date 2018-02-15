@@ -82,7 +82,7 @@ public class JContactListPanel
 	extends JPanel
 {
 	private MessagingPanel   parent;
-	private MessagingStorage mesagingStorage;
+	private MessagingStorage messagingStorage;
 	private ContactList      list;
 	private StatusUpdateErrorReporter errorReporter;
 	private JFrame           parentFrame;
@@ -99,13 +99,13 @@ public class JContactListPanel
 		
 		this.parent = parent;
 		this.parentFrame     = parentFrame;
-		this.mesagingStorage = messagingStorage;
+		this.messagingStorage = messagingStorage;
 		this.errorReporter   = errorReporter;
 		
 		this.setLayout(new BorderLayout(0, 0));
 		
 		list = new ContactList();
-		list.setIdentities(this.mesagingStorage.getContactIdentities(true));
+		list.setIdentities(this.messagingStorage.getContactIdentities(true));
 		this.add(new JScrollPane(list), BorderLayout.CENTER);
 		
 		JPanel upperPanel = new JPanel(new BorderLayout(0, 0));
@@ -322,7 +322,7 @@ public class JContactListPanel
 	public void reloadMessagingIdentities()
 		throws IOException
 	{
-		list.setIdentities(this.mesagingStorage.getContactIdentities(true));
+		list.setIdentities(this.messagingStorage.getContactIdentities(true));
 		list.revalidate();
 	}
 	
