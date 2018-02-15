@@ -122,7 +122,7 @@ public class MessagingPanel
 	
 	private Timer operationStatusTimer = null;
 	
-	private DataGatheringThread<Object> receivedMesagesGatheringThread = null;
+	private DataGatheringThread<Object> receivedMessagesGatheringThread = null;
 	
 	private Long lastTaddressCheckTime = null;
 	
@@ -252,7 +252,7 @@ public class MessagingPanel
 		});
 				
 		// Start the thread to periodically gather messages
-		this.receivedMesagesGatheringThread = new DataGatheringThread<Object>(
+		this.receivedMessagesGatheringThread = new DataGatheringThread<Object>(
 			new DataGatheringThread.DataGatherer<Object>() 
 			{
 				public String[][] gatherData()
@@ -269,7 +269,7 @@ public class MessagingPanel
 				}
 			}, 
 			this.errorReporter, 45 * 1000, true);
-		this.threads.add(receivedMesagesGatheringThread);
+		this.threads.add(receivedMessagesGatheringThread);
 	}
 	
 	
@@ -340,7 +340,7 @@ public class MessagingPanel
 		        	MessagingPanel.this.parentFrame, 
 			        messageStart + "\n" + 
 			        "If you believe this user is spamming the group conversation, you have the option to\n" +
-			        "ignore all his mesages. \n\n" + 
+			        "ignore all his messages. \n\n" + 
 			        "WARNING: If you choose to ignore this user's messages, you will not be able to see \n"+
 			        "any new messages he sends from this point forward!", 
 			        "Possibly ignore user messages?", 
@@ -388,9 +388,9 @@ public class MessagingPanel
 		for (Message msg : messages)
 		{
 			// Skip messages sent to a group from ignored IDs.
-			String mesageIDToCheck = msg.isAnonymous() ? msg.getThreadID() : msg.getFrom();
+			String messageIDToCheck = msg.isAnonymous() ? msg.getThreadID() : msg.getFrom();
 			if (contact.isGroup() && (msg.getDirection() == DIRECTION_TYPE.RECEIVED) &&
-				this.messagingStorage.isSenderIdentityIgnoredForGroup(mesageIDToCheck, contact))
+				this.messagingStorage.isSenderIdentityIgnoredForGroup(messageIDToCheck, contact))
 			{
 				Log.warningOneTime("Ignoring message sent to group {1} due to user preference: {0}",
 						           msg.toJSONObject(false).toString(), contact.getDiplayString());
@@ -514,7 +514,7 @@ public class MessagingPanel
 	
 
 	/**
-	 * Called when the TAB is selected - currently shows the welcome mesage
+	 * Called when the TAB is selected - currently shows the welcome message
 	 */
 	public void tabSelected()
 	{
@@ -524,15 +524,15 @@ public class MessagingPanel
 			{
 		        JOptionPane.showMessageDialog(
 	                this.parentFrame,
-	                "Welcome to Zclassic messaging. As a start you will need to create a new messaging\n" + 
-	                "identity for yourself. As a part of this mesaging identity a pair of T+Z addresses\n" +
+	                "Welcome to Zclassic Messaging. As a start you will need to create a new messaging\n" + 
+	                "identity for yourself. As a part of this messaging identity a pair of T+Z addresses\n" +
 	                "will be created. The T address is to be used for identifying you to other users.\n" +
 	                "It must never be used for other financial transactions since this might reduce or\n" +
 	                "fully compromise your privacy. The Z address is to be used to send and receive\n" +
 	                "messages.\n\n" +
 	                "When creating a new messaging identity it is only mandatory to specify a nick-name\n" +
 	                "for yourself. All other items such as names/addresses etc. are optional. The \n" +
-	                "information in the mesaging identity is meant to be shared with other users so \n" +
+	                "information in the messaging identity is meant to be shared with other users so \n" +
 	                "you need to be careful about the details you disclose.\n\n" +
 	                "Once your messaging identity has been created you can export it to a file using the\n" +
 	                "menu option Messaging >> Export own identity. This file may then be shared with\n" +
@@ -542,8 +542,8 @@ public class MessagingPanel
 	                "Your messaging history will be saved and maintained in directory:\n" +
 	                OSUtil.getSettingsDirectory() + File.separator + "messaging" + "\n" +
 	                "You need to ensure that no unauthorized users have access to it on this computer.\n\n" +
-	                "(This mesage will be shown only once.)",
-	                "Welcome to messaging", JOptionPane.INFORMATION_MESSAGE);
+	                "(This message will only be shown once.)",
+	                "Welcome to Messaging", JOptionPane.INFORMATION_MESSAGE);
 		        	        
 		        // Show the GUI dialog to edit an initially empty messaging identity
 		        boolean identityCreated = this.openOwnIdentityDialog();
@@ -592,7 +592,7 @@ public class MessagingPanel
 					return;
 				}
 				
-				// Own identity exists, check balance of T address !!! - must be none
+				// My Identity exists, check balance of T address !!! - must be none
 				MessagingIdentity ownIdentity =  this.messagingStorage.getOwnIdentity();
 				Cursor oldCursor = this.parentFrame.getCursor();
 				String balance = null;
@@ -723,7 +723,7 @@ public class MessagingPanel
 		        JOptionPane.showMessageDialog(
 	        		this.parentFrame,
 	        		"Your messaging identity is missing! Maybe it has not been created yet.\n" +
-	        		"Use the menu option \"Messaging >> Own identity\" to crate it!", 
+	        		"Use the menu option \"Messaging >> My Identity\" to crate it!", 
 	        		"Messaging identity is not available", JOptionPane.ERROR_MESSAGE);
 		        return;
 			}
@@ -1539,10 +1539,10 @@ public class MessagingPanel
 					MessagingPanel.this.getRootPane().getParent(), 
 					"The messaging identity send/receive address: \n" +
 					ownZAddress + "\n" +
-					"is not found in the wallet.dat. The reason may be that after a mesaging identity\n" +
+					"is not found in the wallet.dat. The reason may be that after a messaging identity\n" +
 					"was created the wallet.dat was changed or the ZCL node configuration was changed\n" +
 					"(e.g. mainnet -> testnet). If such a change was made, the messaging identity can no\n" +
-					"longer be used. To avoid this error mesage, you may rename the directory:\n" +
+					"longer be used. To avoid this error message, you may rename the directory:\n" +
 					OSUtil.getSettingsDirectory() + File.separator + "messaging" + "\n" +
 					"until the configuration or wallet.dat is restored! Directory may only be renamed when\n" +
 					"the wallet is stopped!", 
@@ -1624,7 +1624,7 @@ public class MessagingPanel
 					{
 						// Warn of unexpected message content
 						Log.warningOneTime(
-							"Ignoring received mesage with invalid or incomplete content: {0}",
+							"Ignoring received message with invalid or incomplete content: {0}",
 							jsonMessage.toString());
 					}
 				}	

@@ -114,7 +114,7 @@ public class OSUtil
 	}
 	
 	
-	// Returns the name of the zen-cli tool - may vary depending on the OS.
+	// Returns the name of the zcl-cli tool - may vary depending on the OS.
 	public static String getZCashCli()
 	{
 		String zcashcli = "zcl-cli";
@@ -135,7 +135,7 @@ public class OSUtil
 	{
 		// TODO: this way of finding the dir is JAR name dependent - tricky, may not work
 		// if program is repackaged as different JAR!
-		final String JAR_NAME = "ZclassicSwingWalletUI.jar";
+		final String JAR_NAME = "ZclassicSwingWallet.jar";
 		String cp = System.getProperty("java.class.path");
 		if ((cp != null) && (cp.indexOf(File.pathSeparator) == -1) &&
 			(cp.endsWith(JAR_NAME)))
@@ -221,11 +221,9 @@ public class OSUtil
 			return new File(System.getProperty("user.home") + "/Library/Application Support/Zclassic").getCanonicalPath();
 		} else if (os == OS_TYPE.WINDOWS)
 		{
-			//todo ch4ot1c?
 			return new File(System.getenv("APPDATA") + "\\Zclassic").getCanonicalPath();
 		} else
 		{
-			//todo ch4ot1c?
 			return new File(System.getProperty("user.home") + "/.zclassic").getCanonicalPath();
 		}
 	}
@@ -241,13 +239,13 @@ public class OSUtil
 	    
 	    if (os == OS_TYPE.MAC_OS)
 	    {
-	        dir = new File(userHome, "Library/Application Support/ZclassicSwingWalletUI");
+	        dir = new File(userHome, "Library/Application Support/ZclassicSwingWallet");
 	    } else if (os == OS_TYPE.WINDOWS)
 		{
-			dir = new File(System.getenv("LOCALAPPDATA") + "\\ZclassicSwingWalletUI");
+			dir = new File(System.getenv("LOCALAPPDATA") + "\\ZclassicSwingWallet");
 		} else
 	    {
-	        dir = new File(userHome.getCanonicalPath() + File.separator + ".ZclassicSwingWalletUI");
+	        dir = new File(userHome.getCanonicalPath() + File.separator + ".ZclassicSwingWallet");
 	    }
 	    
 		if (!dir.exists())
