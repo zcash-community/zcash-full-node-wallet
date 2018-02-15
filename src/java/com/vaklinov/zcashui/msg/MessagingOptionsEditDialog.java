@@ -94,7 +94,7 @@ public class MessagingOptionsEditDialog
 		tempPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 		infoLabel = new JLabel(
 				"<html><span style=\"font-size:0.93em;\">" +
-				"The options below pertain to messaging. It is posisble to set the amount of ZEN<br/>" +
+				"The options below pertain to messaging. It is posisble to set the amount of ZCL<br/>" +
 				"to be sent with every messaging transaction and also the transaction fee. It is<br/>" + 
 			    "also possible to decide if users are to be automatically added to the contact list.<br/><br/>" +
 			    "</span>");
@@ -106,7 +106,7 @@ public class MessagingOptionsEditDialog
 		
 		addFormField(detailsPanel, "Automatically add users to contact list:",   
 				     automaticallyAddUsers = new JCheckBox());
-		addFormField(detailsPanel, "ZEN amount to send with every message:",   amountTextField = new JTextField(12));
+		addFormField(detailsPanel, "ZCL amount to send with every message:",   amountTextField = new JTextField(12));
 		addFormField(detailsPanel, "Transaction fee:",  transactionFeeTextField = new JTextField(12));
 		
 		DecimalFormatSymbols decSymbols = new DecimalFormatSymbols(Locale.ROOT);
@@ -218,7 +218,7 @@ public class MessagingOptionsEditDialog
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 2));
 		JLabel tempLabel = new JLabel(name, JLabel.RIGHT);
 		// TODO: hard sizing of labels may not scale!
-		final int width = new JLabel("ZEN amount to send with every message:").getPreferredSize().width + 30;
+		final int width = new JLabel("ZCL amount to send with every message:").getPreferredSize().width + 30;
 		tempLabel.setPreferredSize(new Dimension(width, tempLabel.getPreferredSize().height));
 		tempPanel.add(tempLabel);
 		tempPanel.add(field);

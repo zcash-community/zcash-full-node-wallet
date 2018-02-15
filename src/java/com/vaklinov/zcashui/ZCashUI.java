@@ -107,7 +107,7 @@ extends JFrame
 	private JMenuItem menuItemRemoveContactIdentity;
 	private JMenuItem menuItemMessagingOptions;
 	private JMenuItem menuItemShareFileViaIPFS;
-	private JMenuItem menuItemExportToArizen;
+	//private JMenuItem menuItemExportToArizen;
 
 	private DashboardPanel   dashboard;
 	private AddressesPanel   addresses;
@@ -210,8 +210,11 @@ extends JFrame
 		menuItemShowPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, accelaratorKeyMask));
 		wallet.add(menuItemImportOnePrivateKey = new JMenuItem("Import one private key...", KeyEvent.VK_N));
 		menuItemImportOnePrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, accelaratorKeyMask));
-		wallet.add(menuItemExportToArizen = new JMenuItem("Export to Arizen wallet...", KeyEvent.VK_A));
-		menuItemExportToArizen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, accelaratorKeyMask));
+		
+		/*
+		 * wallet.add(menuItemExportToArizen = new JMenuItem("Export to Arizen wallet...", KeyEvent.VK_A));
+		 * menuItemExportToArizen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, accelaratorKeyMask));
+		 */
 		mb.add(wallet);
 
 		JMenu messaging = new JMenu("Messaging");
@@ -417,7 +420,9 @@ extends JFrame
 				}
 				);
 
-		menuItemExportToArizen.addActionListener(
+		/*
+		 * menuItemExportToArizen.addActionListener(
+		
 				new ActionListener()
 				{
 					@Override
@@ -427,6 +432,7 @@ extends JFrame
 					}
 				}
 				);
+				*/
 
 		// Close operation
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -532,7 +538,7 @@ extends JFrame
 				possiblyCreateZENConfigFile();
 			}
 
-			Log.info("Starting ZENCash Swing Wallet ...");
+			Log.info("Starting Zclassic Swing Wallet ...");
 			Log.info("OS: " + System.getProperty("os.name") + " = " + os);
 			Log.info("Current directory: " + new File(".").getCanonicalPath());
 			Log.info("Class path: " + System.getProperty("java.class.path"));
@@ -731,12 +737,9 @@ extends JFrame
 	}
 
 	private static List<String> getAddNodes()   {
-		ClassLoader classLoader = ZCashUI.class.getClassLoader();
-
 		BufferedReader br = null;
 		InputStream is = ZCashUI.class.getResourceAsStream("/config/addnodes.txt");
 		br = new BufferedReader(new InputStreamReader(is));
-		//File f  = new File(classLoader.getResource("/keys/addnodes.txt").getFile());
 
 		List <String> nodes = new ArrayList<>();
 		String line;
@@ -747,8 +750,6 @@ extends JFrame
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-
 		return nodes;
 	}
-
 }

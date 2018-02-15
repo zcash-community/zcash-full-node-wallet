@@ -244,10 +244,10 @@ public class OSUtil
 	        dir = new File(userHome, "Library/Application Support/ZclassicSwingWalletUI");
 	    } else if (os == OS_TYPE.WINDOWS)
 		{
-			dir = new File(System.getenv("LOCALAPPDATA") + "\\ZENCashSwingWalletUI");
+			dir = new File(System.getenv("LOCALAPPDATA") + "\\ZclassicSwingWalletUI");
 		} else
 	    {
-	        dir = new File(userHome.getCanonicalPath() + File.separator + ".ZENCashSwingWalletUI");
+	        dir = new File(userHome.getCanonicalPath() + File.separator + ".ZclassicSwingWalletUI");
 	    }
 	    
 		if (!dir.exists())
