@@ -744,7 +744,7 @@ public class SendCashPanel
 		    	// Open block explorer
 				Log.info("Transaction ID for block explorer is: " + TXID);
 				// TODO: code duplication with transactions table
-				String urlPrefix = "https://zcl-explorer.com/insight/tx/"
+				String urlPrefix = "https://zcl-explorer.com/insight/tx/";
 				if (installationObserver.isOnTestNet())
 				{
           //TODO zcl testnet explorer
