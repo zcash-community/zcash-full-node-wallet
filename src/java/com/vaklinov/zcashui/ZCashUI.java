@@ -79,7 +79,7 @@ import com.vaklinov.zcashui.msg.MessagingPanel;
 
 
 /**
- * Main ZENCash Window.
+ * Main Zclassic Window.
  *
  * @author Ivan Vaklinov <ivan@vaklinov.com>
  */
@@ -608,7 +608,7 @@ extends JFrame
 			if ((zcashdInfo.status != DAEMON_STATUS.RUNNING) || (daemonStartInProgress))
 			{
 				Log.info(
-						"zcld is not runing at the moment or has not started/synchronized 100% - showing splash...");
+						"zcld is not running at the moment or has not started/synchronized 100% - showing splash...");
 				startupBar = new StartupProgressDialog(initialClientCaller);
 				startupBar.setVisible(true);
 				startupBar.waitForStartup();
