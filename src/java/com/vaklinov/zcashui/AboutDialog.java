@@ -61,7 +61,7 @@ public class AboutDialog
 	public AboutDialog(JFrame parent)
 		throws UnsupportedEncodingException
 	{
-		this.setTitle("About...");
+		this.setTitle("About");
 		this.setSize(620, 440);
 	    this.setLocation(100, 100);
 		this.setLocationRelativeTo(parent);
@@ -233,7 +233,7 @@ public class AboutDialog
 		    " Copyright (c) 2018 Jon Layton &lt;me@jonl.io&gt; \n" +
         " Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n " +
 			"\n" +
-      "\n"
+      "\n" +
 		    " Copyright (c) 2016-2017 Ivan Vaklinov &lt;ivan@vaklinov.com&gt; \n" +
 			"\n" +
 			" Permission is hereby granted, free of charge, to any person obtaining a copy\n" +

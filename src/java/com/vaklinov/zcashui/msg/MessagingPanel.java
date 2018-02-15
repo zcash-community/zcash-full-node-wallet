@@ -592,7 +592,7 @@ public class MessagingPanel
 					return;
 				}
 				
-				// Own identity exists, check balance of T address !!! - must be none
+				// My Identity exists, check balance of T address !!! - must be none
 				MessagingIdentity ownIdentity =  this.messagingStorage.getOwnIdentity();
 				Cursor oldCursor = this.parentFrame.getCursor();
 				String balance = null;
@@ -723,7 +723,7 @@ public class MessagingPanel
 		        JOptionPane.showMessageDialog(
 	        		this.parentFrame,
 	        		"Your messaging identity is missing! Maybe it has not been created yet.\n" +
-	        		"Use the menu option \"Messaging >> Own identity\" to crate it!", 
+	        		"Use the menu option \"Messaging >> My Identity\" to crate it!", 
 	        		"Messaging identity is not available", JOptionPane.ERROR_MESSAGE);
 		        return;
 			}

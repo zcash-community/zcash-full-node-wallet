@@ -354,7 +354,7 @@ public class WalletOperations
 		{
 			JOptionPane.showMessageDialog(
 				this.parent, 
-				"Please select an address in the \"Own addresses\" tab " +
+				"Please select an address in the \"My Addresses\" tab " +
 				"to view its private key",
 				"Please select an address...", JOptionPane.INFORMATION_MESSAGE);
 			this.tabs.setSelectedIndex(1);

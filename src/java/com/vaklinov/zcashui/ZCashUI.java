@@ -154,13 +154,13 @@ extends JFrame
 				new ImageIcon(cl.getResource("images/overview.png")),
 				dashboard = new DashboardPanel(this, installationObserver, clientCaller, 
 						errorReporter, backupTracker));
-		tabs.addTab("Own addresses ",
+		tabs.addTab("My Addresses ",
 				new ImageIcon(cl.getResource("images/own-addresses.png")),
 				addresses = new AddressesPanel(this, clientCaller, errorReporter));
-		tabs.addTab("Send cash ",
+		tabs.addTab("Send ZCL ",
 				new ImageIcon(cl.getResource("images/send.png")),
 				sendPanel = new SendCashPanel(clientCaller, errorReporter, installationObserver, backupTracker));
-		tabs.addTab("Address book ",
+		tabs.addTab("Address Book ",
 				new ImageIcon(cl.getResource("images/address-book.png")),
 				addressBookPanel = new AddressBookPanel(sendPanel, tabs));
 		tabs.addTab("Messaging ",
@@ -219,9 +219,9 @@ extends JFrame
 
 		JMenu messaging = new JMenu("Messaging");
 		messaging.setMnemonic(KeyEvent.VK_S);
-		messaging.add(menuItemOwnIdentity = new JMenuItem("Own identity...", KeyEvent.VK_D));
+		messaging.add(menuItemOwnIdentity = new JMenuItem("My Identity...", KeyEvent.VK_D));
 		menuItemOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, accelaratorKeyMask));        
-		messaging.add(menuItemExportOwnIdentity = new JMenuItem("Export own identity...", KeyEvent.VK_X));
+		messaging.add(menuItemExportOwnIdentity = new JMenuItem("Export my identity...", KeyEvent.VK_X));
 		menuItemExportOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));        
 		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Add messaging group...", KeyEvent.VK_G));
 		menuItemAddMessagingGroup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, accelaratorKeyMask));
