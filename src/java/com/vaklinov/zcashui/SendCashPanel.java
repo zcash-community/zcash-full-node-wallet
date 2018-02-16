@@ -126,7 +126,7 @@ public class SendCashPanel
 		sendCashPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 		
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		tempPanel.add(new JLabel("Send cash from:       "));
+		tempPanel.add(new JLabel("Send ZCL from:       "));
 		tempPanel.add(new JLabel(
 			"<html><span style=\"font-size:0.8em;\">" +
 			"* Only addresses with a confirmed balance are shown as sources for sending!" +

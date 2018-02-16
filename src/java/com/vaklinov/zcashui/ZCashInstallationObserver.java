@@ -97,7 +97,7 @@ public class ZCashInstallationObserver
 			throw new InstallationDetectionException(
 				"The Zclassic GUI Wallet installation directory " + installDir + " needs\nto contain " +
 				"the command line utilities zcld and zcl-cli. At least one of them is missing! \n" +
-				"Please place files ZclassicSwingWalletUI.jar, " + OSUtil.getZCashCli() + ", " + 
+				"Please place files ZclassicSwingWallet.jar, " + OSUtil.getZCashCli() + ", " + 
 				OSUtil.getZCashd() + " in the same directory.");
 		}
 	}
