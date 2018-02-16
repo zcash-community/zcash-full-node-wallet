@@ -222,7 +222,7 @@ public class AboutDialog
 		//copyrightPanel.add(PD, BorderLayout.CENTER);
 
 		
-		tabs.add("About", copyrightPanel);
+		//tabs.add("About", copyrightPanel);
 
 		JPanel licensePanel = new JPanel();
 		licensePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -230,11 +230,15 @@ public class AboutDialog
 		JLabel licenseLabel = new JLabel();
 		licenseLabel.setText(
 			"<html><body><pre>" +
-		    " Copyright (c) 2018 Jon Layton &lt;me@jonl.io&gt; \n" +
-        " Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n " +
-			"\n" +
-      "\n" +
-		    " Copyright (c) 2016-2017 Ivan Vaklinov &lt;ivan@vaklinov.com&gt; \n" +
+		    " Copyright (c) 2018\n\n"
+		    + "Jon Layton &lt;me@jonl.io&gt;"
+		    + "\n"
+		    + "Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n"
+			+"\n\n"
+		    + "Niels Buekers &lt;niels.buekers@gmail.com&gt; \n"
+			+ "Donate ZCL: t1guCy1HXuVAMPHbC5Hy85xM6ovdBaRqBTF" 
+		    +"\n\n"
+		    +" Copyright (c) 2016-2017 Ivan Vaklinov &lt;ivan@vaklinov.com&gt; \n" +
 			"\n" +
 			" Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
 			" of this software and associated documentation files (the \"Software\"), to deal\n" +
