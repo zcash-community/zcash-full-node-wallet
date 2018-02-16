@@ -5,15 +5,16 @@
 ant jar -f src/build/build.xml
 
 #package jar to app
-jar2app build/jars/ZclassicSwingWalletUI.jar  -i ./src/resources/images/zclassic-logo.icns
+jar2app build/jars/ZclassicSwingWallet.jar  -i ./src/resources/images/zclassic-logo.icns
 
 
 #add zcld and zcl-cli into the required Contents folder of the App
-cp ./zcld ./ZclassicSwingWalletUI.app/Contents/zcld
-cp ./zcl-cli ./ZclassicSwingWalletUI.app/Contents/zcl-cli
+cp ./zcld ./ZclassicSwingWallet.app/Contents/zcld
+cp ./zcl-cli ./ZclassicSwingWallet.app/Contents/zcl-cli
+
 
 #statically build required libraries
-dylibbundler -od -b -x ./ZclassicSwingWalletUI.app/Contents/zcld \
-                    -x ./ZclassicSwingWalletUI.app/Contents/zcl-cli \
-                    -d ./ZclassicSwingWalletUI.app/Contents/libs \
+dylibbundler -od -b -x ./ZclassicSwingWallet.app/Contents/zcld \
+                    -x ./ZclassicSwingWallet.app/Contents/zcl-cli \
+                    -d ./ZclassicSwingWallet.app/Contents/libs \
                     -p @executable_path/libs
