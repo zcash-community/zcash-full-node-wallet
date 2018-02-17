@@ -77,7 +77,7 @@ public class SingleKeyImportDialog
 		super(parent);
 		this.caller = caller;
 		
-		this.setTitle("Enter private key...");
+		this.setTitle("Enter private key");
 	    this.setLocation(parent.getLocation().x + 50, parent.getLocation().y + 50);
 		this.setModal(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
