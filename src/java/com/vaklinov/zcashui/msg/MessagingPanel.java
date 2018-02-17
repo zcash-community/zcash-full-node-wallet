@@ -171,9 +171,9 @@ public class MessagingPanel
 		this.conversationTextPane.addHyperlinkListener(new GroupLinkHandler());
 		JPanel upperPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		upperPanel.add(this.conversationLabel = new JLabel(
-			"<html><span style=\"font-size:1.2em;font-style:italic;\">Conversation ...</span>"));
+			"<html><span style=\"font-size:1.2em;font-style:bold;\">Conversation</span>"));
 		upperPanel.add(new JLabel(
-    			"<html><span style=\"font-size:1.6em;font-style:italic;\">&nbsp;</span>"));
+    			"<html><span style=\"font-size:1.6em;font-style:bold;\">&nbsp;</span>"));
 		upperPanel.setBorder(BorderFactory.createEmptyBorder(0, 3, 0, 3));
 		conversationPanel.add(upperPanel, BorderLayout.NORTH);		
 		
@@ -198,11 +198,11 @@ public class MessagingPanel
 					        JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 					        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), 
 			BorderLayout.CENTER);
-		JLabel sendLabel = new JLabel("Message to send:");
+		JLabel sendLabel = new JLabel("Message:");
 		MessagingIdentity ownIdentity = this.messagingStorage.getOwnIdentity();
 		if (ownIdentity != null)
 		{
-			sendLabel.setText("Message to send as: " + ownIdentity.getDiplayString());
+			sendLabel.setText("Sending as Identity: " + ownIdentity.getDiplayString());
 		}
 		sendLabel.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 		writePanel.add(sendLabel, BorderLayout.NORTH);

@@ -94,7 +94,7 @@ public class MessagingOptionsEditDialog
 		tempPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 		infoLabel = new JLabel(
 				"<html><span style=\"font-size:0.93em;\">" +
-				"The options below pertain to messaging. It is posisble to set the amount of ZCL<br/>" +
+				"The options below pertain to messaging. It is possible to set the amount of ZCL<br/>" +
 				"to be sent with every messaging transaction and also the transaction fee. It is<br/>" + 
 			    "also possible to decide if users are to be automatically added to the contact list.<br/><br/>" +
 			    "</span>");
@@ -134,7 +134,7 @@ public class MessagingOptionsEditDialog
 				}
 		});
 		
-		JButton saveButon = new JButton("Save & close");
+		JButton saveButon = new JButton("Save & Close");
 		buttonPanel.add(saveButon);
 		saveButon.addActionListener(new ActionListener()
 		{
