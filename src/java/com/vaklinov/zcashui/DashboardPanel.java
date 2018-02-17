@@ -131,11 +131,13 @@ extends WalletTabPanel
 		tempPanel.setToolTipText("Powered by Zclassic");
 		balanceStatusPanel.add(tempPanel, BorderLayout.WEST);
 		// TODO: use relative size - only!
+		/*
 		JLabel transactionHeadingLabel = new JLabel(
 				"<html><span style=\"font-size:2em\"><br/></span>Transactions:</html>");
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 1, 1));
 		transactionHeadingLabel.setFont(new Font("Helvetica", Font.BOLD, 19));
 		tempPanel.add(transactionHeadingLabel);
+		*/
 		balanceStatusPanel.add(tempPanel, BorderLayout.CENTER);
 
 		balanceStatusPanel.add(walletBalanceLabel = new JLabel(), BorderLayout.EAST);
