@@ -83,7 +83,7 @@ public class AboutDialog
 		    + "Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n"
 			+"\n\n"
 		    + "Niels Buekers <niels.buekers@gmail.com>\n"
-			+ "Donate ZCL: t1guCy1HXuVAMPHbC5Hy85xM6ovdBaRqBTF" 
+			+ "Donate ZCL: zcgUYH2iKgYJvLP2xnxK3pDa8CFoAAd3qbx1pvnjMbwhLfC89D6UuVPjztKsqz7m2y9vmM2xKxk7WHmuonLrWUL9aitPXBe" 
 		    +"\n\n"
 		    +"Copyright (c) 2016-2017 Ivan Vaklinov <ivan@vaklinov.com> \n" +
 			"\n" +
