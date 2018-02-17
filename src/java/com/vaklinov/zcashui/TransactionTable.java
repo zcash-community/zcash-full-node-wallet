@@ -70,7 +70,7 @@ public class TransactionTable extends DataTable {
 		int accelaratorKeyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 
 		JMenuItem showDetails = new JMenuItem("Show details...");
-		showDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, accelaratorKeyMask));
+		//showDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, accelaratorKeyMask));
 		popupMenu.add(showDetails);
 
 		showDetails.addActionListener(new ActionListener() {
@@ -98,7 +98,7 @@ public class TransactionTable extends DataTable {
 		});
 
 		JMenuItem showInExplorer = new JMenuItem("Show in block explorer");
-		showInExplorer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));
+		//showInExplorer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));
 		popupMenu.add(showInExplorer);
 
 		showInExplorer.addActionListener(new ActionListener() {
@@ -129,7 +129,7 @@ public class TransactionTable extends DataTable {
 		});
 
 		JMenuItem showMemoField = new JMenuItem("Get transaction memo");
-		showMemoField.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
+		//showMemoField.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
 		popupMenu.add(showMemoField);
 
 		showMemoField.addActionListener(new ActionListener() {
