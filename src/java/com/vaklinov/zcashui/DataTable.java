@@ -82,7 +82,7 @@ public class DataTable
 		
 		JMenuItem copy = new JMenuItem("Copy value");
         popupMenu.add(copy);
-        copy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, accelaratorKeyMask));
+        //copy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, accelaratorKeyMask));
         copy.addActionListener(new ActionListener() 
         {	
 			@Override
@@ -104,7 +104,7 @@ public class DataTable
         
 		JMenuItem exportToCSV = new JMenuItem("Export data to CSV...");
         popupMenu.add(exportToCSV);
-        exportToCSV.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, accelaratorKeyMask));
+        //exportToCSV.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, accelaratorKeyMask));
         exportToCSV.addActionListener(new ActionListener() 
         {	
 			@Override
