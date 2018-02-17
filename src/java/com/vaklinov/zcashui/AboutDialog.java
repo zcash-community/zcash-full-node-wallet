@@ -77,15 +77,16 @@ public class AboutDialog
 		JTextArea licenseLabel = new JTextArea();
 		licenseLabel.setText(
 			"" +
-		    " Copyright (c) 2018\n\n"
+		    " Copyright (c) 2018 -Zclassic Team\n\n"
 		    + "Jon Layton <me@jonl.io>"
 		    + "\n"
-		    + "Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n"
+		    + "Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n   "
 			+"\n\n"
 		    + "Niels Buekers <niels.buekers@gmail.com>\n"
-			+ "Donate ZCL: zcgUYH2iKgYJvLP2xnxK3pDa8CFoAAd3qbx1pvnjMbwhLfC89D6UuVPjztKsqz7m2y9vmM2xKxk7WHmuonLrWUL9aitPXBe" 
-		    +"\n\n"
-		    +"Copyright (c) 2016-2017 Ivan Vaklinov <ivan@vaklinov.com> \n" +
+			+ "Donate ZCL: zcgUYH2iKgYJvLP2xnxK3pDa8CFoAAd3qbx1pvnjMbwhLfC89D6UuVPjztKsqz7m2y9vmM2xKxk7WHmuonLrWUL9aitPXBe   " 
+		    +"\n\n\n\n"
+		    +"Forked from ZEN wallet\n"
+		    + "Copyright (c) 2016-2017 Ivan Vaklinov <ivan@vaklinov.com> \n" +
 			"\n" +
 			" Permission is hereby granted, free of charge, to any person obtaining a copy\n" +
 			" of this software and associated documentation files (the \"Software\"), to deal\n" +
