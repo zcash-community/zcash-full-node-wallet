@@ -436,7 +436,7 @@ public class WalletOperations
 
 	/**
 	 * export to Arizen wallet
-	 */
+	 *
 	public void exportToArizenWallet()
 	{
 		final JDialog dialog = new JDialog(this.parent, "Exporting Arizen wallet");
@@ -586,7 +586,7 @@ public class WalletOperations
 			errorReporter.reportError(ex, false);
 		}
 	}
-
+*/
 
 
 	private void issueBackupDirectoryWarning()

@@ -44,7 +44,6 @@ import java.util.Arrays;
 
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
-import org.bitcoinj.core.Base58;
 
 /**
  * Utilities - generally reusable across classes.
@@ -436,12 +435,4 @@ public class Util
 			}
 		}
 	}
-
-	public static String wifToHex(String wifKey) throws Exception {
-			byte[] bytes = Base58.decode(wifKey);
-			String pk = Util.encodeHexArray(bytes);
-			pk = pk.substring(2, pk.length() - 10);
-			return pk;
-	}
-
 }
