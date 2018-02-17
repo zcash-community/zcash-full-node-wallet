@@ -171,9 +171,9 @@ public class MessagingPanel
 		this.conversationTextPane.addHyperlinkListener(new GroupLinkHandler());
 		JPanel upperPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		upperPanel.add(this.conversationLabel = new JLabel(
-			"<html><span style=\"font-size:1.2em;font-style:italic;\">Conversation ...</span>"));
+			"<html><span style=\"font-size:1.2em;font-style:bold;\">Conversation</span>"));
 		upperPanel.add(new JLabel(
-    			"<html><span style=\"font-size:1.6em;font-style:italic;\">&nbsp;</span>"));
+    			"<html><span style=\"font-size:1.6em;font-style:bold;\">&nbsp;</span>"));
 		upperPanel.setBorder(BorderFactory.createEmptyBorder(0, 3, 0, 3));
 		conversationPanel.add(upperPanel, BorderLayout.NORTH);		
 		
@@ -198,11 +198,11 @@ public class MessagingPanel
 					        JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 					        JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), 
 			BorderLayout.CENTER);
-		JLabel sendLabel = new JLabel("Message to send:");
+		JLabel sendLabel = new JLabel("Message:");
 		MessagingIdentity ownIdentity = this.messagingStorage.getOwnIdentity();
 		if (ownIdentity != null)
 		{
-			sendLabel.setText("Message to send as: " + ownIdentity.getDiplayString());
+			sendLabel.setText("Sending as Identity: " + ownIdentity.getDiplayString());
 		}
 		sendLabel.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 		writePanel.add(sendLabel, BorderLayout.NORTH);
@@ -215,7 +215,7 @@ public class MessagingPanel
 		JLabel filler = new JLabel(" ");
 		filler.setBorder(BorderFactory.createEmptyBorder(3, 3, 3, 3));
 		sendButtonPanel.add(filler); // filler
-		sendButton = new JButton("Send message  \u27A4\u27A4\u27A4");
+		sendButton = new JButton("Send Message  \u27A4\u27A4\u27A4");
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(sendButton);
 		sendButtonPanel.add(tempPanel);
@@ -226,9 +226,7 @@ public class MessagingPanel
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(sendMessageProgressBar);
 		sendButtonPanel.add(tempPanel);
-		sendResultLabel = new JLabel(
-				"<html><span style=\"font-size:0.8em;\">" +
-				"Send status: &nbsp;</span>");
+		sendResultLabel = new JLabel();
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(sendResultLabel);
 		sendButtonPanel.add(tempPanel);
@@ -1337,8 +1335,7 @@ public class MessagingPanel
 			Log.error("Wallet call error in sending message: ", wce);
 			
 			sendResultLabel.setText(
-				"<html><span style=\"font-size:0.8em;\">Send status: &nbsp;" +
-				"<span style=\"color:red;font-weight:bold\">ERROR! </span></span></html>");
+				"<html><span style=\"color:red;font-size:0.8em;font-weight:bold\">ERROR!</span></html>");
 			JOptionPane.showMessageDialog(
 				MessagingPanel.this.getRootPane().getParent(), 
 				"An error occurred upon sending message to contact: " + contactIdentity.getDiplayString() + ". \n" +
@@ -1395,14 +1392,12 @@ public class MessagingPanel
 						if (sendWasSuccessful)
 						{
 							sendResultLabel.setText(
-								"<html><span style=\"font-size:0.8em;\">Send status: &nbsp;" +
-								"<span style=\"color:green;font-weight:bold\">SUCCESSFUL</span></span></html>");
+								"<html><span style=\"color:green;font-size:0.8em;font-weight:bold\">SUCCESSFUL</span></html>");
 						} else
 						{
 							String errorMessage = clientCaller.getOperationFinalErrorMessage(operationStatusID); 
 							sendResultLabel.setText(
-								"<html><span style=\"font-size:0.8em;\">Send status: &nbsp;" +
-								"<span style=\"color:red;font-weight:bold\">ERROR! </span></span></html>");
+								"<html><span style=\"color:red;font-size:0.8em;font-weight:bold\">ERROR! </span></html>");
 							JOptionPane.showMessageDialog(
 								MessagingPanel.this.getRootPane().getParent(), 
 								"An error occurred when sending message to contact: " + contactIdentity.getDiplayString() + ". \n" +
@@ -1438,8 +1433,7 @@ public class MessagingPanel
 					{
 						// Update the progress
 						sendResultLabel.setText(
-							"<html><span style=\"font-size:0.8em;\">Send status: &nbsp;" +
-							"<span style=\"color:orange;font-weight:bold\">IN PROGRESS</span></span></html>");
+							"<html><span style=\"color:orange;font-size:0.8em;font-weight:bold\">IN PROGRESS</span></html>");
 						operationStatusCounter += 2;
 						int progress = 0;
 						if (operationStatusCounter <= 100)

@@ -71,7 +71,7 @@ public class PasswordDialog
 	{
 		super(parent);
 		
-		this.setTitle("Password...");
+		this.setTitle("Password");
 	    this.setLocation(parent.getLocation().x + 50, parent.getLocation().y + 50);
 		this.setModal(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -161,6 +161,7 @@ public class PasswordDialog
 		{
 			JOptionPane.showMessageDialog(
 				PasswordDialog.this.getParent(), 
+				
 				"The password is empty. Please enter it into the text field.", "Empty...", 
 				JOptionPane.ERROR_MESSAGE);
 			return;

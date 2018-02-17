@@ -110,7 +110,7 @@ public class JContactListPanel
 		
 		JPanel upperPanel = new JPanel(new BorderLayout(0, 0));
 		upperPanel.add(new JLabel(
-			"<html><span style=\"font-size:1.2em;font-style:italic;\">Contact list: &nbsp;</span></html>"),
+			"<html><span style=\"font-size:1.2em;font-style:bold;\">Contact list: &nbsp;</span></html>"),
 			BorderLayout.WEST);
 		URL addIconUrl = this.getClass().getClassLoader().getResource("images/add12.png");
         ImageIcon addIcon = new ImageIcon(addIconUrl);
@@ -235,7 +235,7 @@ public class JContactListPanel
 		
 		JMenuItem showDetails = new JMenuItem("Show details...");
         popupMenu.add(showDetails);
-        showDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, accelaratorKeyMask));
+        //showDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, accelaratorKeyMask));
         showDetails.addActionListener(new ActionListener() 
         {	
 			@Override
@@ -253,7 +253,7 @@ public class JContactListPanel
         
 		JMenuItem removeContact = new JMenuItem("Remove...");
         popupMenu.add(removeContact);
-        removeContact.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
+        //removeContact.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
         removeContact.addActionListener(new ActionListener() 
         {	
 			@Override
@@ -265,7 +265,7 @@ public class JContactListPanel
 
 		JMenuItem sendContactDetails = new JMenuItem("Send contact details...");
         popupMenu.add(sendContactDetails);
-        sendContactDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, accelaratorKeyMask));
+        //sendContactDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, accelaratorKeyMask));
         sendContactDetails.addActionListener(new ActionListener() 
         {	
 			@Override

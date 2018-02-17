@@ -55,8 +55,8 @@ public class AddressTable
 		super(rowData, columnNames);
 		int accelaratorKeyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
         
-		JMenuItem obtainPrivateKey = new JMenuItem("Obtain private key...");
-		obtainPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, accelaratorKeyMask));
+		JMenuItem obtainPrivateKey = new JMenuItem("Obtain private key");
+		//obtainPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, accelaratorKeyMask));
         popupMenu.add(obtainPrivateKey);
         
         obtainPrivateKey.addActionListener(new ActionListener() 
