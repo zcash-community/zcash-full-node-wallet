@@ -150,7 +150,7 @@ extends JFrame
 		tabs.setFont(newTabFont);
 		BackupTracker backupTracker = new BackupTracker(this);
 
-		tabs.addTab("Overview ",
+		tabs.addTab("Transactions ",
 				new ImageIcon(cl.getResource("images/overview.png")),
 				dashboard = new DashboardPanel(this, installationObserver, clientCaller, 
 						errorReporter, backupTracker));
