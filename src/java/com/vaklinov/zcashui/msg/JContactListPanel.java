@@ -235,7 +235,7 @@ public class JContactListPanel
 		
 		JMenuItem showDetails = new JMenuItem("Show details...");
         popupMenu.add(showDetails);
-        showDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, accelaratorKeyMask));
+        //showDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, accelaratorKeyMask));
         showDetails.addActionListener(new ActionListener() 
         {	
 			@Override
@@ -253,7 +253,7 @@ public class JContactListPanel
         
 		JMenuItem removeContact = new JMenuItem("Remove...");
         popupMenu.add(removeContact);
-        removeContact.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
+        //removeContact.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
         removeContact.addActionListener(new ActionListener() 
         {	
 			@Override
@@ -265,7 +265,7 @@ public class JContactListPanel
 
 		JMenuItem sendContactDetails = new JMenuItem("Send contact details...");
         popupMenu.add(sendContactDetails);
-        sendContactDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, accelaratorKeyMask));
+        //sendContactDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, accelaratorKeyMask));
         sendContactDetails.addActionListener(new ActionListener() 
         {	
 			@Override
