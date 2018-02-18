@@ -150,7 +150,7 @@ public class StartupProgressDialog extends JFrame {
 
         // doDispose(); - will be called later by the main GUI
         
-        if (daemonProcess != null) // Shutdown only if we started it
+        //if (daemonProcess != null) // Shutdown only if we started it
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
             	Log.info("Stopping zcld because we started it - now it is alive: " + 
