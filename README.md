@@ -9,31 +9,15 @@
 This program provides a Graphical User Interface (GUI) for the Zclassic client tools that acts as a wrapper and 
 presents the information in a user-friendly manner.
 
-![Screenshot](https://github.com/ZencashOfficial/zencash-swing-wallet-ui/raw/master/docs/ZclassicWallet.png "Main Window")
-
-#### New/Experimental: [Zclassic Desktop GUI Wallet packages for Debian/Ubuntu Linux](https://github.com/ZencashOfficial/zencash-swing-wallet-ui/blob/master/docs/ReleaseUbuntuRepository.md) are available
-
-#### New/Experimental: [Zclassic Desktop GUI Wallet for Mac OS](https://github.com/ZencashOfficial/zencash-swing-wallet-ui/blob/master/docs/Release_0.75.9.md) is available
-
-#### New/Experimental: [Zclassic Desktop GUI Wallet for Windows](https://github.com/ZencashOfficial/zencash-swing-wallet-ui/blob/master/docs/Release_0.75.8.md) is available
-
-#### Information on diagnosing some common problems may be found in this [troubleshooting guide](docs/TroubleshootingGuide.md).
-
 ## Building, installing and running the Wallet GUI
 
-Before installing the Desktop GUI Wallet you need to have Zclassic up and running. The following 
-[guide](https://github.com/ZencashOfficial/zen/blob/master/README.md) 
+Before installing the Desktop GUI Wallet you need to have Zclassic up and running: https://github.com/z-classic/zclassic
 explains how to set up [Zclassic](https://zclassic.org/). 
 
 **For security reasons it is recommended to always build the GUI wallet program from GitHub**
-**[source](https://github.com/ZencashOfficial/zencash-swing-wallet-ui/archive/master.zip).**
-The details of how to build it are described below (easy to follow). 
-
 
 1. Operating system and tools
 
-   As of June 2017 (ZENCash v1.0.9) this program is mostly tested on Linux and Mac OS X
-   (same limitation as [Zclassic](https://zclassic.org/)) with experimental support for Windows.
    The Linux tools you need to build and run the Wallet GUI are Git, Java (JDK7 or later) and
    Ant. If using Ubuntu Linux, they may be installed via command: 
    ```
@@ -51,13 +35,13 @@ The details of how to build it are described below (easy to follow).
 
 2. Building from source code
 
-   As a start you need to clone the zencash-swing-wallet-ui Git repository:
+   As a start you need to clone the zclassic-full-node-wallet Git repository:
    ```
    user@ubuntu:~/build-dir$ git clone https://github.com/z-classic/zclassic-full-node-wallet.git
    ```
    Change the current directory:
    ```
-   user@ubuntu:~/build-dir$ cd zencash-swing-wallet-ui/
+   user@ubuntu:~/build-dir$ cd zclassic-full-node-wallet/
    ```
    Issue the build command:
    ```
@@ -76,7 +60,7 @@ The details of how to build it are described below (easy to follow).
 
    3.1. If you have built Zclassic from source code:
 
-     Assuming you have already built from source code [Zclassic](https://zclassic.org/) in directory `/home/user/zclassic/src` (for example - this is the typical build dir. for Zclassic v1.0.9) which contains the command line tools `zcl-cli` and `zcld` you need to take the created JAR files and copy them to directory `/home/user/zen/src` (the same dir. that contains `zcl-cli` and `zcld`). Example copy command:
+     Assuming you have already built from source code [Zclassic](https://github.com/z-classic/zclassic) in directory `/home/user/zclassic/src` (for example - this is the typical build dir. for Zclassic v1.0.10) which contains the command line tools `zcl-cli` and `zcld` you need to take the created JAR files and copy them to directory `/home/user/zclassic/src` (the same dir. that contains `zcl-cli` and `zcld`). Example copy command:
       ```
       user@ubuntu:~/build-dir/zclassic-full-node-wallet$ cp -R -v ./build/jars/* /home/user/zclassic/src    
       ```
@@ -87,7 +71,7 @@ The details of how to build it are described below (easy to follow).
    Assuming you have already installed [Zclassic](https://zclassic.org/) and the GUI Wallet `ZclassicSwingWallet.jar` in 
    directory `/home/user/zclassic/src` one way to run it from command line is:
    ```
-   user@ubuntu:~/build-dir/zencash-swing-wallet-ui$ java -jar /home/user/zclassic/src/ZclassicSwingWallet.jar
+   user@ubuntu:~/build-dir/zclassic-full-node-wallet$ java -jar /home/user/zclassic/src/ZclassicSwingWallet.jar
    ```
    If you are using Ubuntu (or similar ;) Linux you may instead just use the file manager and 
    right-click on the `ZclassicSwingWallet.jar` file and choose the option "Open with OpenJDK 8 Runtime". 
@@ -96,8 +80,8 @@ The details of how to build it are described below (easy to follow).
    **Important:** the Zclassic configuration file `~/.zclassic/zclassic.conf` needs to be correctly set up for the GUI
    wallet to work. Specifically the RPC user and password need to be set randomly:
    ```
-   rpcuser=username
-   rpcpassword=wjQOHVDQFLwztWp1Ehs09q7gdjHAXjd4E
+   rpcuser=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
+   rpcpassword=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
     
    ``` 
 
