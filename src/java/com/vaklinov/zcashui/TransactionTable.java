@@ -69,7 +69,7 @@ public class TransactionTable extends DataTable {
 		super(rowData, columnNames);
 		int accelaratorKeyMask = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 
-		JMenuItem showDetails = new JMenuItem("Show details...");
+		JMenuItem showDetails = new JMenuItem("Show details");
 		//showDetails.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, accelaratorKeyMask));
 		popupMenu.add(showDetails);
 
@@ -191,7 +191,7 @@ public class TransactionTable extends DataTable {
 
 	private static class DetailsDialog extends JDialog {
 		public DetailsDialog(JFrame parent, Map<String, String> details) throws UnsupportedEncodingException {
-			this.setTitle("Transaction details...");
+			this.setTitle("Transaction details");
 			this.setSize(600, 310);
 			this.setLocation(100, 100);
 			this.setLocationRelativeTo(parent);

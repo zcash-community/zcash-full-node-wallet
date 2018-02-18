@@ -73,7 +73,7 @@ public class AddressBookPanel extends JPanel {
         panel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
         panel.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 3));
         
-        JButton newContactButton = new JButton("New contact...");
+        JButton newContactButton = new JButton("New contact");
         newContactButton.addActionListener(new NewContactActionListener());
         panel.add(newContactButton);
                 
@@ -316,8 +316,8 @@ public class AddressBookPanel extends JPanel {
         @Override
         public String getColumnName(int columnIndex) {
             switch(columnIndex) {
-            case 0 : return "name";
-            case 1 : return "address";
+            case 0 : return "Name";
+            case 1 : return "Address";
             default:
                 throw new IllegalArgumentException("invalid column "+columnIndex);
             }

@@ -102,7 +102,7 @@ public class DataTable
 		});
         
         
-		JMenuItem exportToCSV = new JMenuItem("Export data to CSV...");
+		JMenuItem exportToCSV = new JMenuItem("Export data to CSV");
         popupMenu.add(exportToCSV);
         //exportToCSV.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, accelaratorKeyMask));
         exportToCSV.addActionListener(new ActionListener() 
@@ -192,7 +192,7 @@ public class DataTable
         final String ENCODING = "UTF-8";
 		
 		JFileChooser fileChooser = new JFileChooser();
-		fileChooser.setDialogTitle("Export data to CSV file...");
+		fileChooser.setDialogTitle("Export data to CSV file");
 		fileChooser.setFileFilter(new FileNameExtensionFilter("CSV Files (*.csv)", "csv"));
 		 
 		int result = fileChooser.showSaveDialog(this.getRootPane().getParent());

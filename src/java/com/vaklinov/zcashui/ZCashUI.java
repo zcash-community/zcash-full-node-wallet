@@ -189,7 +189,7 @@ extends JFrame
 		JMenu file = new JMenu("Main");
 		file.setMnemonic(KeyEvent.VK_M);
 		int accelaratorKeyMask = Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask();
-		file.add(menuItemAbout = new JMenuItem("About...", KeyEvent.VK_T));
+		file.add(menuItemAbout = new JMenuItem("About", KeyEvent.VK_T));
 		menuItemAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, accelaratorKeyMask));
 		file.addSeparator();
 		file.add(menuItemExit = new JMenuItem("Quit", KeyEvent.VK_Q));
@@ -198,17 +198,17 @@ extends JFrame
 
 		JMenu wallet = new JMenu("Wallet");
 		wallet.setMnemonic(KeyEvent.VK_W);
-		wallet.add(menuItemBackup = new JMenuItem("Backup...", KeyEvent.VK_B));
+		wallet.add(menuItemBackup = new JMenuItem("Backup", KeyEvent.VK_B));
 		menuItemBackup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, accelaratorKeyMask));
-		wallet.add(menuItemEncrypt = new JMenuItem("Encrypt...", KeyEvent.VK_E));
+		wallet.add(menuItemEncrypt = new JMenuItem("Encrypt", KeyEvent.VK_E));
 		menuItemEncrypt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, accelaratorKeyMask));
-		wallet.add(menuItemExportKeys = new JMenuItem("Export private keys...", KeyEvent.VK_K));
+		wallet.add(menuItemExportKeys = new JMenuItem("Export Private Keys", KeyEvent.VK_K));
 		menuItemExportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, accelaratorKeyMask));
-		wallet.add(menuItemImportKeys = new JMenuItem("Import private keys...", KeyEvent.VK_I));
+		wallet.add(menuItemImportKeys = new JMenuItem("Import Private Keys", KeyEvent.VK_I));
 		menuItemImportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, accelaratorKeyMask));
-		wallet.add(menuItemShowPrivateKey = new JMenuItem("Show private key...", KeyEvent.VK_P));
+		wallet.add(menuItemShowPrivateKey = new JMenuItem("Show Private Key", KeyEvent.VK_P));
 		menuItemShowPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, accelaratorKeyMask));
-		wallet.add(menuItemImportOnePrivateKey = new JMenuItem("Import one private key...", KeyEvent.VK_N));
+		wallet.add(menuItemImportOnePrivateKey = new JMenuItem("Import One Private Key", KeyEvent.VK_N));
 		menuItemImportOnePrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, accelaratorKeyMask));
 		
 		/*
@@ -219,17 +219,17 @@ extends JFrame
 
 		JMenu messaging = new JMenu("Messaging");
 		messaging.setMnemonic(KeyEvent.VK_S);
-		messaging.add(menuItemOwnIdentity = new JMenuItem("My Identity...", KeyEvent.VK_D));
+		messaging.add(menuItemOwnIdentity = new JMenuItem("My Identity", KeyEvent.VK_D));
 		menuItemOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, accelaratorKeyMask));        
-		messaging.add(menuItemExportOwnIdentity = new JMenuItem("Export my identity...", KeyEvent.VK_X));
+		messaging.add(menuItemExportOwnIdentity = new JMenuItem("Export My Identity", KeyEvent.VK_X));
 		menuItemExportOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));        
-		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Add messaging group...", KeyEvent.VK_G));
+		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Add Messaging Group", KeyEvent.VK_G));
 		menuItemAddMessagingGroup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, accelaratorKeyMask));
-		messaging.add(menuItemImportContactIdentity = new JMenuItem("Import contact identity...", KeyEvent.VK_Y));
+		messaging.add(menuItemImportContactIdentity = new JMenuItem("Import Contact Identity", KeyEvent.VK_Y));
 		menuItemImportContactIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, accelaratorKeyMask));
-		messaging.add(menuItemRemoveContactIdentity = new JMenuItem("Remove contact...", KeyEvent.VK_R));
+		messaging.add(menuItemRemoveContactIdentity = new JMenuItem("Remove Contact", KeyEvent.VK_R));
 		menuItemRemoveContactIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
-		messaging.add(menuItemMessagingOptions = new JMenuItem("Options...", KeyEvent.VK_O));
+		messaging.add(menuItemMessagingOptions = new JMenuItem("Options", KeyEvent.VK_O));
 		menuItemMessagingOptions.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, accelaratorKeyMask));
 
 		JMenu shareFileVia = new JMenu("Share file via:");
