@@ -725,7 +725,7 @@ extends JFrame
 					Math.abs(r.nextInt()));
 			configOut.println("");
 			configOut.println("rpcallowip=127.0.0.1");
-			configOut.println("rpcport=8232");
+			configOut.println("rpcport=8023");
 			configOut.println("# Well-known nodes to connect to - to speed up acquiring initial connections");
 
 			for(String node : getAddNodes()) {
