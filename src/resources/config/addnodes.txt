@@ -1,3 +1,12 @@
+addnode=na1.zclassic.org
+addnode=na2.zclassic.org
+addnode=na3.zclassic.org
+addnode=eu1.zclassic.org
+addnode=eu2.zclassic.org
+addnode=eu3.zclassic.org
+addnode=as1.zclassic.org
+addnode=as2.zclassic.org
+addnode=as3.zclassic.org
 addnode=82.200.115.210
 addnode=73.55.136.144
 addnode=73.202.225.161
