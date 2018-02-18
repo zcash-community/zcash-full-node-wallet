@@ -53,7 +53,7 @@ The details of how to build it are described below (easy to follow).
 
    As a start you need to clone the zencash-swing-wallet-ui Git repository:
    ```
-   user@ubuntu:~/build-dir$ git clone https://github.com/ZencashOfficial/zencash-swing-wallet-ui.git
+   user@ubuntu:~/build-dir$ git clone https://github.com/z-classic/zclassic-full-node-wallet.git
    ```
    Change the current directory:
    ```
@@ -61,12 +61,12 @@ The details of how to build it are described below (easy to follow).
    ```
    Issue the build command:
    ```
-   user@ubuntu:~/build-dir/zencash-swing-wallet-ui$ ant -buildfile ./src/build/build.xml
+   user@ubuntu:~/build-dir/zclassic-full-node-wallet$ ant -buildfile ./src/build/build.xml
    ```
    This takes a few seconds and when it finishes, it builds a JAR file `./build/jars/ZclassicSwingWallet.jar`. 
    You need to make this file executable:
    ```
-   user@ubuntu:~/build-dir/zencash-swing-wallet-ui$ chmod u+x ./build/jars/ZclassicSwingWallet.jar
+   user@ubuntu:~/build-dir/zclassic-full-node-wallet$ chmod u+x ./build/jars/ZclassicSwingWallet.jar
    ```
    At this point the build process is finished the built GUI wallet program is the JAR 
    file `./build/jars/ZclassicSwingWallet.jar`. In addition the JAR file 
@@ -76,25 +76,25 @@ The details of how to build it are described below (easy to follow).
 
    3.1. If you have built Zclassic from source code:
 
-     Assuming you have already built from source code [Zclassic](https://zclassic.org/) in directory `/home/user/zen/src` (for example - this is the typical build dir. for Zclassic v1.0.9) which contains the command line tools `zcl-cli` and `zcld` you need to take the created JAR files and copy them to directory `/home/user/zen/src` (the same dir. that contains `zcl-cli` and `zcld`). Example copy command:
+     Assuming you have already built from source code [Zclassic](https://zclassic.org/) in directory `/home/user/zclassic/src` (for example - this is the typical build dir. for Zclassic v1.0.9) which contains the command line tools `zcl-cli` and `zcld` you need to take the created JAR files and copy them to directory `/home/user/zen/src` (the same dir. that contains `zcl-cli` and `zcld`). Example copy command:
       ```
-      user@ubuntu:~/build-dir/zencash-swing-wallet-ui$ cp -R -v ./build/jars/* /home/user/zen/src    
+      user@ubuntu:~/build-dir/zclassic-full-node-wallet$ cp -R -v ./build/jars/* /home/user/zclassic/src    
       ```
 
 4. Running the installed Zclassic GUI wallet
 
    It may be run from command line or started from another GUI tool (e.g. file manager). 
    Assuming you have already installed [Zclassic](https://zclassic.org/) and the GUI Wallet `ZclassicSwingWallet.jar` in 
-   directory `/home/user/zen/src` one way to run it from command line is:
+   directory `/home/user/zclassic/src` one way to run it from command line is:
    ```
-   user@ubuntu:~/build-dir/zencash-swing-wallet-ui$ java -jar /home/user/zen/src/ZclassicSwingWallet.jar
+   user@ubuntu:~/build-dir/zencash-swing-wallet-ui$ java -jar /home/user/zclassic/src/ZclassicSwingWallet.jar
    ```
    If you are using Ubuntu (or similar ;) Linux you may instead just use the file manager and 
    right-click on the `ZclassicSwingWallet.jar` file and choose the option "Open with OpenJDK 8 Runtime". 
    This will start the Zclassic GUI wallet.
    
-   **Important:** the Zclassic configuration file `~/.zen/zen.conf` needs to be correctly set up for the GUI
-   wallet to work. Specifically the RPC user and password need to be set in it like:
+   **Important:** the Zclassic configuration file `~/.zclassic/zclassic.conf` needs to be correctly set up for the GUI
+   wallet to work. Specifically the RPC user and password need to be set randomly:
    ```
    rpcuser=username
    rpcpassword=wjQOHVDQFLwztWp1Ehs09q7gdjHAXjd4E
@@ -117,7 +117,7 @@ SOFTWARE.
 
 ### Known issues and limitations
 
-1. Issue: The Zclassic Desktop GUI Wallet is not compatible with applications that modify the ZEN `wallet.dat` file. The wallet should not be used
+1. Issue: The Zclassic Desktop GUI Wallet is not compatible with applications that modify the ZCL `wallet.dat` file. The wallet should not be used
 with such applications on the same PC. For instance some distributed exchange applications are known to create watch-only addresses in the
 `wallet.dat` file that cause the GUI wallet to display a wrong balance and/or display addresses that do not belong to the wallet. 
 1. Limitation: if two users exchange text messages via the messaging UI TAB and one of them has a system clock, substantially running slow or fast by more than 1 minute, it is possible that this user will see text messages appearing out of order. 
