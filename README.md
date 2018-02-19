@@ -1,37 +1,35 @@
 # [Zclassic](https://zclassic.org/) Full-Node Desktop Wallet
 
-### GUI Wallet for the [Zclassic](https://zclassic.org/) command line tools (`zcld`, `zcl-cli`)
-
-## Get Started
+### Supports T and Z addresses, messaging, and more.
 
 ### Download the latest release:
 https://github.com/z-classic/zclassic-full-node-wallet/releases
 
-** Platforms:** Windows, Mac, Linux
+
+**Platforms:** Windows, Mac, Linux
 
 [Java](https://java.com/en/download/) must be installed.
 
 
 
-#### WARNING: Careful with 'watch-only' imports! They reflect only addresses - __do not__ receive funds to them because you have not fully imported the private key! This UX issue will be fixed.
-
+#### WARNING: Careful with 'watch-only' imports! They will appear in 'addresses', but ***do not*** receive funds to them because you have not fully imported the private key! This UX issue will be fixed.
 
 
 ## Building, Installing, and Running the Wallet
 
-*To run the Zclassic Full-Node Desktop Wallet, you need to have [Zclassic](https://github.com/z-classic/zclassic) built and ready to go. Essentially, this means having a copy of `zcld` and `zcl-cli` in the .jar's directory.*
+*To run the Zclassic Full-Node Desktop Wallet from source, you need to have [Zclassic](https://github.com/z-classic/zclassic) built and ready to go. Effectively, this means having a copy of `zcld` and `zcl-cli` in the .jar's directory.*
 
-#### For best security, it is recommended to build the entire Zclassic Wallet by yourself, directly from GitHub.
+#### For best security, it is recommended to build the entire Zclassic wallet by yourself, directly from GitHub.
 
-1. Operating System and Tools
+##### 1. Operating System and Tools
 
    You will need Git, Java (JDK7 or later), and Ant.  
 
-   MacOS -
+   **MacOS -**
 
    Download & Install [JDK 9](http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html)
 
-   Ubuntu Linux -
+   **Ubuntu Linux -**
    ```
    sudo apt-get install git default-jdk ant
    ```
@@ -44,7 +42,7 @@ https://github.com/z-classic/zclassic-full-node-wallet/releases
    Commands `git`, `java`, `javac`, `ant` need to be runnable from command line
    before proceeding with build.
 
-2. Building from Source Code
+##### 2 - Building from Source Code
 
    First, clone this Git repository:
    ```
@@ -66,39 +64,39 @@ https://github.com/z-classic/zclassic-full-node-wallet/releases
    ```
    At this point the build process is finished! The final product is the GUI Wallet Java JAR: `build/jars/ZclassicSwingWallet.jar`
 
-3. Installing the Base Wallet ([Zclassic](https://github.com/z-classic/zclassic))
+##### 3. Installing the Base Wallet ([Zclassic](https://github.com/z-classic/zclassic))
 
-     Assuming you have already built Zclassic from source code, `zcashd` and `zcash-cli` will be in directory `~/zclassic/src`.
+Once you've built Zclassic from source code, `zcashd` and `zcash-cli` will appear in `~/zclassic/src`.
 
-     You will need to copy them in and rename to `zcld` and `zcl-cli`:
+You will need to copy them beside the jar, and rename them to `zcld` and `zcl-cli`:
 
-     ```
-     cp ~/zclassic/src/zcashd build/jars/zcld
-     cp ~/zclassic/src/zcash-cli build/jars/zcl-cli
-     ```
+```
+cp ~/zclassic/src/zcashd build/jars/zcld
+cp ~/zclassic/src/zcash-cli build/jars/zcl-cli
+```
 
-     You can now run the GUI Wallet:
+You can now run the Desktop GUI Wallet:
 
-     ```
-     java -jar build/jars/ZclassicSwingWallet.jar
-     ```
+```
+java -jar build/jars/ZclassicSwingWallet.jar
+```
 
-     Or just double-click it!
-
-
-   If you are using Ubuntu or another Linux, you may need to
-   right-click `ZclassicSwingWallet.jar` file and choose option "Open with OpenJDK 8 Runtime".
+Or just double-click it!
 
 
-   ### `zclassic.conf`
-   Running the app will automatically set up `~/zclassic/zclassic.conf` for you. In some circumstances, you may need to edit it manually. It should contain:
-   ```
-   rpcuser=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
-   rpcpassword=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
-   rpcport=8023
-   #addnode=...
+If you are using Ubuntu or another Linux, you may need to
+right-click `ZclassicSwingWallet.jar` file and choose "Open with OpenJDK 8 Runtime".
 
-   ```
+
+### `zclassic.conf`
+Running the .jar will automatically set up `~/zclassic/zclassic.conf` for you. In some cases, you may need to edit it manually. It should contain:
+```
+rpcuser=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
+rpcpassword=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
+rpcport=8023
+#addnode=...
+
+```
 
 ### Notes from ZENCash - Known Issues and Limitations
 
