@@ -118,7 +118,7 @@ extends WalletTabPanel
 		// Upper panel with wallet balance
 		JPanel balanceStatusPanel = new JPanel();
 		// Use border layout to have balances to the left
-		balanceStatusPanel.setLayout(new BorderLayout(3, 3)); 
+		balanceStatusPanel.setLayout(new BorderLayout(3, 3));
 
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 9));
 		JLabel logoLabel = new JLabel(new ImageIcon(
@@ -161,7 +161,7 @@ extends WalletTabPanel
 
 		// Thread and timer to update the daemon status
 		this.daemonInfoGatheringThread = new DataGatheringThread<DaemonInfo>(
-				new DataGatheringThread.DataGatherer<DaemonInfo>() 
+				new DataGatheringThread.DataGatherer<DaemonInfo>()
 				{
 					public DaemonInfo gatherData()
 							throws Exception
@@ -173,7 +173,7 @@ extends WalletTabPanel
 
 						return daemonInfo;
 					}
-				}, 
+				},
 				this.errorReporter, 2000, true);
 		this.threads.add(this.daemonInfoGatheringThread);
 
@@ -197,7 +197,7 @@ extends WalletTabPanel
 
 		// Thread and timer to update the wallet balance
 		this.walletBalanceGatheringThread = new DataGatheringThread<WalletBalance>(
-				new DataGatheringThread.DataGatherer<WalletBalance>() 
+				new DataGatheringThread.DataGatherer<WalletBalance>()
 				{
 					public WalletBalance gatherData()
 							throws Exception
@@ -217,7 +217,7 @@ extends WalletTabPanel
 
 						return balance;
 					}
-				}, 
+				},
 				this.errorReporter, 8000, true);
 		this.threads.add(this.walletBalanceGatheringThread);
 
@@ -242,7 +242,7 @@ extends WalletTabPanel
 
 		// Thread and timer to update the transactions table
 		this.transactionGatheringThread = new DataGatheringThread<String[][]>(
-				new DataGatheringThread.DataGatherer<String[][]>() 
+				new DataGatheringThread.DataGatherer<String[][]>()
 				{
 					public String[][] gatherData()
 							throws Exception
@@ -254,7 +254,7 @@ extends WalletTabPanel
 
 						return data;
 					}
-				}, 
+				},
 				this.errorReporter, 20000);
 		this.threads.add(this.transactionGatheringThread);
 
@@ -263,7 +263,7 @@ extends WalletTabPanel
 			public void actionPerformed(ActionEvent e)
 			{
 				try
-				{					
+				{
 					DashboardPanel.this.updateWalletTransactionsTable();
 				} catch (Exception ex)
 				{
@@ -278,7 +278,7 @@ extends WalletTabPanel
 
 		// Thread and timer to update the network and blockchain details
 		this.netInfoGatheringThread = new DataGatheringThread<NetworkAndBlockchainInfo>(
-				new DataGatheringThread.DataGatherer<NetworkAndBlockchainInfo>() 
+				new DataGatheringThread.DataGatherer<NetworkAndBlockchainInfo>()
 				{
 					public NetworkAndBlockchainInfo gatherData()
 							throws Exception
@@ -290,7 +290,7 @@ extends WalletTabPanel
 
 						return data;
 					}
-				}, 
+				},
 				this.errorReporter, 10000, true);
 		this.threads.add(this.netInfoGatheringThread);
 
@@ -344,7 +344,7 @@ extends WalletTabPanel
 		if (daemonInfo.status != DAEMON_STATUS.RUNNING)
 		{
 			daemonStatus = "<span style=\"color:red;font-weight:bold\">NOT RUNNING</span>";
-			System.out.print(daemonInfo.status);	
+			System.out.print(daemonInfo.status);
 		}
 
 		// TODO: Get the start date right after ZCash release - from first block!!!
@@ -386,7 +386,7 @@ extends WalletTabPanel
 		//String connections = " \u26D7";
 		String tickSymbol = " \u2705";
 		OS_TYPE os = OSUtil.getOSType();
-		// Handling special symbols on Mac OS/Windows 
+		// Handling special symbols on Mac OS/Windows
 		// TODO: isolate OS-specific symbol stuff in separate code
 		if ((os == OS_TYPE.MAC_OS) || (os == OS_TYPE.WINDOWS))
 		{
@@ -409,7 +409,7 @@ extends WalletTabPanel
 		if (info.numConnections > 2)
 		{
 			netColor = "black";
-		}	
+		}
 
 		if (info.numConnections > 6)
 		{
@@ -432,7 +432,7 @@ extends WalletTabPanel
 		stringBuilder.append(percentage);
 		stringBuilder.append("%</span>");
 		stringBuilder.append(tick);
-		stringBuilder.append(" <span style=\"font-size:0.8em\">(latest block: ");
+		stringBuilder.append(" <span style=\"font-size:0.8em\"> (latest block: ");
 		stringBuilder.append(lastBlockDate );
 		stringBuilder.append(")</span>");
 		String text =
@@ -468,12 +468,12 @@ extends WalletTabPanel
 		String color3 = totalBalance.equals(totalUCBalance)             ? "" : "color:#cc3300;";
 
 		String text =
-				"<html><p text-align: right>" + 
-						"<span style=\"" + color1 + "\">Transparent (T) balance: " +
+				"<html><p text-align: right>" +
+						"<span style=\"" + color1 + "\">Transparent (T) Balance: " +
 						transparentUCBalance + " ZCL </span><br/> " +
-						"<span style=\"" + color2 + "\">Private (Z) balance: " + 
+						"<span style=\"" + color2 + "\">Private (Z) Balance: " +
 						privateUCBalance + " ZCL </span><br/> " +
-						"<span style=\"font-weight:bold;" + color3 + "\">Total (Z+T) balance: " + 
+						"<span style=\"font-weight:bold;" + color3 + "\">Total Balance: " +
 						totalUCBalance + " ZCL </span>"
 								+ "</p></html>";
 
@@ -485,12 +485,12 @@ extends WalletTabPanel
 				(!totalBalance.equals(totalUCBalance)))
 		{
 			toolTip = "<html>" +
-					"Unconfirmed (unspendable) balance is being shown due to an<br/>" + 
+					"Unconfirmed (unspendable) balance is being shown due to an<br/>" +
 					"ongoing transaction! Actual confirmed (spendable) balance is:<br/>" +
 					"<span style=\"font-size:5px\"><br/></span>" +
-					"Transparent: " + transparentBalance + " ZCL<br/>" +
-					"Private ( Z ): <span>" + privateBalance + " ZCL</span><br/>" +
-					"Total ( Z+T ): <span style=\"font-weight:bold\">" + totalBalance + " ZCL</span>" +
+					"Transparent (T): " + transparentBalance + " ZCL<br/>" +
+					"Private (Z): <span>" + privateBalance + " ZCL</span><br/>" +
+					"Total: <span style=\"font-weight:bold\">" + totalBalance + " ZCL</span>" +
 					"</html>";
 		}
 
@@ -516,7 +516,7 @@ extends WalletTabPanel
 
 		if (Util.arraysAreDifferent(lastTransactionsData, newTransactionsData))
 		{
-			Log.info("Updating table of transactions...");
+			Log.info("Updating table of transactions");
 			this.remove(transactionsTablePane);
 			this.add(transactionsTablePane = new JScrollPane(
 					transactionsTable = this.createTransactionsTable(newTransactionsData)),
@@ -535,7 +535,7 @@ extends WalletTabPanel
 	{
 		String columnNames[] = { "Type", "Direction", "Confirmed?", "Amount", "Date", "Destination Address"};
 		JTable table = new TransactionTable(
-				rowData, columnNames, this.parentFrame, this.clientCaller, this.installationObserver); 
+				rowData, columnNames, this.parentFrame, this.clientCaller, this.installationObserver);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 		table.getColumnModel().getColumn(0).setPreferredWidth(190);
 		table.getColumnModel().getColumn(1).setPreferredWidth(145);
@@ -646,19 +646,19 @@ extends WalletTabPanel
 				trans[3] = df.format(amount);
 			} catch (NumberFormatException nfe)
 			{
-				Log.error("Error occurred while formatting amount: " + trans[3] + 
+				Log.error("Error occurred while formatting amount: " + trans[3] +
 						" - " + nfe.getMessage() + "!");
 			}
 
 			// Confirmed?
 			try
 			{
-				boolean isConfirmed = !trans[2].trim().equals("0"); 
+				boolean isConfirmed = !trans[2].trim().equals("0");
 
 				trans[2] = isConfirmed ? ("Yes " + confirmed) : ("No  " + notConfirmed);
 			} catch (NumberFormatException nfe)
 			{
-				Log.error("Error occurred while formatting confirmations: " + trans[2] + 
+				Log.error("Error occurred while formatting confirmations: " + trans[2] +
 						" - " + nfe.getMessage() + "!");
 			}
 		}

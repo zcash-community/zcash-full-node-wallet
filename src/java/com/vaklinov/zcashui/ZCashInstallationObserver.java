@@ -63,7 +63,7 @@ public class ZCashInstallationObserver
 	}
 
 	private String args[];
-	
+
 	private Boolean isOnTestNet = null;
 
 	public ZCashInstallationObserver(String installDir)
@@ -88,26 +88,26 @@ public class ZCashInstallationObserver
 			zcashcli = OSUtil.findZCashCommand(OSUtil.getZCashCli());
 		}
 
-		Log.info("Using Zclassic utilities: " +
+		Log.info("Using Zclassic daemon and rpc tools: " +
 		                   "zcld: "    + ((zcashd != null) ? zcashd.getCanonicalPath() : "<MISSING>") + ", " +
 		                   "zcl-cli: " + ((zcashcli != null) ? zcashcli.getCanonicalPath() : "<MISSING>"));
 
 		if ((zcashd == null) || (zcashcli == null) || (!zcashd.exists()) || (!zcashcli.exists()))
 		{
 			throw new InstallationDetectionException(
-				"The Zclassic GUI Wallet installation directory " + installDir + " needs\nto contain " +
+				"The Zclassic Full-Node Desktop Wallet installation directory " + installDir + " needs\nto contain " +
 				"the command line utilities zcld and zcl-cli. At least one of them is missing! \n" +
-				"Please place files ZclassicSwingWallet.jar, " + OSUtil.getZCashCli() + ", " + 
+				"Please place files ZclassicSwingWallet.jar, " + OSUtil.getZCashCli() + ", " +
 				OSUtil.getZCashd() + " in the same directory.");
 		}
 	}
 
-	
+
 	public synchronized DaemonInfo getDaemonInfo()
 			throws IOException, InterruptedException
 	{
 		OS_TYPE os = OSUtil.getOSType();
-		
+
 		if (os == OS_TYPE.WINDOWS)
 		{
 			return getDaemonInfoForWindowsOS();
@@ -117,7 +117,7 @@ public class ZCashInstallationObserver
 		}
 	}
 
-	
+
 	private synchronized DaemonInfo getDaemonInfoForUNIXLikeOS()
 		throws IOException, InterruptedException
 	{
@@ -194,13 +194,13 @@ public class ZCashInstallationObserver
 
 		return info;
 	}
-	
+
 	private synchronized DaemonInfo getDaemonInfoForWindowsOS()
 		throws IOException, InterruptedException
 	{
 		return getDaemonInfoForWindowsOS("zcld");
 	}
-	
+
 	public static synchronized DaemonInfo getDaemonInfoForWindowsOS(String daemonName)
 		throws IOException, InterruptedException
 	{
@@ -228,12 +228,12 @@ public class ZCashInstallationObserver
 				{
 					break;
 				}
-				
+
 				if (token.startsWith("\""))
 				{
 					token = token.substring(1);
 				}
-				
+
 				if (token.endsWith("\""))
 				{
 					token = token.substring(0, token.length() - 1);
@@ -257,7 +257,7 @@ public class ZCashInstallationObserver
 							size = size.substring(0, size.length() - 1);
 						}
 					} catch (NumberFormatException nfe) { /* TODO: Log or handle exception */ };
-				} 
+				}
 			} // End parsing row
 
 			if (foundZCash)
@@ -270,7 +270,7 @@ public class ZCashInstallationObserver
 					info.residentSizeMB = 0;
 					Log.error("Error: could not find the numeric memory size of " + daemonName + ": " + size);
 				};
-				
+
 				break;
 			}
 		}
@@ -284,9 +284,9 @@ public class ZCashInstallationObserver
 
 		return info;
 	}
-	
-	
-	
+
+
+
 	public boolean isOnTestNet()
 		throws IOException
 	{
@@ -294,7 +294,7 @@ public class ZCashInstallationObserver
 		{
 			return this.isOnTestNet.booleanValue();
 		}
-		
+
 		String blockChainDir = OSUtil.getBlockchainDirectory();
 		File zenConf = new File(blockChainDir + File.separator + "zclassic.conf");
 		if (zenConf.exists())
@@ -306,9 +306,9 @@ public class ZCashInstallationObserver
 				fis = new FileInputStream(zenConf);
 				confProps.load(fis);
 				String testNetStr = confProps.getProperty("testnet");
-				
+
 				this.isOnTestNet = (testNetStr != null) && (testNetStr.trim().equalsIgnoreCase("1"));
-				
+
 				return this.isOnTestNet.booleanValue();
 			} finally
 			{
@@ -323,7 +323,7 @@ public class ZCashInstallationObserver
 			return false;
 		}
 	}
-	
+
 
 	public static class InstallationDetectionException
 		extends IOException
