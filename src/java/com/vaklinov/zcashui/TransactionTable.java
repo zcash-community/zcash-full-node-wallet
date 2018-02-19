@@ -111,7 +111,7 @@ public class TransactionTable extends DataTable {
 
 						Log.info("Transaction ID for block explorer is: " + txID);
 						// https://explorer.zcha.in/transactions/<ID>
-						String urlPrefix = "https://zcl-explorer.com/insight/tx/";
+						String urlPrefix = "https://zcl-explorer.com/tx/";
 						// TODO testnet
 						if (installationObserver.isOnTestNet()) {
 							urlPrefix = "https://explorer-testnet.zen-solutions.io/tx/";
