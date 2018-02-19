@@ -81,8 +81,8 @@ public class CreateGroupDialog
 
 	protected JProgressBar progress = null;
 
-	JButton okButon;
-	JButton cancelButon;
+	JButton okButton;
+	JButton cancelButton;
 
 	protected MessagingIdentity createdGroup = null;
 
@@ -146,14 +146,14 @@ public class CreateGroupDialog
 		// Form buttons
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 3));
-		okButon = new JButton("Create Group");
-		buttonPanel.add(okButon);
+		okButton = new JButton("Create Group");
+		buttonPanel.add(okButton);
 		buttonPanel.add(new JLabel("   "));
-		cancelButon = new JButton("Cancel");
-		buttonPanel.add(cancelButon);
+		cancelButton = new JButton("Cancel");
+		buttonPanel.add(cancelButton);
 		this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
-		okButon.addActionListener(new ActionListener()
+		okButton.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -162,7 +162,7 @@ public class CreateGroupDialog
 			}
 		});
 
-		cancelButon.addActionListener(new ActionListener()
+		cancelButton.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -190,7 +190,7 @@ public class CreateGroupDialog
 		{
 			JOptionPane.showMessageDialog(
 				CreateGroupDialog.this.getParent(),
-				"The group keyphrase is empty. Please enter it into the text field.", "Empty Keyphrase",
+				"Please enter the group keyphrase.", "Keyphrase Required",
 				JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -203,8 +203,8 @@ public class CreateGroupDialog
 		this.progress.setIndeterminate(true);
 		this.progress.setValue(1);
 
-		this.okButon.setEnabled(false);
-		this.cancelButon.setEnabled(false);
+		this.okButton.setEnabled(false);
+		this.cancelButton.setEnabled(false);
 
 		CreateGroupDialog.this.keyField.setEditable(false);
 
@@ -222,7 +222,7 @@ public class CreateGroupDialog
 
 					JOptionPane.showMessageDialog(
 							CreateGroupDialog.this.getRootPane().getParent(),
-						"An error occurred when importing private key for group phrase:\n" +
+						"Error occurred when importing private key for group phrase:\n" +
 						e.getClass().getName() + ":\n" + e.getMessage() + "\n\n" +
 						"Please ensure that zcld is running and the key is in the correct \n" +
 						"form. Try again later.\n",

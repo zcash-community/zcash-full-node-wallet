@@ -82,7 +82,7 @@ public class MessagingOptionsEditDialog
 		this.storage       = storage;
 		this.errorReporter = errorReporter;
 
-		this.setTitle("Messaging options");
+		this.setTitle("Messaging Options");
 		this.setModal(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -94,9 +94,7 @@ public class MessagingOptionsEditDialog
 		tempPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 		infoLabel = new JLabel(
 				"<html><span style=\"font-size:0.93em;\">" +
-				"The options below pertain to messaging. It is possible to set the amount of ZCL<br/>" +
-				"to be sent with every messaging transaction and also the transaction fee. It is<br/>" +
-			    "also possible to decide if users are to be automatically added to the contact list.<br/><br/>" +
+				"The following options pertain to messaging:" +
 			    "</span>");
 	    tempPanel.add(infoLabel, BorderLayout.CENTER);
 		this.getContentPane().add(tempPanel, BorderLayout.NORTH);
@@ -104,10 +102,10 @@ public class MessagingOptionsEditDialog
 		JPanel detailsPanel = new JPanel();
 		detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS));
 
-		addFormField(detailsPanel, "Automatically add users to contact list:",
+		addFormField(detailsPanel, "Automatically add users to contact list? ",
 				     automaticallyAddUsers = new JCheckBox());
-		addFormField(detailsPanel, "Amount of ZCL to send with every message:",   amountTextField = new JTextField(12));
-		addFormField(detailsPanel, "Transaction fee:",  transactionFeeTextField = new JTextField(12));
+		addFormField(detailsPanel, "Amount of ZCL to send with every message: ", amountTextField = new JTextField(12));
+		addFormField(detailsPanel, "Transaction fee: ", transactionFeeTextField = new JTextField(12));
 
 		DecimalFormatSymbols decSymbols = new DecimalFormatSymbols(Locale.ROOT);
 		automaticallyAddUsers.setSelected(options.isAutomaticallyAddUsersIfNotExplicitlyImported());
@@ -120,11 +118,11 @@ public class MessagingOptionsEditDialog
 		// Lower buttons - by default only close is available
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 3));
-		JButton closeButon = new JButton("Close");
-		buttonPanel.add(closeButon);
+		JButton closeButton = new JButton("Close");
+		buttonPanel.add(closeButton);
 		this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
-		closeButon.addActionListener(new ActionListener()
+		closeButton.addActionListener(new ActionListener()
 		{
 				@Override
 				public void actionPerformed(ActionEvent e)
@@ -134,9 +132,9 @@ public class MessagingOptionsEditDialog
 				}
 		});
 
-		JButton saveButon = new JButton("Save & Close");
-		buttonPanel.add(saveButon);
-		saveButon.addActionListener(new ActionListener()
+		JButton saveButton = new JButton("Save & Close");
+		buttonPanel.add(saveButton);
+		saveButton.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -218,7 +216,7 @@ public class MessagingOptionsEditDialog
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 2));
 		JLabel tempLabel = new JLabel(name, JLabel.RIGHT);
 		// TODO: hard sizing of labels may not scale!
-		final int width = new JLabel("Amount of ZCL to send with every message:").getPreferredSize().width + 30;
+		final int width = new JLabel("Amount of ZCL to send with every message: ").getPreferredSize().width + 30;
 		tempLabel.setPreferredSize(new Dimension(width, tempLabel.getPreferredSize().height));
 		tempPanel.add(tempLabel);
 		tempPanel.add(field);

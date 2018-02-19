@@ -216,7 +216,7 @@ public class AddressBookPanel extends JPanel {
                     "");
             if (address == null || "".equals(address))
                 return; // cancelled
-            entries.add(new AddressBookEntry(name,address));
+            entries.add(new AddressBookEntry(name, address));
 
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {

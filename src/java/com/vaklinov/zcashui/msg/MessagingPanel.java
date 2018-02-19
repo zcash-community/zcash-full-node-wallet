@@ -535,7 +535,7 @@ public class MessagingPanel
 	                "Once your messaging identity has been created you can export it to a file using the\n" +
 	                "menu option Messaging >> Export own identity. This file may then be shared with\n" +
 	                "other users who wish to import it. To establish contact with other users you need to\n" +
-	                "import their messaging identity, using the menu option Messaging >> Import contact \n" +
+	                "import their messaging identity, using the menu option Messaging >> Import Contact \n" +
 	                "identity.\n\n" +
 	                "Your messaging history will be saved and maintained in directory:\n" +
 	                OSUtil.getSettingsDirectory() + File.separator + "messaging" + "\n" +
@@ -738,7 +738,7 @@ public class MessagingPanel
 			}
 
 			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setDialogTitle("Export messaging identity to JSON file ...");
+			fileChooser.setDialogTitle("Export Messaging Identity to JSON File");
 			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 			fileChooser.setSelectedFile(
 				new File(OSUtil.getUserHomeDirectory(), filePrefix + "_messaging_identity.json"));
@@ -794,7 +794,7 @@ public class MessagingPanel
 		try
 		{
 			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setDialogTitle("Import Messaging Identity From File");
+			fileChooser.setDialogTitle("Import Messaging Identity from File");
 			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
 			int result = fileChooser.showOpenDialog(this.parentFrame);
@@ -1209,12 +1209,12 @@ public class MessagingPanel
 	        	ownIdentity.getSendreceiveaddress() + "\n" +
 	        	"You will be redirected to the UI tab for sending ZCL to add some balance to it. You need only\n" +
 	        	"a small amount e.g. typically 0.1 ZCL is suffucient to send 500 messages. After sending some\n" +
-	        	"ZCL you need to wait for the transaciton to be confirmed (typically takes 2.5 minutes). It is\n" +
+	        	"ZCL you need to wait for the transaction to be confirmed (typically takes 2.5 minutes). It is\n" +
 	        	"recommended to send ZCL to this Z address in two or more separate transactions (though one \n" +
 	        	"transaction is sufficient).",
-		        "Z address to send/receive messages has insufficient balance...", JOptionPane.ERROR_MESSAGE);
+		        "Z address to send/receive messages has Insufficient Balance", JOptionPane.ERROR_MESSAGE);
 
-	            // Restore controls and move to the send cash tab etc.
+	            // Restore controls and move to the send zcl tab etc.
 		        this.sendButton.setEnabled(true);
 				this.writeMessageTextArea.setEnabled(true);
 
@@ -1235,7 +1235,7 @@ public class MessagingPanel
 	        	"need to wait for the transaciton to be confirmed (typically takes 2.5 minutes). This\n" +
 	        	"problem may be avoided if you send ZCL to this Z address in two or more separate \n" +
 	        	"transactions (when you supply the ZCL balance to be used for messaging).",
-		        "Z address to send/receive messages has insufficient confirmed balance...", JOptionPane.ERROR_MESSAGE);
+		        "Z address to send/receive messages has Insufficient Confirmed Balance", JOptionPane.ERROR_MESSAGE);
 
 	            // Restore controls and move to the send cash tab etc.
 		        this.sendButton.setEnabled(true);
@@ -1333,10 +1333,10 @@ public class MessagingPanel
 				"<html><span style=\"color:red;font-size:0.8em;font-weight:bold\">ERROR!</span></html>");
 			JOptionPane.showMessageDialog(
 				MessagingPanel.this.getRootPane().getParent(),
-				"An error occurred upon sending message to contact: " + contactIdentity.getDiplayString() + ". \n" +
-				"Error message is: " +	wce.getMessage() + "\n" +
-				"If the problem persists, you may need technical support :( ...\n",
-				"Error in sending message", JOptionPane.ERROR_MESSAGE);
+				"Error sending message to contact \"" + contactIdentity.getDiplayString() + "\". \n" +
+				"Error: " +	wce.getMessage() + "\n" +
+				"If the problem persists, you may need technical support :( Contact Us!\n",
+				"Error Sending Message", JOptionPane.ERROR_MESSAGE);
 
 			sendMessageProgressBar.setValue(0);
 			sendButton.setEnabled(true);
@@ -1395,10 +1395,10 @@ public class MessagingPanel
 								"<html><span style=\"color:red;font-size:0.8em;font-weight:bold\">ERROR! </span></html>");
 							JOptionPane.showMessageDialog(
 								MessagingPanel.this.getRootPane().getParent(),
-								"An error occurred when sending message to contact: " + contactIdentity.getDiplayString() + ". \n" +
-								"Error message is: " +	errorMessage + "\n\n" +
-								"If the problem persists, you may need technical support :( ...\n",
-								"Error in sending message", JOptionPane.ERROR_MESSAGE);
+								"Error sending message to contact \"" + contactIdentity.getDiplayString() + "\". \n" +
+								"Error: " +	errorMessage + "\n\n" +
+								"If the problem persists, you may need technical support :( Contact Us!\n",
+								"Error Sending Message", JOptionPane.ERROR_MESSAGE);
 						}
 
 
@@ -1444,7 +1444,7 @@ public class MessagingPanel
 					MessagingPanel.this.repaint();
 				} catch (Exception ex)
 				{
-					Log.error("Unexpected error in sending message: ", ex);
+					Log.error("Unexpected error sending message: ", ex);
 					MessagingPanel.this.errorReporter.reportError(ex);
 				}
 			}
@@ -1496,7 +1496,7 @@ public class MessagingPanel
 				}
 			}
 
-			Log.error("Unexpected error in gathering received messages (wrapper): ", e);
+			Log.error("Unexpected error gathering received messages (wrapper): ", e);
 			this.errorReporter.reportError(e);
 		}
 	}

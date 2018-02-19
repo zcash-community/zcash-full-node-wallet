@@ -59,12 +59,12 @@ public class OwnIdentityEditDialog
 		this.storage       = storage;
 		this.errorReporter = errorReporter;
 
-		this.setTitle("Edit My Messaging Identity");
+		this.setTitle("My Messaging Identity");
 
 		this.infoLabel.setText(
 			"<html><span style=\"font-size:0.97em;\">" +
 			"Welcome to your messaging identity. This information is meant to be " +
-			"shared with other users.<br/> The only mandatory field is the \"nickname\"." +
+			"shared with other users.<br/> The only required field is the \"nickname\"." +
 			"</span>");
 
 		nicknameTextField.setEditable(true);
@@ -84,9 +84,9 @@ public class OwnIdentityEditDialog
 			this.buttonPanel.removeAll();
 		}
 
-		JButton saveButon = new JButton("Save & close");
-		buttonPanel.add(saveButon);
-		saveButon.addActionListener(new ActionListener()
+		JButton saveButton = new JButton("Save & Close");
+		buttonPanel.add(saveButton);
+		saveButton.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)

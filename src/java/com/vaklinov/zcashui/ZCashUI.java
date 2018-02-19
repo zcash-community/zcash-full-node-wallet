@@ -206,7 +206,7 @@ extends JFrame
 		menuItemExportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, accelaratorKeyMask));
 		wallet.add(menuItemImportKeys = new JMenuItem("Import Private Keys", KeyEvent.VK_I));
 		menuItemImportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, accelaratorKeyMask));
-		wallet.add(menuItemShowPrivateKey = new JMenuItem("Show Private Key", KeyEvent.VK_P));
+		wallet.add(menuItemShowPrivateKey = new JMenuItem("View One Private Key", KeyEvent.VK_P));
 		menuItemShowPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, accelaratorKeyMask));
 		wallet.add(menuItemImportOnePrivateKey = new JMenuItem("Import One Private Key", KeyEvent.VK_N));
 		menuItemImportOnePrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, accelaratorKeyMask));
@@ -223,12 +223,15 @@ extends JFrame
 		menuItemOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, accelaratorKeyMask));
 		messaging.add(menuItemExportOwnIdentity = new JMenuItem("Export My Identity", KeyEvent.VK_X));
 		menuItemExportOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));
-		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Add Messaging Group", KeyEvent.VK_G));
-		menuItemAddMessagingGroup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, accelaratorKeyMask));
-		messaging.add(menuItemImportContactIdentity = new JMenuItem("Import Contact Identity", KeyEvent.VK_Y));
+
+		messaging.add(menuItemImportContactIdentity = new JMenuItem("Import Contact", KeyEvent.VK_Y));
 		menuItemImportContactIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, accelaratorKeyMask));
 		messaging.add(menuItemRemoveContactIdentity = new JMenuItem("Remove Contact", KeyEvent.VK_R));
 		menuItemRemoveContactIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
+
+		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Create Group", KeyEvent.VK_G));
+		menuItemAddMessagingGroup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, accelaratorKeyMask));
+
 		messaging.add(menuItemMessagingOptions = new JMenuItem("Options", KeyEvent.VK_O));
 		menuItemMessagingOptions.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, accelaratorKeyMask));
 

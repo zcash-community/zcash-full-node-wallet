@@ -168,7 +168,7 @@ public class WalletOperations
 			this.issueBackupDirectoryWarning();
 
 			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setDialogTitle("Back Up Wallet to File");
+			fileChooser.setDialogTitle("Backup Wallet to File");
 			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 			fileChooser.setCurrentDirectory(OSUtil.getUserHomeDirectory());
 
@@ -355,7 +355,7 @@ public class WalletOperations
 			JOptionPane.showMessageDialog(
 				this.parent,
 				"Please select an address in the \"My Addresses\" tab " +
-				"to view its private key",
+				"to view its private key.",
 				"Select an Address", JOptionPane.INFORMATION_MESSAGE);
 			this.tabs.setSelectedIndex(1);
 			return;
@@ -368,7 +368,7 @@ public class WalletOperations
 			JOptionPane.showMessageDialog(
 				this.parent,
 				"Please select an address from the table " +
-				"to view its private key",
+				"to view its private key.",
 				"Select an Address", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
