@@ -165,6 +165,8 @@ public class WalletOperations
 	{
 		try
 		{
+			Cursor oldCursor = this.parent.getCursor();
+
 			String path = null;
 			try
 			{
@@ -173,9 +175,12 @@ public class WalletOperations
 				path = this.clientCaller.backupWallet("");
 
 				this.backupTracker.handleBackup();
+				this.parent.setCursor(oldCursor);
 
 			} catch (WalletCallException wce)
 			{
+				this.parent.setCursor(oldCursor);
+
 				Log.error("Unexpected error: ", wce);
 
 				JOptionPane.showMessageDialog(
@@ -205,6 +210,7 @@ public class WalletOperations
 
 		try
 		{
+			Cursor oldCursor = this.parent.getCursor();
 			String path=null;
 			try
 			{
@@ -212,8 +218,12 @@ public class WalletOperations
 
 				path = this.clientCaller.exportWallet("zclprivatekeys");
 				this.backupTracker.handleBackup();
+				this.parent.setCursor(oldCursor);
+
 			} catch (WalletCallException wce)
 			{
+				this.parent.setCursor(oldCursor);
+
 				Log.error("Unexpected error: ", wce);
 
 				JOptionPane.showMessageDialog(
@@ -271,7 +281,6 @@ public class WalletOperations
 			}
 
 			File f = fileChooser.getSelectedFile();
-
 			Cursor oldCursor = this.parent.getCursor();
 			try
 			{
