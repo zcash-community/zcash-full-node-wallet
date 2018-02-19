@@ -124,7 +124,7 @@ extends JFrame
 
 		if (progressDialog != null)
 		{
-			progressDialog.setProgressText("Starting GUI wallet...");
+			progressDialog.setProgressText("Starting wallet GUI...");
 		}
 
 		ClassLoader cl = this.getClass().getClassLoader();
@@ -140,7 +140,7 @@ extends JFrame
 
 		if (installationObserver.isOnTestNet())
 		{
-			this.setTitle(this.getTitle() + " [using TESTNET]");
+			this.setTitle(this.getTitle() + " [TESTNET]");
 		}
 
 		// Build content
@@ -152,7 +152,7 @@ extends JFrame
 
 		tabs.addTab("Transactions ",
 				new ImageIcon(cl.getResource("images/overview.png")),
-				dashboard = new DashboardPanel(this, installationObserver, clientCaller, 
+				dashboard = new DashboardPanel(this, installationObserver, clientCaller,
 						errorReporter, backupTracker));
 		tabs.addTab("My Addresses ",
 				new ImageIcon(cl.getResource("images/own-addresses.png")),
@@ -169,7 +169,7 @@ extends JFrame
 		contentPane.add(tabs);
 
 		this.walletOps = new WalletOperations(
-				this, tabs, dashboard, addresses, sendPanel, 
+				this, tabs, dashboard, addresses, sendPanel,
 				installationObserver, clientCaller, errorReporter, backupTracker);
 
 		int width = 870;
@@ -206,11 +206,11 @@ extends JFrame
 		menuItemExportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, accelaratorKeyMask));
 		wallet.add(menuItemImportKeys = new JMenuItem("Import Private Keys", KeyEvent.VK_I));
 		menuItemImportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, accelaratorKeyMask));
-		wallet.add(menuItemShowPrivateKey = new JMenuItem("Show Private Key", KeyEvent.VK_P));
+		wallet.add(menuItemShowPrivateKey = new JMenuItem("View One Private Key", KeyEvent.VK_P));
 		menuItemShowPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, accelaratorKeyMask));
 		wallet.add(menuItemImportOnePrivateKey = new JMenuItem("Import One Private Key", KeyEvent.VK_N));
 		menuItemImportOnePrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, accelaratorKeyMask));
-		
+
 		/*
 		 * wallet.add(menuItemExportToArizen = new JMenuItem("Export to Arizen wallet...", KeyEvent.VK_A));
 		 * menuItemExportToArizen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, accelaratorKeyMask));
@@ -220,15 +220,18 @@ extends JFrame
 		JMenu messaging = new JMenu("Messaging");
 		messaging.setMnemonic(KeyEvent.VK_S);
 		messaging.add(menuItemOwnIdentity = new JMenuItem("My Identity", KeyEvent.VK_D));
-		menuItemOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, accelaratorKeyMask));        
+		menuItemOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, accelaratorKeyMask));
 		messaging.add(menuItemExportOwnIdentity = new JMenuItem("Export My Identity", KeyEvent.VK_X));
-		menuItemExportOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));        
-		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Add Messaging Group", KeyEvent.VK_G));
-		menuItemAddMessagingGroup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, accelaratorKeyMask));
-		messaging.add(menuItemImportContactIdentity = new JMenuItem("Import Contact Identity", KeyEvent.VK_Y));
+		menuItemExportOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));
+
+		messaging.add(menuItemImportContactIdentity = new JMenuItem("Import Contact", KeyEvent.VK_Y));
 		menuItemImportContactIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, accelaratorKeyMask));
 		messaging.add(menuItemRemoveContactIdentity = new JMenuItem("Remove Contact", KeyEvent.VK_R));
 		menuItemRemoveContactIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, accelaratorKeyMask));
+
+		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Create Group", KeyEvent.VK_G));
+		menuItemAddMessagingGroup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, accelaratorKeyMask));
+
 		messaging.add(menuItemMessagingOptions = new JMenuItem("Options", KeyEvent.VK_O));
 		menuItemMessagingOptions.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, accelaratorKeyMask));
 
@@ -277,7 +280,7 @@ extends JFrame
 				}
 				);
 
-		menuItemBackup.addActionListener(   
+		menuItemBackup.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -299,7 +302,7 @@ extends JFrame
 				}
 				);
 
-		menuItemExportKeys.addActionListener(   
+		menuItemExportKeys.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -310,7 +313,7 @@ extends JFrame
 				}
 				);
 
-		menuItemImportKeys.addActionListener(   
+		menuItemImportKeys.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -321,7 +324,7 @@ extends JFrame
 				}
 				);
 
-		menuItemShowPrivateKey.addActionListener(   
+		menuItemShowPrivateKey.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -332,7 +335,7 @@ extends JFrame
 				}
 				);
 
-		menuItemImportOnePrivateKey.addActionListener(   
+		menuItemImportOnePrivateKey.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -343,7 +346,7 @@ extends JFrame
 				}
 				);
 
-		menuItemOwnIdentity.addActionListener(   
+		menuItemOwnIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -354,7 +357,7 @@ extends JFrame
 				}
 				);
 
-		menuItemExportOwnIdentity.addActionListener(   
+		menuItemExportOwnIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -365,7 +368,7 @@ extends JFrame
 				}
 				);
 
-		menuItemImportContactIdentity.addActionListener(   
+		menuItemImportContactIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -376,7 +379,7 @@ extends JFrame
 				}
 				);
 
-		menuItemAddMessagingGroup.addActionListener(   
+		menuItemAddMessagingGroup.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -387,7 +390,7 @@ extends JFrame
 				}
 				);
 
-		menuItemRemoveContactIdentity.addActionListener(   
+		menuItemRemoveContactIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -398,7 +401,7 @@ extends JFrame
 				}
 				);
 
-		menuItemMessagingOptions.addActionListener(   
+		menuItemMessagingOptions.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -409,7 +412,7 @@ extends JFrame
 				}
 				);
 
-		menuItemShareFileViaIPFS.addActionListener(   
+		menuItemShareFileViaIPFS.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -422,7 +425,7 @@ extends JFrame
 
 		/*
 		 * menuItemExportToArizen.addActionListener(
-		
+
 				new ActionListener()
 				{
 					@Override
@@ -470,9 +473,9 @@ extends JFrame
 
 				JOptionPane.showMessageDialog(
 						ZCashUI.this.getRootPane().getParent(),
-						"The Zclassic GUI Wallet is currently considered experimental. Use of this software\n" +
+						"The Zclassic Full-Node Desktop Wallet is currently considered experimental. Use of this software\n" +
 								"comes at your own risk! Be sure to read the list of known issues and limitations\n" +
-								"at this page: https://github.com/z-classic/zclassic-swing-wallet\n\n" +
+								"at this page: https://github.com/z-classic/zclassic-full-node-wallet\n\n" +
 								"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n" +
 								"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n" +
 								"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n" +
@@ -493,10 +496,10 @@ extends JFrame
 
 		// Notify the messaging TAB that it is being selected - every time
 		tabs.addChangeListener(
-				new ChangeListener() 
-				{	
+				new ChangeListener()
+				{
 					@Override
-					public void stateChanged(ChangeEvent e) 
+					public void stateChanged(ChangeEvent e)
 					{
 						JTabbedPane tabs = (JTabbedPane)e.getSource();
 						if (tabs.getSelectedIndex() == 4)
@@ -505,13 +508,13 @@ extends JFrame
 						}
 					}
 				}
-				);
+		);
 
 	}
 
 	public void exitProgram()
 	{
-		Log.info("Exiting ...");
+		Log.info("Exiting...");
 
 		this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
@@ -538,7 +541,7 @@ extends JFrame
 				possiblyCreateZENConfigFile();
 			}
 
-			Log.info("Starting Zclassic Swing Wallet ...");
+			Log.info("Zclassic Full-Node Desktop Wallet (GUI, made in Java & Swing)");
 			Log.info("OS: " + System.getProperty("os.name") + " = " + os);
 			Log.info("Current directory: " + new File(".").getCanonicalPath());
 			Log.info("Class path: " + System.getProperty("java.class.path"));
@@ -559,7 +562,7 @@ extends JFrame
 				System.setProperty("apple.laf.useScreenMenuBar", "true");
 			}
 			else
-			{            
+			{
 				for (LookAndFeelInfo ui : UIManager.getInstalledLookAndFeels())
 				{
 					Log.info("Available look and feel: " + ui.getName() + " " + ui.getClassName());
@@ -574,7 +577,7 @@ extends JFrame
 
 			// If zcld is currently not running, do a startup of the daemon as a child process
 			// It may be started but not ready - then also show dialog
-			ZCashInstallationObserver initialInstallationObserver = 
+			ZCashInstallationObserver initialInstallationObserver =
 					new ZCashInstallationObserver(OSUtil.getProgramDirectory());
 			DaemonInfo zcashdInfo = initialInstallationObserver.getDaemonInfo();
 			initialInstallationObserver = null;
@@ -589,14 +592,14 @@ extends JFrame
 					// If more than 20 minutes behind in the blockchain - startup in progress
 					if ((System.currentTimeMillis() - info.lastBlockDate.getTime()) > (20 * 60 * 1000))
 					{
-						Log.info("Current blockchain synchronization date is "  + 
+						Log.info("Current blockchain synchronization date is "  +
 								new Date(info.lastBlockDate.getTime()));
 						daemonStartInProgress = true;
 					}
 				}
 			} catch (WalletCallException wce)
 			{
-				if ((wce.getMessage().indexOf("{\"code\":-28") != -1) || // Started but not ready
+				if ((wce.getMessage().indexOf("{\"code\":-28") != -1) || // Started but not Ready
 						(wce.getMessage().indexOf("error code: -28") != -1))
 				{
 					Log.info("zcld is currently starting...");
@@ -621,18 +624,18 @@ extends JFrame
 
 		} catch (InstallationDetectionException ide)
 		{
-			Log.error("Unexpected error: ", ide);
+			Log.error("Installation Error: ", ide);
 			JOptionPane.showMessageDialog(
 					null,
 					"This program was started in directory: " + OSUtil.getProgramDirectory() + "\n" +
 							ide.getMessage() + "\n" +
 							"See the console/logfile output for more detailed error information!",
-							"Installation error",
+							"Installation Error",
 							JOptionPane.ERROR_MESSAGE);
 			System.exit(1);
 		} catch (WalletCallException wce)
 		{
-			Log.error("Unexpected error: ", wce);
+			Log.error("WalletCall Error: ", wce);
 
 			if ((wce.getMessage().indexOf("{\"code\":-28,\"message\"") != -1) ||
 					(wce.getMessage().indexOf("error code: -28") != -1))
@@ -640,20 +643,19 @@ extends JFrame
 				JOptionPane.showMessageDialog(
 						null,
 						"It appears that zcld has been started but is not ready to accept wallet\n" +
-								"connections. It is still loading the wallet and blockchain. Please try to \n" +
-								"start the GUI wallet later...",
-								"Wallet communication error",
+								"connections. It is still loading the wallet and blockchain. Please try\n" +
+								"restarting this program.",
+								"Daemon Error",
 								JOptionPane.ERROR_MESSAGE);
 			} else
 			{
 				JOptionPane.showMessageDialog(
 						null,
 						"There was a problem communicating with the Zclassic daemon/wallet. \n" +
-								"Please ensure that the Zclassic server zcld is started (e.g. via \n" + 
-								"command  \"zcld --daemon\"). Error message is: \n" +
+								"Please ensure that the Zclassic server (zcld) is started. Error Message: \n" +
 								wce.getMessage() +
 								"See the console/logfile output for more detailed error information!",
-								"Wallet communication error",
+								"Daemon Error",
 								JOptionPane.ERROR_MESSAGE);
 			}
 
@@ -663,9 +665,9 @@ extends JFrame
 			Log.error("Unexpected error: ", e);
 			JOptionPane.showMessageDialog(
 					null,
-					"A general unexpected critical error has occurred: \n" + e.getMessage() + "\n" +
+					"An unexpected error (Exception) has occurred: \n" + e.getMessage() + "\n" +
 							"See the console/logfile output for more detailed error information!",
-							"Error",
+							"Unexpected Exception",
 							JOptionPane.ERROR_MESSAGE);
 			System.exit(3);
 		} catch (Error err)
@@ -674,9 +676,9 @@ extends JFrame
 			err.printStackTrace();
 			JOptionPane.showMessageDialog(
 					null,
-					"A general unexpected critical/unrecoverable error has occurred: \n" + err.getMessage() + "\n" +
+					"An unexpected error has occurred: \n" + err.getMessage() + "\n" +
 							"See the console/logfile output for more detailed error information!",
-							"Error",
+							"Unexpected Error",
 							JOptionPane.ERROR_MESSAGE);
 			System.exit(4);
 		}
@@ -702,7 +704,7 @@ extends JFrame
 
 		if (!zenConfigFile.exists())
 		{
-			Log.info("zclassic.conf configuration file " + zenConfigFile.getCanonicalPath() + 
+			Log.info("zclassic.conf configuration file " + zenConfigFile.getCanonicalPath() +
 					" does not exist. It will be created with default settings.");
 
 			Random r = new Random(System.currentTimeMillis());
@@ -720,7 +722,7 @@ extends JFrame
 			configOut.println("");
 			configOut.println("# The rpcuser/rpcpassword are used for the local call to zcld");
 			configOut.println("rpcuser=User" + Math.abs(r.nextInt()));
-			configOut.println("rpcpassword=Pass" + Math.abs(r.nextInt()) + "" + 
+			configOut.println("rpcpassword=Pass" + Math.abs(r.nextInt()) + "" +
 					Math.abs(r.nextInt()) + "" +
 					Math.abs(r.nextInt()));
 			configOut.println("");
@@ -729,7 +731,7 @@ extends JFrame
 			configOut.println("# Well-known nodes to connect to - to speed up acquiring initial connections");
 
 			for(String node : getAddNodes()) {
-				configOut.println(node); 
+				configOut.println(node);
 			}
 
 			configOut.close();

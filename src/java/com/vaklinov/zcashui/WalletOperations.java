@@ -1,11 +1,11 @@
 /************************************************************************************************
- *  _________          _     ____          _           __        __    _ _      _   _   _ ___ 
+ *  _________          _     ____          _           __        __    _ _      _   _   _ ___
  * |__  / ___|__ _ ___| |__ / ___|_      _(_)_ __   __ \ \      / /_ _| | | ___| |_| | | |_ _|
- *   / / |   / _` / __| '_ \\___ \ \ /\ / / | '_ \ / _` \ \ /\ / / _` | | |/ _ \ __| | | || | 
- *  / /| |__| (_| \__ \ | | |___) \ V  V /| | | | | (_| |\ V  V / (_| | | |  __/ |_| |_| || | 
+ *   / / |   / _` / __| '_ \\___ \ \ /\ / / | '_ \ / _` \ \ /\ / / _` | | |/ _ \ __| | | || |
+ *  / /| |__| (_| \__ \ | | |___) \ V  V /| | | | | (_| |\ V  V / (_| | | |  __/ |_| |_| || |
  * /____\____\__,_|___/_| |_|____/ \_/\_/ |_|_| |_|\__, | \_/\_/ \__,_|_|_|\___|\__|\___/|___|
- *                                                 |___/                                      
- *                                       
+ *                                                 |___/
+ *
  * Copyright (c) 2016 Ivan Vaklinov <ivan@vaklinov.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -14,10 +14,10 @@
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -50,17 +50,17 @@ import com.vaklinov.zcashui.arizen.repo.WalletRepo;
 
 /**
  * Provides miscellaneous operations for the wallet file.
- * 
+ *
  * @author Ivan Vaklinov <ivan@vaklinov.com>
  */
 public class WalletOperations
-{	
+{
 	private ZCashUI parent;
 	private JTabbedPane tabs;
 	private DashboardPanel dashboard;
 	private SendCashPanel  sendCash;
 	private AddressesPanel addresses;
-	
+
 	private ZCashInstallationObserver installationObserver;
 	private ZCashClientCaller         clientCaller;
 	private StatusUpdateErrorReporter errorReporter;
@@ -72,307 +72,307 @@ public class WalletOperations
 			                DashboardPanel dashboard,
 			                AddressesPanel addresses,
 			                SendCashPanel  sendCash,
-			                
-			                ZCashInstallationObserver installationObserver, 
+
+			                ZCashInstallationObserver installationObserver,
 			                ZCashClientCaller clientCaller,
 			                StatusUpdateErrorReporter errorReporter,
-			                BackupTracker             backupTracker) 
-        throws IOException, InterruptedException, WalletCallException 
+			                BackupTracker             backupTracker)
+        throws IOException, InterruptedException, WalletCallException
 	{
 		this.parent    = parent;
 		this.tabs      = tabs;
 		this.dashboard = dashboard;
 		this.addresses = addresses;
 		this.sendCash  = sendCash;
-		
+
 		this.installationObserver = installationObserver;
 		this.clientCaller = clientCaller;
 		this.errorReporter = errorReporter;
-		
+
 		this.backupTracker = backupTracker;
 	}
 
-	
+
 	public void encryptWallet()
 	{
 		try
-		{			
+		{
 			if (this.clientCaller.isWalletEncrypted())
 			{
 		        JOptionPane.showMessageDialog(
 		            this.parent,
 		            "The wallet.dat file being used is already encrypted. " +
-		            "This \noperation may be performed only on a wallet that " + 
+		            "This \noperation may be performed only on a wallet that " +
 		            "is not\nyet encrypted!",
-		            "Wallet is already encrypted...",
+		            "Wallet Is Already Encrypted",
 		            JOptionPane.ERROR_MESSAGE);
 		        return;
 			}
-			
+
 			PasswordEncryptionDialog pd = new PasswordEncryptionDialog(this.parent);
 			pd.setVisible(true);
-			
+
 			if (!pd.isOKPressed())
 			{
 				return;
 			}
-			
+
 			Cursor oldCursor = this.parent.getCursor();
 			try
 			{
-				
+
 				this.parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-				
+
 				this.dashboard.stopThreadsAndTimers();
 				this.sendCash.stopThreadsAndTimers();
-				
+
 				this.clientCaller.encryptWallet(pd.getPassword());
-				
+
 				this.parent.setCursor(oldCursor);
 			} catch (WalletCallException wce)
 			{
 				this.parent.setCursor(oldCursor);
 				Log.error("Unexpected error: ", wce);
-				
+
 				JOptionPane.showMessageDialog(
-					this.parent, 
+					this.parent,
 					"An unexpected error occurred while encrypting the wallet!\n" +
 					"It is recommended to stop and restart both zcld and the GUI wallet! \n" +
 					"\n" + wce.getMessage().replace(",", ",\n"),
-					"Error in encrypting wallet...", JOptionPane.ERROR_MESSAGE);
+					"Error Encrypting Wallet", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			
+
 			JOptionPane.showMessageDialog(
-				this.parent, 
+				this.parent,
 				"The wallet has been encrypted sucessfully and zcld has stopped.\n" +
-				"The GUI wallet will be stopped as well. Please restart both. In\n" +
-				"addtion the internal wallet keypool has been flushed. You need\n" +
-				"to make a new backup..." +
+				"The GUI wallet will be stopped as well. Please restart the program.\n" +
+				"Additionally, the internal wallet keypool has been flushed. You need\n" +
+				"to make a new backup." +
 				"\n",
-				"Wallet is now encrypted...", JOptionPane.INFORMATION_MESSAGE);
-			
+				"Wallet Is Now Encrypted", JOptionPane.INFORMATION_MESSAGE);
+
 			this.parent.exitProgram();
-			
-		} catch (Exception e)
-		{
-			this.errorReporter.reportError(e, false);
-		}
-	}
-	
-	
-	public void backupWallet()
-	{
-		try
-		{
-			this.issueBackupDirectoryWarning();
-			
-			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setDialogTitle("Backup wallet to file...");
-			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-			fileChooser.setCurrentDirectory(OSUtil.getUserHomeDirectory());
-			 
-			int result = fileChooser.showSaveDialog(this.parent);
-			 
-			if (result != JFileChooser.APPROVE_OPTION) 
-			{
-			    return;
-			}
-			
-			File f = fileChooser.getSelectedFile();
-			
-			Cursor oldCursor = this.parent.getCursor();
-			String path = null;
-			try
-			{
-				this.parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-							
-				path = this.clientCaller.backupWallet(f.getName());
-				
-				this.backupTracker.handleBackup();
-				
-				this.parent.setCursor(oldCursor);
-			} catch (WalletCallException wce)
-			{
-				this.parent.setCursor(oldCursor);
-				Log.error("Unexpected error: ", wce);
-				
-				JOptionPane.showMessageDialog(
-					this.parent, 
-					"An unexpected error occurred while backing up the wallet!" +
-					"\n" + wce.getMessage().replace(",", ",\n"),
-					"Error in backing up wallet...", JOptionPane.ERROR_MESSAGE);
-				return;
-			}
-			
-			JOptionPane.showMessageDialog(
-				this.parent, 
-				"The wallet has been backed up successfully to file: " + f.getName() + "\n" +
-				"in the backup directory provided to zcld (-exportdir=<dir>).\nFull path is: " + 
-				path,
-				"Wallet is backed up...", JOptionPane.INFORMATION_MESSAGE);
-			
-		} catch (Exception e)
-		{
-			this.errorReporter.reportError(e, false);
-		}
-	}
-	
-	
-	public void exportWalletPrivateKeys()
-	{
-		// TODO: Will need corrections once encryption is reenabled!!!
-		
-		try
-		{
-			this.issueBackupDirectoryWarning();
-			
-			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setDialogTitle("Export wallet private keys to file...");
-			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-			fileChooser.setCurrentDirectory(OSUtil.getUserHomeDirectory());
-			 
-			int result = fileChooser.showSaveDialog(this.parent);
-			 
-			if (result != JFileChooser.APPROVE_OPTION) 
-			{
-			    return;
-			}
-			
-			File f = fileChooser.getSelectedFile();
-			
-			Cursor oldCursor = this.parent.getCursor();
-			String path = null;
-			try
-			{
-				this.parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-							
-				path = this.clientCaller.exportWallet(f.getName());
-				this.backupTracker.handleBackup();
-				
-				this.parent.setCursor(oldCursor);
-			} catch (WalletCallException wce)
-			{
-				this.parent.setCursor(oldCursor);
-				Log.error("Unexpected error: ", wce);
-				
-				JOptionPane.showMessageDialog(
-					this.parent, 
-					"An unexpected error occurred while exporting wallet private keys!" +
-					"\n" + wce.getMessage().replace(",", ",\n"),
-					"Error in exporting wallet private keys...", JOptionPane.ERROR_MESSAGE);
-				return;
-			}
-			
-			JOptionPane.showMessageDialog(
-				this.parent, 
-				"The wallet private keys have been exported successfully to file:\n" + 
-				f.getName() + "\n" +
-				"in the backup directory provided to zcld (-exportdir=<dir>).\nFull path is: " + 
-				path + "\n" +
-				"You need to protect this file from unauthorized access. Anyone who\n" +
-				"has access to the private keys can spend the Zclassic balance!",
-				"Wallet private key export...", JOptionPane.INFORMATION_MESSAGE);
-			
+
 		} catch (Exception e)
 		{
 			this.errorReporter.reportError(e, false);
 		}
 	}
 
-	
-	public void importWalletPrivateKeys()
+
+	public void backupWallet()
 	{
-		// TODO: Will need corrections once encryption is re-enabled!!!
-		
-	    int option = JOptionPane.showConfirmDialog(  
-		    this.parent,
-		    "Private key import is a potentially slow operation. It may take\n" +
-		    "several minutes during which the GUI will be non-responsive.\n" +
-		    "The data to import must be in the format used by the option:\n" +
-		    "\"Export private keys...\"\n\n" +
-		    "Are you sure you wish to import private keys?",
-		    "Private key import notice...",
-		    JOptionPane.YES_NO_OPTION);
-		if (option == JOptionPane.NO_OPTION)
-		{
-		  	return;
-		}
-		
 		try
 		{
+			this.issueBackupDirectoryWarning();
+
 			JFileChooser fileChooser = new JFileChooser();
-			fileChooser.setDialogTitle("Import wallet private keys from file...");
+			fileChooser.setDialogTitle("Backup Wallet to File");
 			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-			 
-			int result = fileChooser.showOpenDialog(this.parent);
-			 
-			if (result != JFileChooser.APPROVE_OPTION) 
+			fileChooser.setCurrentDirectory(OSUtil.getUserHomeDirectory());
+
+			int result = fileChooser.showSaveDialog(this.parent);
+
+			if (result != JFileChooser.APPROVE_OPTION)
 			{
 			    return;
 			}
-			
+
 			File f = fileChooser.getSelectedFile();
-			
+
 			Cursor oldCursor = this.parent.getCursor();
+			String path = null;
 			try
 			{
 				this.parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-							
-				this.clientCaller.importWallet(f.getCanonicalPath());
-				
+
+				path = this.clientCaller.backupWallet(f.getName());
+
+				this.backupTracker.handleBackup();
+
 				this.parent.setCursor(oldCursor);
 			} catch (WalletCallException wce)
 			{
 				this.parent.setCursor(oldCursor);
 				Log.error("Unexpected error: ", wce);
-				
+
 				JOptionPane.showMessageDialog(
-					this.parent, 
-					"An unexpected error occurred while importing wallet private keys!" +
+					this.parent,
+					"An unexpected error occurred while backing up the wallet!" +
 					"\n" + wce.getMessage().replace(",", ",\n"),
-					"Error in importing wallet private keys...", JOptionPane.ERROR_MESSAGE);
+					"Error Backing Up Wallet", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			
+
 			JOptionPane.showMessageDialog(
-				this.parent, 
-				"Wallet private keys have been imported successfully from location:\n" +
-				f.getCanonicalPath() + "\n\n",
-				"Wallet private key import...", JOptionPane.INFORMATION_MESSAGE);
-			
+				this.parent,
+				"The wallet has been backed up successfully to file: " + f.getName() + "\n" +
+				"in the backup directory provided to zcld (-exportdir=<dir>).\nFull path is: " +
+				path,
+				"Successfully Backed Up Wallet", JOptionPane.INFORMATION_MESSAGE);
+
 		} catch (Exception e)
 		{
 			this.errorReporter.reportError(e, false);
 		}
 	}
-	
-	
+
+
+	public void exportWalletPrivateKeys()
+	{
+		// TODO: Will need corrections once encryption is reenabled!!!
+
+		try
+		{
+			this.issueBackupDirectoryWarning();
+
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Export Private Keys to File");
+			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+			fileChooser.setCurrentDirectory(OSUtil.getUserHomeDirectory());
+
+			int result = fileChooser.showSaveDialog(this.parent);
+
+			if (result != JFileChooser.APPROVE_OPTION)
+			{
+			    return;
+			}
+
+			File f = fileChooser.getSelectedFile();
+
+			Cursor oldCursor = this.parent.getCursor();
+			String path = null;
+			try
+			{
+				this.parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+				path = this.clientCaller.exportWallet(f.getName());
+				this.backupTracker.handleBackup();
+
+				this.parent.setCursor(oldCursor);
+			} catch (WalletCallException wce)
+			{
+				this.parent.setCursor(oldCursor);
+				Log.error("Unexpected error: ", wce);
+
+				JOptionPane.showMessageDialog(
+					this.parent,
+					"An unexpected error occurred while exporting private keys!" +
+					"\n" + wce.getMessage().replace(",", ",\n"),
+					"Error Exporting Private Keys", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+
+			JOptionPane.showMessageDialog(
+				this.parent,
+				"The wallet private keys have been successfully exported to file:\n" +
+				f.getName() + "\n" +
+				"in the backup directory provided to zcld (-exportdir=<dir>).\nFull path is: " +
+				path + "\n" +
+				"You need to protect this file from unauthorized access. Anyone who\n" +
+				"has access to the private keys can spend the Zclassic balance!",
+				"Successfully Exported Private Keys", JOptionPane.INFORMATION_MESSAGE);
+
+		} catch (Exception e)
+		{
+			this.errorReporter.reportError(e, false);
+		}
+	}
+
+
+	public void importWalletPrivateKeys()
+	{
+		// TODO: Will need corrections once encryption is re-enabled!!!
+
+	    int option = JOptionPane.showConfirmDialog(
+		    this.parent,
+		    "Importing private keys can be a slow operation. It may take\n" +
+		    "several minutes, during which the GUI will be non-responsive.\n" +
+		    "The data to import must be in the format used by \n" +
+		    "\"Wallet >> Export Private Keys\"\n\n" +
+		    "Continue?",
+		    "Import Private Keys",
+		    JOptionPane.YES_NO_OPTION);
+		if (option == JOptionPane.NO_OPTION)
+		{
+		  	return;
+		}
+
+		try
+		{
+			JFileChooser fileChooser = new JFileChooser();
+			fileChooser.setDialogTitle("Import Private Keys from File");
+			fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+			int result = fileChooser.showOpenDialog(this.parent);
+
+			if (result != JFileChooser.APPROVE_OPTION)
+			{
+			    return;
+			}
+
+			File f = fileChooser.getSelectedFile();
+
+			Cursor oldCursor = this.parent.getCursor();
+			try
+			{
+				this.parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+				this.clientCaller.importWallet(f.getCanonicalPath());
+
+				this.parent.setCursor(oldCursor);
+			} catch (WalletCallException wce)
+			{
+				this.parent.setCursor(oldCursor);
+				Log.error("Unexpected error: ", wce);
+
+				JOptionPane.showMessageDialog(
+					this.parent,
+					"An unexpected error occurred while importing private keys!" +
+					"\n" + wce.getMessage().replace(",", ",\n"),
+					"Error Importing Private Keys", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+
+			JOptionPane.showMessageDialog(
+				this.parent,
+				"Wallet private keys have been successfully imported from location:\n" +
+				f.getCanonicalPath() + "\n\n",
+				"Successfully Imported Private Keys", JOptionPane.INFORMATION_MESSAGE);
+
+		} catch (Exception e)
+		{
+			this.errorReporter.reportError(e, false);
+		}
+	}
+
+
 	public void showPrivateKey()
 	{
 		if (this.tabs.getSelectedIndex() != 1)
 		{
 			JOptionPane.showMessageDialog(
-				this.parent, 
+				this.parent,
 				"Please select an address in the \"My Addresses\" tab " +
-				"to view its private key",
-				"Please select an address...", JOptionPane.INFORMATION_MESSAGE);
+				"to view its private key.",
+				"Select an Address", JOptionPane.INFORMATION_MESSAGE);
 			this.tabs.setSelectedIndex(1);
 			return;
 		}
-		
+
 		String address = this.addresses.getSelectedAddress();
-		
+
 		if (address == null)
 		{
 			JOptionPane.showMessageDialog(
-				this.parent, 
-				"Please select an address in the table of addresses " +
-				"to view its private key",
-				"Please select an address...", JOptionPane.INFORMATION_MESSAGE);
+				this.parent,
+				"Please select an address from the table " +
+				"to view its private key.",
+				"Select an Address", JOptionPane.INFORMATION_MESSAGE);
 			return;
 		}
-		
+
 		try
 		{
 			// Check for encrypted wallet
@@ -381,51 +381,51 @@ public class WalletOperations
 			{
 				PasswordDialog pd = new PasswordDialog((JFrame)(this.parent));
 				pd.setVisible(true);
-				
+
 				if (!pd.isOKPressed())
 				{
 					return;
 				}
-				
+
 				this.clientCaller.unlockWallet(pd.getPassword());
 			}
-			
+
 			boolean isZAddress = Util.isZAddress(address);
-			
+
 			String privateKey = isZAddress ?
 				this.clientCaller.getZPrivateKey(address) : this.clientCaller.getTPrivateKey(address);
-				
-			// Lock the wallet again 
+
+			// Lock the wallet again
 			if (bEncryptedWallet)
 			{
 				this.clientCaller.lockWallet();
 			}
-				
+
 			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 			clipboard.setContents(new StringSelection(privateKey), null);
-			
+
 			JOptionPane.showMessageDialog(
-				this.parent, 
+				this.parent,
 				(isZAddress ? "Z (Private)" : "T (Transparent)") +  " address:\n" +
-				address + "\n" + 
+				address + "\n" +
 				"has private key:\n" +
 				privateKey + "\n\n" +
-				"The private key has also been copied to the clipboard.", 
-				"Private key information", JOptionPane.INFORMATION_MESSAGE);
+				"The private key has also been copied to the clipboard.",
+				"Private Key Info", JOptionPane.INFORMATION_MESSAGE);
 		} catch (Exception ex)
 		{
 			this.errorReporter.reportError(ex, false);
 		}
 	}
-	
-	
+
+
 	public void importSinglePrivateKey()
 	{
 		try
 		{
 			SingleKeyImportDialog kd = new SingleKeyImportDialog(this.parent, this.clientCaller);
 			kd.setVisible(true);
-			
+
 		} catch (Exception ex)
 		{
 			this.errorReporter.reportError(ex, false);
@@ -597,32 +597,28 @@ public class WalletOperations
         if (warningFlagFile.exists())
         {
             return;
-        } 
-            
+        }
+
         int reply = JOptionPane.showOptionDialog(
             this.parent,
-            "For security reasons the wallet may be backed up/private keys exported only if\n" +
-            "the zcld parameter -exportdir=<dir> has been set. If you started zcld \n" +
-            "manually, you ought to have provided this parameter. When zcld is started \n" +
-            "automatically by the GUI wallet the directory provided as parameter to -exportdir\n" +
-            "is the user home directory: " + OSUtil.getUserHomeDirectory().getCanonicalPath() +"\n" +
-            "Please navigate to the directory provided as -exportdir=<dir> and select a\n"+ 
-            "filename in it to backup/export private keys. If you select another directory\n" +
-            "instead, the destination file will still end up in the directory provided as \n" +
-            "-exportdir=<dir>. If this parameter was not provided to zcld, the process\n" +
-            "will fail with a security check error. The filename needs to consist of only\n" + 
-            "alphanumeric characters (e.g. dot is not allowed).\n",
-            "Wallet backup directory information", 
+            "The Zclassic Full-Node Desktop Wallet automatically starts zcld with the \"-exportdir=" + OSUtil.getUserHomeDirectory().getCanonicalPath() +"\" option.\n" +
+            "By default, this is the user home directory. \n" +
+						"For security reasons, the wallet may only export private keys if \n" +
+						"the zcld parameter \"-exportdir=<dir>\" is set. If you started zcld \n" +
+						"manually, be sure to do this. If this parameter isn't provided to zcld, the \n" +
+            "process will fail with a security check error. The filename needs to consist of \n" +
+            "only alphanumeric characters (e.g. dot is not allowed).\n",
+            "Wallet Backup Directory Info",
 	        JOptionPane.YES_NO_OPTION,
-	        JOptionPane.INFORMATION_MESSAGE, 
-	        null, new String[] { "Do not show this again", "OK" }, 
+	        JOptionPane.INFORMATION_MESSAGE,
+	        null, new String[] { "Don't show this again", "OK" },
 	        JOptionPane.NO_OPTION);
-	        
-	    if (reply == JOptionPane.NO_OPTION) 
+
+	    if (reply == JOptionPane.NO_OPTION)
 	    {
 	    	return;
 	    }
-	    
+
 	    warningFlagFile.createNewFile();
 	}
 }

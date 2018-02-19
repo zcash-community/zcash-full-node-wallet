@@ -1,11 +1,11 @@
 /************************************************************************************************
- *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _   
- *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |  
- *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_ 
+ *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _
+ *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |
+ *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_
  *    / / |  __| | . ` | |    / _` / __| '_ \| | |_ | |  | | | |   \ \/  \/ / _` | | |/ _ \ __|
- *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_ 
+ *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_
  *  /_____|______|_| \_|\_____\__,_|___/_| |_|\_____|\____/|_____|   \/  \/ \__,_|_|_|\___|\__|
- *                                                                                             
+ *
  * Copyright (c) 2017 Ivan Vaklinov <ivan@vaklinov.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -67,64 +67,62 @@ public class MessagingOptionsEditDialog
 	protected JFrame parentFrame;
 	protected MessagingStorage storage;
 	protected StatusUpdateErrorReporter errorReporter;
-	
+
 	protected JLabel infoLabel;
 	protected JPanel buttonPanel;
-	
+
 	protected JTextField amountTextField;
 	protected JTextField transactionFeeTextField;
 	protected JCheckBox  automaticallyAddUsers;
-	
+
 	public MessagingOptionsEditDialog(JFrame parentFrame, MessagingStorage storage, StatusUpdateErrorReporter errorReporter)
 		throws IOException
 	{
 		this.parentFrame   = parentFrame;
 		this.storage       = storage;
 		this.errorReporter = errorReporter;
-		
-		this.setTitle("Messaging options");
+
+		this.setTitle("Messaging Options");
 		this.setModal(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+
 		MessagingOptions options = this.storage.getMessagingOptions();
-			
+
 		this.getContentPane().setLayout(new BorderLayout(0, 0));
-			
+
 		JPanel tempPanel = new JPanel(new BorderLayout(0, 0));
 		tempPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 		infoLabel = new JLabel(
 				"<html><span style=\"font-size:0.93em;\">" +
-				"The options below pertain to messaging. It is possible to set the amount of ZCL<br/>" +
-				"to be sent with every messaging transaction and also the transaction fee. It is<br/>" + 
-			    "also possible to decide if users are to be automatically added to the contact list.<br/><br/>" +
+				"The following options pertain to messaging:" +
 			    "</span>");
 	    tempPanel.add(infoLabel, BorderLayout.CENTER);
 		this.getContentPane().add(tempPanel, BorderLayout.NORTH);
-			
+
 		JPanel detailsPanel = new JPanel();
 		detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS));
-		
-		addFormField(detailsPanel, "Automatically add users to contact list:",   
+
+		addFormField(detailsPanel, "Automatically add users to contact list? ",
 				     automaticallyAddUsers = new JCheckBox());
-		addFormField(detailsPanel, "ZCL amount to send with every message:",   amountTextField = new JTextField(12));
-		addFormField(detailsPanel, "Transaction fee:",  transactionFeeTextField = new JTextField(12));
-		
+		addFormField(detailsPanel, "Amount of ZCL to send with every message: ", amountTextField = new JTextField(12));
+		addFormField(detailsPanel, "Transaction fee: ", transactionFeeTextField = new JTextField(12));
+
 		DecimalFormatSymbols decSymbols = new DecimalFormatSymbols(Locale.ROOT);
 		automaticallyAddUsers.setSelected(options.isAutomaticallyAddUsersIfNotExplicitlyImported());
 		amountTextField.setText(new DecimalFormat("########0.00######", decSymbols).format(options.getAmountToSend()));
 		transactionFeeTextField.setText(new DecimalFormat("########0.00######", decSymbols).format(options.getTransactionFee()));
-		
+
 		detailsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 		this.getContentPane().add(detailsPanel, BorderLayout.CENTER);
 
 		// Lower buttons - by default only close is available
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 3));
-		JButton closeButon = new JButton("Close");
-		buttonPanel.add(closeButon);
+		JButton closeButton = new JButton("Close");
+		buttonPanel.add(closeButton);
 		this.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
-		closeButon.addActionListener(new ActionListener()
+		closeButton.addActionListener(new ActionListener()
 		{
 				@Override
 				public void actionPerformed(ActionEvent e)
@@ -133,10 +131,10 @@ public class MessagingOptionsEditDialog
 					MessagingOptionsEditDialog.this.dispose();
 				}
 		});
-		
-		JButton saveButon = new JButton("Save & Close");
-		buttonPanel.add(saveButon);
-		saveButon.addActionListener(new ActionListener()
+
+		JButton saveButton = new JButton("Save & Close");
+		buttonPanel.add(saveButton);
+		saveButton.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -145,27 +143,27 @@ public class MessagingOptionsEditDialog
 				{
 					String amountToSend = MessagingOptionsEditDialog.this.amountTextField.getText();
 					String transactionFee = MessagingOptionsEditDialog.this.transactionFeeTextField.getText();
-					
+
 					if ((!MessagingOptionsEditDialog.this.verifyNumericField("amount to send", amountToSend)) ||
 						(!MessagingOptionsEditDialog.this.verifyNumericField("transaction fee", transactionFee)))
 					{
 						return;
 					}
-					
+
 					MessagingOptions options = MessagingOptionsEditDialog.this.storage.getMessagingOptions();
-					
-					options.setAmountToSend(Double.parseDouble(amountToSend));				
+
+					options.setAmountToSend(Double.parseDouble(amountToSend));
 					options.setTransactionFee(Double.parseDouble(transactionFee));
 					options.setAutomaticallyAddUsersIfNotExplicitlyImported(
 						MessagingOptionsEditDialog.this.automaticallyAddUsers.isSelected());
-					
+
 					MessagingOptionsEditDialog.this.storage.updateMessagingOptions(options);
-					
+
 					MessagingOptionsEditDialog.this.setVisible(false);
 					MessagingOptionsEditDialog.this.dispose();
 				} catch (Exception ex)
 				{
-					Log.error("Unexpected error in editing own messaging identity!", ex);
+					Log.error("Unexpected error editing My Identity!", ex);
 					MessagingOptionsEditDialog.this.errorReporter.reportError(ex, false);
 				}
 			}
@@ -176,53 +174,53 @@ public class MessagingOptionsEditDialog
 		this.setLocationRelativeTo(parentFrame);
 	}
 
-	
+
 	private boolean verifyNumericField(String name, String value)
 	{
 		if (Util.stringIsEmpty(value))
 		{
 	        JOptionPane.showMessageDialog(
         		this.parentFrame,
-        		"Field \"" + name + "\" is empty. It is mandatory. Please fill it.",
-                "Mandatory data missing", JOptionPane.ERROR_MESSAGE);
+        		"Field \"" + name + "\" is required.",
+                "\"" + name + "\" Required", JOptionPane.ERROR_MESSAGE);
 	        return false;
 		}
-		
+
 		try
 		{
 			double dVal = Double.parseDouble(value);
-			
+
 			if (dVal < 0)
 			{
 		        JOptionPane.showMessageDialog(
 		        	this.parentFrame,
-		        	"Field \"" + name + "\" has a value that is negative. Please enter a positive number!",
-		            "Field is negative", JOptionPane.ERROR_MESSAGE);
-		        return false;			
+		        	"Field \"" + name + "\" must be a positive number!",
+		            "\"" + name + "\" Must Be Positive", JOptionPane.ERROR_MESSAGE);
+		        return false;
 			}
 		} catch (NumberFormatException nfe)
 		{
 	        JOptionPane.showMessageDialog(
 	        	this.parentFrame,
-	        	"Field \"" + name + "\" has a value that is not numeric. Please enter a number!",
-	            "Field is not numeric", JOptionPane.ERROR_MESSAGE);
-		    return false;			
+	        	"Field \"" + name + "\" must be a number!",
+	            "\"" + name + "\" Must Be A Number", JOptionPane.ERROR_MESSAGE);
+		    return false;
 		}
-		
+
 		return true;
 	}
-	
-	
+
+
 	private void addFormField(JPanel detailsPanel, String name, JComponent field)
 	{
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 2));
 		JLabel tempLabel = new JLabel(name, JLabel.RIGHT);
 		// TODO: hard sizing of labels may not scale!
-		final int width = new JLabel("ZCL amount to send with every message:").getPreferredSize().width + 30;
+		final int width = new JLabel("Amount of ZCL to send with every message: ").getPreferredSize().width + 30;
 		tempLabel.setPreferredSize(new Dimension(width, tempLabel.getPreferredSize().height));
 		tempPanel.add(tempLabel);
 		tempPanel.add(field);
 		detailsPanel.add(tempPanel);
 	}
-	
-} 
+
+}

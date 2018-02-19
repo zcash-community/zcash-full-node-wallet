@@ -1,11 +1,11 @@
 /************************************************************************************************
- *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _   
- *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |  
- *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_ 
+ *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _
+ *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |
+ *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_
  *    / / |  __| | . ` | |    / _` / __| '_ \| | |_ | |  | | | |   \ \/  \/ / _` | | |/ _ \ __|
- *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_ 
+ *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_
  *  /_____|______|_| \_|\_____\__,_|___/_| |_|\_____|\____/|_____|   \/  \/ \__,_|_|_|\___|\__|
- *                                                                                             
+ *
  * Copyright (c) 2017 Ivan Vaklinov <ivan@vaklinov.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -63,40 +63,40 @@ public class MessagingIdentity
 	private String streetaddress;
 	private String facebook;
 	private String twitter;
-	
+
 	// Additional fields not based on the ZEN messaging protocol
 	private boolean isAnonymous; // If the remote contact sends messages anonymously
 	private String threadID; // Thread ID for anonymous messages
 	private boolean isGroup; // If it represents a messaging group
-	
+
 	// TODO: automatically cut fields to XXX length to avoid issues with accidental big data
-	
+
 	public MessagingIdentity()
 	{
 		// By default it is not anonymous - filling the rest is the responsibility of the caller
 		this.isAnonymous = false;
 		this.isGroup     = false;
-		this.threadID    = "";	
+		this.threadID    = "";
 	}
-	
-	
+
+
 	public MessagingIdentity(JsonObject obj)
 		 throws IOException
 	{
 		this.copyFromJSONObject(obj);
 	}
-	
-	
+
+
 	public MessagingIdentity(File f)
 		throws IOException
 	{
 		Reader r = null;
-			
+
 		try
 		{
 			r = new BufferedReader(new InputStreamReader(new FileInputStream(f), "UTF-8"));
 			JsonObject obj = Util.parseJsonObject(r);
-			
+
 			this.copyFromJSONObject(obj);
 		} finally
 		{
@@ -115,19 +115,19 @@ public class MessagingIdentity
 		this.nickname           = obj.getString("nickname",           "");
 		this.sendreceiveaddress = obj.getString("sendreceiveaddress", "");
 		this.senderidaddress    = obj.getString("senderidaddress",    "");
-	
+
 		this.firstname          = obj.getString("firstname",          "");
 		this.middlename         = obj.getString("middlename",         "");
 		this.surname            = obj.getString("surname",            "");
 		this.email              = obj.getString("email",              "");
 		this.streetaddress      = obj.getString("streetaddress",      "");
-		this.facebook           = obj.getString("facebook",           "");		
-		this.twitter            = obj.getString("twitter",            "");	
-		
+		this.facebook           = obj.getString("facebook",           "");
+		this.twitter            = obj.getString("twitter",            "");
+
 		this.isAnonymous        = obj.getBoolean("isanonymous",       false);
 		this.isGroup            = obj.getBoolean("isgroup",           false);
-		this.threadID           = obj.getString("threadid",           "");	
-		
+		this.threadID           = obj.getString("threadid",           "");
+
 		if (this.isGroup())
 		{
 			if (Util.stringIsEmpty(this.nickname) || Util.stringIsEmpty(this.sendreceiveaddress))
@@ -139,7 +139,7 @@ public class MessagingIdentity
 			if (Util.stringIsEmpty(this.nickname) || Util.stringIsEmpty(this.threadID))
 			{
 				throw new IOException("Mandatory field is missing in creating anonymous messaging identity!");
-			}			
+			}
 		} else
 		{
 			// Make sure the mandatory fields are there
@@ -149,12 +149,12 @@ public class MessagingIdentity
 			}
 		}
 	}
-	
-	
+
+
 	public JsonObject toJSONObject(boolean bForMessagingProtocol)
 	{
 		JsonObject obj = new JsonObject();
-		
+
 		obj.set("nickname",           nonNull(nickname));
 		obj.set("sendreceiveaddress", nonNull(sendreceiveaddress));
 		obj.set("senderidaddress",    nonNull(senderidaddress));
@@ -163,25 +163,25 @@ public class MessagingIdentity
 		obj.set("surname",            nonNull(surname));
 		obj.set("email",              nonNull(email));
 		obj.set("streetaddress",      nonNull(streetaddress));
-		obj.set("facebook",           nonNull(facebook));		
+		obj.set("facebook",           nonNull(facebook));
 		obj.set("twitter",            nonNull(twitter));
-		
+
 		if (!bForMessagingProtocol)
 		{
 			obj.set("isanonymous",    isAnonymous);
 			obj.set("isgroup",        isGroup);
 			obj.set("threadid",       nonNull(threadID));
 		}
-		
+
 		return obj;
 	}
-	
-	
+
+
 	public void writeToFile(File f)
 		throws IOException
 	{
 		Writer w = null;
-		
+
 		try
 		{
 			w = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(f), "UTF-8"));
@@ -194,134 +194,134 @@ public class MessagingIdentity
 			}
 		}
 	}
-		
-	
-	public String getNickname() 
+
+
+	public String getNickname()
 	{
 		return nickname;
 	}
-	
-	public void setNickname(String nickname) 
+
+	public void setNickname(String nickname)
 	{
 		this.nickname = nickname;
 	}
-	
-	public String getSendreceiveaddress() 
+
+	public String getSendreceiveaddress()
 	{
 		return sendreceiveaddress;
 	}
-	
-	public void setSendreceiveaddress(String sendreceiveaddress) 
+
+	public void setSendreceiveaddress(String sendreceiveaddress)
 	{
 		this.sendreceiveaddress = sendreceiveaddress;
 	}
-	
-	public String getSenderidaddress() 
+
+	public String getSenderidaddress()
 	{
 		return senderidaddress;
 	}
-	
-	public void setSenderidaddress(String senderidaddress) 
+
+	public void setSenderidaddress(String senderidaddress)
 	{
 		this.senderidaddress = senderidaddress;
 	}
-	
-	public String getFirstname() 
+
+	public String getFirstname()
 	{
 		return firstname;
 	}
-	
-	public void setFirstname(String firstname) 
+
+	public void setFirstname(String firstname)
 	{
 		this.firstname = firstname;
 	}
-	
-	public String getMiddlename() 
+
+	public String getMiddlename()
 	{
 		return middlename;
 	}
-	
-	public void setMiddlename(String middlename) 
+
+	public void setMiddlename(String middlename)
 	{
 		this.middlename = middlename;
 	}
-	
-	public String getSurname() 
+
+	public String getSurname()
 	{
 		return surname;
 	}
-	
-	public void setSurname(String surname) 
+
+	public void setSurname(String surname)
 	{
 		this.surname = surname;
 	}
-	
-	public String getEmail() 
+
+	public String getEmail()
 	{
 		return email;
 	}
-	
-	public void setEmail(String email) 
+
+	public void setEmail(String email)
 	{
 		this.email = email;
 	}
-	
-	public String getStreetaddress() 
+
+	public String getStreetaddress()
 	{
 		return streetaddress;
 	}
-	
-	public void setStreetaddress(String streetaddress) 
+
+	public void setStreetaddress(String streetaddress)
 	{
 		this.streetaddress = streetaddress;
 	}
-	
-	public String getFacebook() 
+
+	public String getFacebook()
 	{
 		return facebook;
 	}
-	
-	public void setFacebook(String facebook) 
+
+	public void setFacebook(String facebook)
 	{
 		this.facebook = facebook;
 	}
-	
-	public String getTwitter() 
+
+	public String getTwitter()
 	{
 		return twitter;
 	}
-	
-	public void setTwitter(String twitter) 
+
+	public void setTwitter(String twitter)
 	{
 		this.twitter = twitter;
 	}
-	
-	public boolean isAnonymous() 
+
+	public boolean isAnonymous()
 	{
 		return isAnonymous;
 	}
 
-	public void setAnonymous(boolean isAnonymous) 
+	public void setAnonymous(boolean isAnonymous)
 	{
 		this.isAnonymous = isAnonymous;
 	}
 
-	public String getThreadID() 
+	public String getThreadID()
 	{
 		return threadID;
 	}
 
-	public void setThreadID(String threadID) 
+	public void setThreadID(String threadID)
 	{
 		this.threadID = threadID;
-	}	
+	}
 
-	public boolean isGroup() 
+	public boolean isGroup()
 	{
 		return isGroup;
 	}
 
-	public void setGroup(boolean isGroup) 
+	public void setGroup(boolean isGroup)
 	{
 		this.isGroup = isGroup;
 	}
@@ -329,7 +329,7 @@ public class MessagingIdentity
 
 	/**
 	 * Produces a string in the form nick (first middle sur) suitable for display purposes.
-	 * 
+	 *
 	 * @return a string in the form nick (first middle sur) suitable for display purposes.
 	 */
 	public String getDiplayString()
@@ -342,17 +342,17 @@ public class MessagingIdentity
 			    int minIndex = Math.min(10, this.getThreadID().length());
 			    contactString += this.getThreadID().substring(0, minIndex) + "...";
 			}
-			
+
 			return contactString;
-			
+
 		} else
 		{
 			// Normal and group identities
 			MessagingIdentity id = this;
 			String contactString = id.getNickname();
-			
-			// TODO: avoid space if no surname 
-			if ((!Util.stringIsEmpty(id.getFirstname())) || (!Util.stringIsEmpty(id.getMiddlename())) || 
+
+			// TODO: avoid space if no surname
+			if ((!Util.stringIsEmpty(id.getFirstname())) || (!Util.stringIsEmpty(id.getMiddlename())) ||
 				(!Util.stringIsEmpty(id.getSurname())))
 			{
 				contactString += " (";
@@ -361,18 +361,18 @@ public class MessagingIdentity
 				contactString += !Util.stringIsEmpty(id.getSurname())    ? (id.getSurname())          : "";
 				contactString += ")";
 			}
-			
+
 			return contactString;
 		}
 	}
-	
-	
+
+
 	/**
 	 * Performs a comparison of whether one messaging identity object is identical to another.
 	 * Currently the criterion is that the two addresses used must be the same!
-	 * 
+	 *
 	 * @param other other messaging identity to compare to
-	 * 
+	 *
 	 * @return true if identical;
 	 */
 	public boolean isIdenticalTo(MessagingIdentity other)
@@ -381,16 +381,16 @@ public class MessagingIdentity
 		{
 			return false;
 		}
-		
+
 		if (this.isGroup() != other.isGroup())
 		{
 			return false;
 		}
-		
+
 		if (this.isAnonymous())
 		{
 			return this.getThreadID().equals(other.getThreadID());
-		} else if (this.isGroup()) 
+		} else if (this.isGroup())
 		{
 			return this.sendreceiveaddress.equals(other.sendreceiveaddress);
 		} else
@@ -399,14 +399,14 @@ public class MessagingIdentity
 				   this.sendreceiveaddress.equals(other.sendreceiveaddress);
 		}
 	}
-	
-	
+
+
 	private String nonNull(String s)
 	{
 		return (s != null) ? s : "";
 	}
-	
-	
+
+
 	public MessagingIdentity getCloneCopy()
 		throws IOException
 	{

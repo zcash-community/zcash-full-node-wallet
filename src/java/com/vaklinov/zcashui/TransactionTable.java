@@ -150,7 +150,7 @@ public class TransactionTable extends DataTable {
 									"The selected transaction does not have as destination a Z (private) \n"
 											+ "address or it is unkonwn (not listed) and thus no memo information \n"
 											+ "about this transaction is available.",
-									"Memo information is unavailable", JOptionPane.ERROR_MESSAGE);
+									"No Memo Available", JOptionPane.ERROR_MESSAGE);
 							return;
 						}
 
@@ -169,12 +169,12 @@ public class TransactionTable extends DataTable {
 							MemoField = Util.blockWrapString(MemoField, 80);
 							JOptionPane.showMessageDialog(parent,
 									"The memo contained in the transaction is: \n" + MemoField + "\n\n"
-											+ "(The memo has also been copied to the clipboard.)",
+											+ "This memo has also been copied to the clipboard.",
 									"Memo", JOptionPane.PLAIN_MESSAGE);
 						} else {
 							JOptionPane.showMessageDialog(parent,
-									"The selected transaction does not contain a memo field.",
-									"Memo field is not available...", JOptionPane.ERROR_MESSAGE);
+									"The selected transaction does not contain a memo.",
+									"No Memo Available", JOptionPane.ERROR_MESSAGE);
 						}
 					} catch (Exception ex) {
 						parent.setCursor(oldCursor);
@@ -191,7 +191,7 @@ public class TransactionTable extends DataTable {
 
 	private static class DetailsDialog extends JDialog {
 		public DetailsDialog(JFrame parent, Map<String, String> details) throws UnsupportedEncodingException {
-			this.setTitle("Transaction details");
+			this.setTitle("Transaction Details");
 			this.setSize(600, 310);
 			this.setLocation(100, 100);
 			this.setLocationRelativeTo(parent);
@@ -203,8 +203,8 @@ public class TransactionTable extends DataTable {
 			JPanel tempPanel = new JPanel(new BorderLayout(0, 0));
 			tempPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 			JLabel infoLabel = new JLabel("<html><span style=\"font-size:0.97em;\">"
-					+ "The table shows the information about the transaction with technical details as "
-					+ "they appear at Zclassic network level." + "</span>");
+					+ "This table shows information about the transaction with technical details as "
+					+ "they appear at the Zclassic network level." + "</span>");
 			infoLabel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			tempPanel.add(infoLabel, BorderLayout.CENTER);
 			this.getContentPane().add(tempPanel, BorderLayout.NORTH);
@@ -212,10 +212,10 @@ public class TransactionTable extends DataTable {
 			String[] columns = new String[] { "Name", "Value" };
 			String[][] data = new String[details.size()][2];
 			int i = 0;
-			int maxPreferredWidht = 400;
+			int maxPreferredWidth = 400;
 			for (Entry<String, String> ent : details.entrySet()) {
-				if (maxPreferredWidht < (ent.getValue().length() * 6)) {
-					maxPreferredWidht = ent.getValue().length() * 6;
+				if (maxPreferredWidth < (ent.getValue().length() * 6)) {
+					maxPreferredWidth = ent.getValue().length() * 6;
 				}
 
 				data[i][0] = ent.getKey();
@@ -235,7 +235,7 @@ public class TransactionTable extends DataTable {
 
 			DataTable table = new DataTable(data, columns);
 			table.getColumnModel().getColumn(0).setPreferredWidth(200);
-			table.getColumnModel().getColumn(1).setPreferredWidth(maxPreferredWidht);
+			table.getColumnModel().getColumn(1).setPreferredWidth(maxPreferredWidth);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 			JScrollPane tablePane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 					JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -245,11 +245,11 @@ public class TransactionTable extends DataTable {
 			// Lower close button
 			JPanel closePanel = new JPanel();
 			closePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 3, 3));
-			JButton closeButon = new JButton("Close");
-			closePanel.add(closeButon);
+			JButton closeButton = new JButton("Close");
+			closePanel.add(closeButton);
 			this.getContentPane().add(closePanel, BorderLayout.SOUTH);
 
-			closeButon.addActionListener(new ActionListener() {
+			closeButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					DetailsDialog.this.setVisible(false);
