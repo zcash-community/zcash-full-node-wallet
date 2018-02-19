@@ -473,7 +473,7 @@ extends WalletTabPanel
 						transparentUCBalance + " ZCL </span><br/> " +
 						"<span style=\"" + color2 + "\">Private (Z) Balance: " +
 						privateUCBalance + " ZCL </span><br/> " +
-						"<span style=\"font-weight:bold;" + color3 + "\">Total Balance: " +
+						"<span style=\"font-weight:bold;" + color3 + "\">Total: " +
 						totalUCBalance + " ZCL </span>"
 								+ "</p></html>";
 

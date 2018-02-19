@@ -286,7 +286,7 @@ public class CreateGroupDialog
 
 		if (existingIdentity == null)
 		{
-			Log.info("Newly added messaging group \"{0}\" address is: {1}", keyPhrase, ZAddress);
+			Log.info("Newly created messaging group \"{0}\" address is: {1}", keyPhrase, ZAddress);
 			// Add a group personality etc.
 			MessagingIdentity newID = new MessagingIdentity();
 			newID.setGroup(true);
@@ -313,7 +313,7 @@ public class CreateGroupDialog
 				"group will be sent to Z address:\n"
 				+ ZAddress + "\n\n" +
 				"IMPORTANT: Do NOT send any ZCL to this address except in cases of messaging transactions. Any\n" +
-				"funds sent to this address may be spent by any user who has access to the group key phrase!",
+				"funds sent to this address may be spent by any user who has access to the group keyphrase!",
 				"Group Successfully Created",
 				JOptionPane.INFORMATION_MESSAGE);
 		} else
@@ -322,7 +322,7 @@ public class CreateGroupDialog
 			// TODO: Group was already added it seems - see if it can be made more reliable
 			JOptionPane.showMessageDialog(
 				CreateGroupDialog.this,
-				"The messaging group with keyphrase:\n" +
+				"A messaging group for keyphrase:\n" +
 				keyPhrase + "\n" +
 				"already exists",
 				"Group Already Exists",
