@@ -152,7 +152,7 @@ extends JFrame
 
 		tabs.addTab("Transactions ",
 				new ImageIcon(cl.getResource("images/overview.png")),
-				dashboard = new DashboardPanel(this, installationObserver, clientCaller, 
+				dashboard = new DashboardPanel(this, installationObserver, clientCaller,
 						errorReporter, backupTracker));
 		tabs.addTab("My Addresses ",
 				new ImageIcon(cl.getResource("images/own-addresses.png")),
@@ -169,7 +169,7 @@ extends JFrame
 		contentPane.add(tabs);
 
 		this.walletOps = new WalletOperations(
-				this, tabs, dashboard, addresses, sendPanel, 
+				this, tabs, dashboard, addresses, sendPanel,
 				installationObserver, clientCaller, errorReporter, backupTracker);
 
 		int width = 870;
@@ -210,7 +210,7 @@ extends JFrame
 		menuItemShowPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, accelaratorKeyMask));
 		wallet.add(menuItemImportOnePrivateKey = new JMenuItem("Import One Private Key", KeyEvent.VK_N));
 		menuItemImportOnePrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, accelaratorKeyMask));
-		
+
 		/*
 		 * wallet.add(menuItemExportToArizen = new JMenuItem("Export to Arizen wallet...", KeyEvent.VK_A));
 		 * menuItemExportToArizen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, accelaratorKeyMask));
@@ -220,9 +220,9 @@ extends JFrame
 		JMenu messaging = new JMenu("Messaging");
 		messaging.setMnemonic(KeyEvent.VK_S);
 		messaging.add(menuItemOwnIdentity = new JMenuItem("My Identity", KeyEvent.VK_D));
-		menuItemOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, accelaratorKeyMask));        
+		menuItemOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, accelaratorKeyMask));
 		messaging.add(menuItemExportOwnIdentity = new JMenuItem("Export My Identity", KeyEvent.VK_X));
-		menuItemExportOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));        
+		menuItemExportOwnIdentity.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, accelaratorKeyMask));
 		messaging.add(menuItemAddMessagingGroup = new JMenuItem("Add Messaging Group", KeyEvent.VK_G));
 		menuItemAddMessagingGroup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, accelaratorKeyMask));
 		messaging.add(menuItemImportContactIdentity = new JMenuItem("Import Contact Identity", KeyEvent.VK_Y));
@@ -277,7 +277,7 @@ extends JFrame
 				}
 				);
 
-		menuItemBackup.addActionListener(   
+		menuItemBackup.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -299,7 +299,7 @@ extends JFrame
 				}
 				);
 
-		menuItemExportKeys.addActionListener(   
+		menuItemExportKeys.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -310,7 +310,7 @@ extends JFrame
 				}
 				);
 
-		menuItemImportKeys.addActionListener(   
+		menuItemImportKeys.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -321,7 +321,7 @@ extends JFrame
 				}
 				);
 
-		menuItemShowPrivateKey.addActionListener(   
+		menuItemShowPrivateKey.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -332,7 +332,7 @@ extends JFrame
 				}
 				);
 
-		menuItemImportOnePrivateKey.addActionListener(   
+		menuItemImportOnePrivateKey.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -343,7 +343,7 @@ extends JFrame
 				}
 				);
 
-		menuItemOwnIdentity.addActionListener(   
+		menuItemOwnIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -354,7 +354,7 @@ extends JFrame
 				}
 				);
 
-		menuItemExportOwnIdentity.addActionListener(   
+		menuItemExportOwnIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -365,7 +365,7 @@ extends JFrame
 				}
 				);
 
-		menuItemImportContactIdentity.addActionListener(   
+		menuItemImportContactIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -376,7 +376,7 @@ extends JFrame
 				}
 				);
 
-		menuItemAddMessagingGroup.addActionListener(   
+		menuItemAddMessagingGroup.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -387,7 +387,7 @@ extends JFrame
 				}
 				);
 
-		menuItemRemoveContactIdentity.addActionListener(   
+		menuItemRemoveContactIdentity.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -398,7 +398,7 @@ extends JFrame
 				}
 				);
 
-		menuItemMessagingOptions.addActionListener(   
+		menuItemMessagingOptions.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -409,7 +409,7 @@ extends JFrame
 				}
 				);
 
-		menuItemShareFileViaIPFS.addActionListener(   
+		menuItemShareFileViaIPFS.addActionListener(
 				new ActionListener()
 				{
 					@Override
@@ -422,7 +422,7 @@ extends JFrame
 
 		/*
 		 * menuItemExportToArizen.addActionListener(
-		
+
 				new ActionListener()
 				{
 					@Override
@@ -493,10 +493,10 @@ extends JFrame
 
 		// Notify the messaging TAB that it is being selected - every time
 		tabs.addChangeListener(
-				new ChangeListener() 
-				{	
+				new ChangeListener()
+				{
 					@Override
-					public void stateChanged(ChangeEvent e) 
+					public void stateChanged(ChangeEvent e)
 					{
 						JTabbedPane tabs = (JTabbedPane)e.getSource();
 						if (tabs.getSelectedIndex() == 4)
@@ -559,7 +559,7 @@ extends JFrame
 				System.setProperty("apple.laf.useScreenMenuBar", "true");
 			}
 			else
-			{            
+			{
 				for (LookAndFeelInfo ui : UIManager.getInstalledLookAndFeels())
 				{
 					Log.info("Available look and feel: " + ui.getName() + " " + ui.getClassName());
@@ -574,7 +574,7 @@ extends JFrame
 
 			// If zcld is currently not running, do a startup of the daemon as a child process
 			// It may be started but not ready - then also show dialog
-			ZCashInstallationObserver initialInstallationObserver = 
+			ZCashInstallationObserver initialInstallationObserver =
 					new ZCashInstallationObserver(OSUtil.getProgramDirectory());
 			DaemonInfo zcashdInfo = initialInstallationObserver.getDaemonInfo();
 			initialInstallationObserver = null;
@@ -589,7 +589,7 @@ extends JFrame
 					// If more than 20 minutes behind in the blockchain - startup in progress
 					if ((System.currentTimeMillis() - info.lastBlockDate.getTime()) > (20 * 60 * 1000))
 					{
-						Log.info("Current blockchain synchronization date is "  + 
+						Log.info("Current blockchain synchronization date is "  +
 								new Date(info.lastBlockDate.getTime()));
 						daemonStartInProgress = true;
 					}
@@ -649,7 +649,7 @@ extends JFrame
 				JOptionPane.showMessageDialog(
 						null,
 						"There was a problem communicating with the Zclassic daemon/wallet. \n" +
-								"Please ensure that the Zclassic server zcld is started (e.g. via \n" + 
+								"Please ensure that the Zclassic server zcld is started (e.g. via \n" +
 								"command  \"zcld --daemon\"). Error message is: \n" +
 								wce.getMessage() +
 								"See the console/logfile output for more detailed error information!",
@@ -700,43 +700,66 @@ extends JFrame
 
 		File zenConfigFile = new File(dir, "zclassic.conf");
 
+		if (zenConfigFile.exists())
+		{
+
+			Scanner scanner = new Scanner(zenConfigFile);
+			boolean rewrite;
+
+			while (scanner.hasNextLine())
+			{
+
+				String line = scanner.nextLine();
+			  if (line.indexOf("rpcport=8232") > -1)
+				{
+					// RPC Port was 8232 for pre-2018 versions - Reset zclassic.conf
+					Log.info("DELETING zclassic.conf (" + zenConfigFile.getCanonicalPath() +
+							")");
+
+					zenConfigFile.delete();
+			  }
+			}
+		}
+
 		if (!zenConfigFile.exists())
 		{
-			Log.info("zclassic.conf configuration file " + zenConfigFile.getCanonicalPath() + 
-					" does not exist. It will be created with default settings.");
+
+			Log.info("zclassic.conf (" + zenConfigFile.getCanonicalPath() +
+					") does not exist. It will be created with default settings.");
 
 			Random r = new Random(System.currentTimeMillis());
 
 			PrintStream configOut = new PrintStream(new FileOutputStream(zenConfigFile));
 
 			configOut.println("#############################################################################");
-			configOut.println("#                         ZCL configuration file                            #");
+			configOut.println("#                         ZCL Configuration File                            #");
 			configOut.println("#############################################################################");
-			configOut.println("# This file has been automatically generated by the Zclassic GUI wallet     #");
-			configOut.println("# with default settings. It may be further customized by hand only.         #");
+			configOut.println("# This file has been automatically generated by the ZCL Full-Node Wallet    #");
+			configOut.println("# with default settings. It may be further customized.                      #");
 			configOut.println("#############################################################################");
-			configOut.println("# Creation date: " + new Date().toString());
+			configOut.println("# Creation Date: " + new Date().toString());
 			configOut.println("#############################################################################");
 			configOut.println("");
 			configOut.println("# The rpcuser/rpcpassword are used for the local call to zcld");
 			configOut.println("rpcuser=User" + Math.abs(r.nextInt()));
-			configOut.println("rpcpassword=Pass" + Math.abs(r.nextInt()) + "" + 
+			configOut.println("rpcpassword=Pass" + Math.abs(r.nextInt()) + "" +
 					Math.abs(r.nextInt()) + "" +
 					Math.abs(r.nextInt()));
 			configOut.println("");
 			configOut.println("rpcallowip=127.0.0.1");
-			configOut.println("rpcport=8232");
-			configOut.println("# Well-known nodes to connect to - to speed up acquiring initial connections");
+			configOut.println("rpcport=8023");
+			configOut.println("# Well-known nodes to connect to (speeds up acquiring additional peers)");
 
 			for(String node : getAddNodes()) {
-				configOut.println(node); 
+				configOut.println(node);
 			}
 
 			configOut.close();
 		}
+
 	}
 
-	private static List<String> getAddNodes()   {
+	private static List<String> getAddNodes() {
 		BufferedReader br = null;
 		InputStream is = ZCashUI.class.getResourceAsStream("/config/addnodes.txt");
 		br = new BufferedReader(new InputStreamReader(is));
