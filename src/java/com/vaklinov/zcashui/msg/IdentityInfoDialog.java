@@ -1,11 +1,11 @@
 /************************************************************************************************
- *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _   
- *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |  
- *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_ 
+ *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _
+ *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |
+ *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_
  *    / / |  __| | . ` | |    / _` / __| '_ \| | |_ | |  | | | |   \ \/  \/ / _` | | |/ _ \ __|
- *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_ 
+ *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_
  *  /_____|______|_| \_|\_____\__,_|___/_| |_|\_____|\____/|_____|   \/  \/ \__,_|_|_|\___|\__|
- *                                                                                             
+ *
  * Copyright (c) 2017 Ivan Vaklinov <ivan@vaklinov.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -57,11 +57,11 @@ public class IdentityInfoDialog
 {
 	protected JFrame parentFrame;
 	protected MessagingIdentity identity;
-	
+
 	protected JLabel infoLabel;
-	
+
 	protected JPanel buttonPanel;
-	
+
 	protected JTextField nicknameTextField;
 	protected JTextArea sendreceiveaddressTextField;
 	protected JTextField senderidaddressTextField;
@@ -72,45 +72,45 @@ public class IdentityInfoDialog
 	protected JTextField streetaddressTextField;
 	protected JTextField facebookTextField;
 	protected JTextField twitterTextField;
-		
-	
+
+
 	public IdentityInfoDialog(JFrame parentFrame, MessagingIdentity identity)
 	{
 		this.parentFrame = parentFrame;
 		this.identity    = identity;
-		
-		this.setTitle("Contact details for: " + identity.getDiplayString());
+
+		this.setTitle("Contact Details - " + identity.getDiplayString());
 		this.setModal(true);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-			
+
 		this.getContentPane().setLayout(new BorderLayout(0, 0));
-			
+
 		JPanel tempPanel = new JPanel(new BorderLayout(0, 0));
 		tempPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 		infoLabel = new JLabel(
 				"<html><span style=\"font-size:0.97em;\">" +
-				"The information shown below pertains to contact " + identity.getNickname() + 
+				"The information shown below pertains to contact " + identity.getNickname() +
 			    "</span>");
 	    tempPanel.add(infoLabel, BorderLayout.CENTER);
 		this.getContentPane().add(tempPanel, BorderLayout.NORTH);
-			
+
 		JPanel detailsPanel = new JPanel();
 		detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.Y_AXIS));
-		
-		addFormField(detailsPanel, "Nick name:",  nicknameTextField = new JTextField(40));
+
+		addFormField(detailsPanel, "Nickname:",  nicknameTextField = new JTextField(40));
 		addFormField(detailsPanel, "First name:", firstnameTextField = new JTextField(40));
-		addFormField(detailsPanel, "Midle name:", middlenameTextField = new JTextField(40));
+		addFormField(detailsPanel, "Middle name:", middlenameTextField = new JTextField(40));
 		addFormField(detailsPanel, "Surname:",    surnameTextField = new JTextField(40));
-		
-		addFormField(detailsPanel, "E-mail:",         emailTextField = new JTextField(40));
+
+		addFormField(detailsPanel, "Email:",         emailTextField = new JTextField(40));
 		addFormField(detailsPanel, "Street address:", streetaddressTextField = new JTextField(40));
-		addFormField(detailsPanel, "Facebook page:",  facebookTextField = new JTextField(40));
-		addFormField(detailsPanel, "Twitter page:",   twitterTextField = new JTextField(40));
-		
+		addFormField(detailsPanel, "Facebook URL:",  facebookTextField = new JTextField(40));
+		addFormField(detailsPanel, "Twitter URL:",   twitterTextField = new JTextField(40));
+
 		addFormField(detailsPanel, "Sender identification T address:", senderidaddressTextField = new JTextField(40));
 		addFormField(detailsPanel, "Send/receive Z address:", sendreceiveaddressTextField = new JTextArea(2, 40));
 		sendreceiveaddressTextField.setLineWrap(true);
-		
+
 
 		nicknameTextField.setText(this.identity.getNickname());
 		firstnameTextField.setText(this.identity.getFirstname());
@@ -122,7 +122,7 @@ public class IdentityInfoDialog
 		twitterTextField.setText(this.identity.getTwitter());
 		senderidaddressTextField.setText(this.identity.getSenderidaddress());
 		sendreceiveaddressTextField.setText(this.identity.getSendreceiveaddress());
-		
+
 		nicknameTextField.setEditable(false);
 		firstnameTextField.setEditable(false);
 		middlenameTextField.setEditable(false);
@@ -133,7 +133,7 @@ public class IdentityInfoDialog
 		twitterTextField.setEditable(false);
 		senderidaddressTextField.setEditable(false);
 		sendreceiveaddressTextField.setEditable(false);
-		
+
 		detailsPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 		this.getContentPane().add(detailsPanel, BorderLayout.CENTER);
 
@@ -159,18 +159,18 @@ public class IdentityInfoDialog
 		this.setLocationRelativeTo(parentFrame);
 	}
 
-	
-	
+
+
 	private void addFormField(JPanel detailsPanel, String name, JComponent field)
 	{
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 2));
 		JLabel tempLabel = new JLabel(name, JLabel.RIGHT);
 		// TODO: hard sizing of labels may not scale!
-		final int width = new JLabel("Sender identiication T address:").getPreferredSize().width + 10;
+		final int width = new JLabel("Sender identification T address:").getPreferredSize().width + 10;
 		tempLabel.setPreferredSize(new Dimension(width, tempLabel.getPreferredSize().height));
 		tempPanel.add(tempLabel);
 		tempPanel.add(field);
 		detailsPanel.add(tempPanel);
 	}
-	
+
 } // End public class IdentityInfoDialog

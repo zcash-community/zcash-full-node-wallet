@@ -1,11 +1,11 @@
 /************************************************************************************************
- *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _   
- *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |  
- *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_ 
+ *   ____________ _   _  _____          _      _____ _    _ _______          __   _ _      _
+ *  |___  /  ____| \ | |/ ____|        | |    / ____| |  | |_   _\ \        / /  | | |    | |
+ *     / /| |__  |  \| | |     __ _ ___| |__ | |  __| |  | | | |  \ \  /\  / /_ _| | | ___| |_
  *    / / |  __| | . ` | |    / _` / __| '_ \| | |_ | |  | | | |   \ \/  \/ / _` | | |/ _ \ __|
- *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_ 
+ *   / /__| |____| |\  | |___| (_| \__ \ | | | |__| | |__| |_| |_   \  /\  / (_| | | |  __/ |_
  *  /_____|______|_| \_|\_____\__,_|___/_| |_|\_____|\____/|_____|   \/  \/ \__,_|_|_|\___|\__|
- *                                                                                             
+ *
  * Copyright (c) 2017 Ivan Vaklinov <ivan@vaklinov.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -50,23 +50,23 @@ public class OwnIdentityEditDialog
 {
 	private MessagingStorage storage;
 	private StatusUpdateErrorReporter errorReporter;
-	
-	public OwnIdentityEditDialog(JFrame parent, MessagingIdentity identity, 
+
+	public OwnIdentityEditDialog(JFrame parent, MessagingIdentity identity,
 			                     MessagingStorage storage, StatusUpdateErrorReporter errorReporter, boolean identityIsBeingCreated)
 	{
 		super(parent, identity);
 
 		this.storage       = storage;
 		this.errorReporter = errorReporter;
-		
-		this.setTitle("Own messaging identity - edit...");
-		
+
+		this.setTitle("My Messaging Identity");
+
 		this.infoLabel.setText(
 			"<html><span style=\"font-size:0.97em;\">" +
-			"The fields below make up your messaging identity. This information is meant to be " +
-			"shared with other users.<br/> The only mandatory field is the \"Nick name\"." +
+			"Welcome to your messaging identity. This information is meant to be " +
+			"shared with other users.<br/> The only required field is the \"nickname\"." +
 			"</span>");
-		
+
 		nicknameTextField.setEditable(true);
 		firstnameTextField.setEditable(true);
 		middlenameTextField.setEditable(true);
@@ -75,7 +75,7 @@ public class OwnIdentityEditDialog
 		streetaddressTextField.setEditable(true);
 		facebookTextField.setEditable(true);
 		twitterTextField.setEditable(true);
-				
+
 		// Build the save and Cancel buttons
 		if (identityIsBeingCreated)
 		{
@@ -83,10 +83,10 @@ public class OwnIdentityEditDialog
 			this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 			this.buttonPanel.removeAll();
 		}
-		
-		JButton saveButon = new JButton("Save & close");
-		buttonPanel.add(saveButon);
-		saveButon.addActionListener(new ActionListener()
+
+		JButton saveButton = new JButton("Save & Close");
+		buttonPanel.add(saveButton);
+		saveButton.addActionListener(new ActionListener()
 		{
 			@Override
 			public void actionPerformed(ActionEvent e)
@@ -99,13 +99,13 @@ public class OwnIdentityEditDialog
 					{
 				        JOptionPane.showMessageDialog(
 			        		OwnIdentityEditDialog.this.parentFrame,
-			        		"The nick name field is empty. It is mandatory - please fill it.",
-			                "Mandatory data missing", JOptionPane.ERROR_MESSAGE);
+			        		"The \"nickname\" field is required.",
+			                "Field \"Nickname\" Required", JOptionPane.ERROR_MESSAGE);
 				        return;
 					}
-					
+
 					// TODO: check validity of fields to avoid entering rubbish (e.g. invalid e-mail)
-					
+
 					// Save all identity fields from the text fields
 					MessagingIdentity id = OwnIdentityEditDialog.this.identity;
 					id.setNickname(OwnIdentityEditDialog.this.nicknameTextField.getText());
@@ -116,15 +116,15 @@ public class OwnIdentityEditDialog
 					id.setStreetaddress(OwnIdentityEditDialog.this.streetaddressTextField.getText());
 					id.setFacebook(OwnIdentityEditDialog.this.facebookTextField.getText());
 					id.setTwitter(OwnIdentityEditDialog.this.twitterTextField.getText());
-					
+
 					// Save the identity
 					OwnIdentityEditDialog.this.storage.updateOwnIdentity(id);
-					
+
 					OwnIdentityEditDialog.this.setVisible(false);
 					OwnIdentityEditDialog.this.dispose();
 				} catch (Exception ex)
 				{
-					Log.error("Unexpected error in editing own messaging identity!", ex);
+					Log.error("Unexpected error editing My Messaging Identity!", ex);
 					OwnIdentityEditDialog.this.errorReporter.reportError(ex, false);
 				}
 			}
@@ -134,5 +134,5 @@ public class OwnIdentityEditDialog
 		this.setLocation(100, 100);
 		this.setLocationRelativeTo(parent);
 	}
-	
+
 } // End public class OwnIdentityEditDialog
