@@ -423,7 +423,7 @@ extends WalletTabPanel
 		{
 			//TODO - ZCL
 			if (!(destinationAddress.startsWith("zc") ||
-					destinationAddress.startsWith("t1")))
+					destinationAddress.startsWith("t1") || destinationAddress.startsWith("t3")))
 			{
 				Object[] options = { "OK" };
 
@@ -431,7 +431,7 @@ extends WalletTabPanel
 						SendCashPanel.this.getRootPane().getParent(),
 						"The destination address to send ZCL to:\n" +
 								destinationAddress + "\n"+
-								"does not appear to be a valid ZCL address. ZCL addresses start with t1 or zc!",
+								"does not appear to be a valid ZCL address. ZCL addresses start with t1, t3 or zc!",
 								"Destination Address Invalid",
 								JOptionPane.DEFAULT_OPTION,
 								JOptionPane.ERROR_MESSAGE,
