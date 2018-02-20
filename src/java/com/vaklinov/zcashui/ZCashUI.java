@@ -94,10 +94,10 @@ extends JFrame
 
 	private JMenuItem menuItemExit;
 	private JMenuItem menuItemAbout;
-	private JMenuItem menuItemEncrypt;
-	private JMenuItem menuItemBackup;
-	private JMenuItem menuItemExportKeys;
-	private JMenuItem menuItemImportKeys;
+	//private JMenuItem menuItemEncrypt;
+	//private JMenuItem menuItemBackup;
+	//private JMenuItem menuItemExportKeys;
+	//private JMenuItem menuItemImportKeys;
 	private JMenuItem menuItemShowPrivateKey;
 	private JMenuItem menuItemImportOnePrivateKey;
 	private JMenuItem menuItemOwnIdentity;
@@ -120,7 +120,7 @@ extends JFrame
 	public ZCashUI(StartupProgressDialog progressDialog)
 			throws IOException, InterruptedException, WalletCallException
 	{
-		super("Zclassic Desktop GUI Wallet 0.0.1");
+		super("Zclassic Desktop GUI Wallet 1.0.0");
 
 		if (progressDialog != null)
 		{
@@ -198,14 +198,30 @@ extends JFrame
 
 		JMenu wallet = new JMenu("Wallet");
 		wallet.setMnemonic(KeyEvent.VK_W);
-		wallet.add(menuItemBackup = new JMenuItem("Backup", KeyEvent.VK_B));
-		menuItemBackup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, accelaratorKeyMask));
-		wallet.add(menuItemEncrypt = new JMenuItem("Encrypt", KeyEvent.VK_E));
-		menuItemEncrypt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, accelaratorKeyMask));
+
+		/*
+		 * Disabled since there is no way of importing the wallet so does not make sense for Avg. Joe to export
+		 */
+		/*
+		 * wallet.add(menuItemBackup = new JMenuItem("Backup", KeyEvent.VK_B));
+		 * menuItemBackup.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, accelaratorKeyMask));
+		 */
+
+		//comment out since was disabled in the first place
+		//wallet.add(menuItemEncrypt = new JMenuItem("Encrypt", KeyEvent.VK_E));
+		//menuItemEncrypt.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, accelaratorKeyMask));
+		/*
+		 * disable since importing in BULK gives these issues:
+		 * https://github.com/zcash/zcash/issues/2486
+		 * https://github.com/zcash/zcash/issues/2524
+		 */ 
+
+		/*
 		wallet.add(menuItemExportKeys = new JMenuItem("Export Private Keys", KeyEvent.VK_K));
 		menuItemExportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K, accelaratorKeyMask));
 		wallet.add(menuItemImportKeys = new JMenuItem("Import Private Keys", KeyEvent.VK_I));
 		menuItemImportKeys.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, accelaratorKeyMask));
+		 */
 		wallet.add(menuItemShowPrivateKey = new JMenuItem("View One Private Key", KeyEvent.VK_P));
 		menuItemShowPrivateKey.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, accelaratorKeyMask));
 		wallet.add(menuItemImportOnePrivateKey = new JMenuItem("Import One Private Key", KeyEvent.VK_N));
@@ -245,7 +261,7 @@ extends JFrame
 		mb.add(messaging);
 
 		// TODO: Temporarily disable encryption until further notice - Oct 24 2016
-		menuItemEncrypt.setEnabled(false);
+		//menuItemEncrypt.setEnabled(false);
 
 		this.setJMenuBar(mb);
 
@@ -279,7 +295,7 @@ extends JFrame
 					}
 				}
 				);
-
+		/*
 		menuItemBackup.addActionListener(
 				new ActionListener()
 				{
@@ -290,7 +306,8 @@ extends JFrame
 					}
 				}
 				);
-
+		 */
+		/*
 		menuItemEncrypt.addActionListener(
 				new ActionListener()
 				{
@@ -301,7 +318,8 @@ extends JFrame
 					}
 				}
 				);
-
+		 */
+		/*
 		menuItemExportKeys.addActionListener(
 				new ActionListener()
 				{
@@ -323,7 +341,7 @@ extends JFrame
 					}
 				}
 				);
-
+		 */
 		menuItemShowPrivateKey.addActionListener(
 				new ActionListener()
 				{
@@ -435,7 +453,7 @@ extends JFrame
 					}
 				}
 				);
-				*/
+		 */
 
 		// Close operation
 		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -508,7 +526,7 @@ extends JFrame
 						}
 					}
 				}
-		);
+				);
 
 	}
 

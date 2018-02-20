@@ -75,7 +75,7 @@ import com.vaklinov.zcashui.ZCashClientCaller.WalletCallException;
  * @author Ivan Vaklinov <ivan@vaklinov.com>
  */
 public class SendCashPanel
-	extends WalletTabPanel
+extends WalletTabPanel
 {
 	private ZCashClientCaller         clientCaller;
 	private StatusUpdateErrorReporter errorReporter;
@@ -104,10 +104,10 @@ public class SendCashPanel
 
 
 	public SendCashPanel(ZCashClientCaller clientCaller,
-			             StatusUpdateErrorReporter errorReporter,
-			             ZCashInstallationObserver installationObserver,
-			             BackupTracker backupTracker)
-		throws IOException, InterruptedException, WalletCallException
+			StatusUpdateErrorReporter errorReporter,
+			ZCashInstallationObserver installationObserver,
+			BackupTracker backupTracker)
+					throws IOException, InterruptedException, WalletCallException
 	{
 		this.timers = new ArrayList<Timer>();
 		this.threads = new ArrayList<DataGatheringThread<?>>();
@@ -128,9 +128,9 @@ public class SendCashPanel
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(new JLabel("Send ZCL from:       "));
 		tempPanel.add(new JLabel(
-			"<html><span style=\"font-size:0.8em;\">" +
-			"* Only addresses with a confirmed balance are shown as sources for sending!" +
-		    "</span>  "));
+				"<html><span style=\"font-size:0.8em;\">" +
+						"* Only addresses with a confirmed balance are shown as sources for sending!" +
+				"</span>  "));
 		sendCashPanel.add(tempPanel);
 
 		balanceAddressCombo = new JComboBox<>(new String[] { "" });
@@ -148,7 +148,7 @@ public class SendCashPanel
 
 		destinationAddressField = new JTextField(73);
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        tempPanel.add(destinationAddressField);
+		tempPanel.add(destinationAddressField);
 		sendCashPanel.add(tempPanel);
 
 		dividerLabel = new JLabel("   ");
@@ -159,13 +159,13 @@ public class SendCashPanel
 		tempPanel.add(new JLabel("Memo (optional):     "));
 		tempPanel.add(new JLabel(
 				"<html><span style=\"font-size:0.8em;\">" +
-				"* Memo may be specified only if the destination is a Z (Private) address!" +
-			    "</span>  "));
+						"* Memo may be specified only if the destination is a Z (Private) address!" +
+				"</span>  "));
 		sendCashPanel.add(tempPanel);
 
 		destinationMemoField = new JTextField(73);
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        tempPanel.add(destinationMemoField);
+		tempPanel.add(destinationMemoField);
 		sendCashPanel.add(tempPanel);
 
 		dividerLabel = new JLabel("   ");
@@ -211,12 +211,12 @@ public class SendCashPanel
 		warningPanel.setLayout(new BorderLayout(7, 3));
 		JLabel warningL = new JLabel(
 				"<html><span style=\"font-size:0.8em;\">" +
-				" * When sending ZCL from a T (Transparent) address, the remaining unspent balance is sent to another " +
-				"auto-generated T address. When sending from a Z (Private) address, the remaining unspent balance remains with " +
-				"the Z address. In both cases, the original sending address cannot be used for sending again until the " +
-				"transaction is confirmed. The address is temporarily removed from the list! Freshly mined coins may only "+
-				"be sent to a Z (Private) address." +
-			    "</span>");
+						" * When sending ZCL from a T (Transparent) address, the remaining unspent balance is sent to another " +
+						"auto-generated T address. When sending from a Z (Private) address, the remaining unspent balance remains with " +
+						"the Z address. In both cases, the original sending address cannot be used for sending again until the " +
+						"transaction is confirmed. The address is temporarily removed from the list! Freshly mined coins may only "+
+						"be sent to a Z (Private) address." +
+				"</span>");
 		warningPanel.add(warningL, BorderLayout.NORTH);
 		sendCashPanel.add(warningPanel);
 
@@ -231,8 +231,8 @@ public class SendCashPanel
 
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(new JLabel("Last operation status: "));
-        tempPanel.add(operationStatusLabel = new JLabel("N/A"));
-        operationStatusPanel.add(tempPanel);
+		tempPanel.add(operationStatusLabel = new JLabel("N/A"));
+		operationStatusPanel.add(tempPanel);
 
 		dividerLabel = new JLabel("   ");
 		dividerLabel.setFont(new Font("Helvetica", Font.PLAIN, 6));
@@ -240,9 +240,9 @@ public class SendCashPanel
 
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(new JLabel("Progress: "));
-        tempPanel.add(operationStatusProhgressBar = new JProgressBar(0, 200));
-        operationStatusProhgressBar.setPreferredSize(new Dimension(250, 17));
-        operationStatusPanel.add(tempPanel);
+		tempPanel.add(operationStatusProhgressBar = new JProgressBar(0, 200));
+		operationStatusProhgressBar.setPreferredSize(new Dimension(250, 17));
+		operationStatusPanel.add(tempPanel);
 
 		dividerLabel = new JLabel("   ");
 		dividerLabel.setFont(new Font("Helvetica", Font.PLAIN, 13));
@@ -254,7 +254,7 @@ public class SendCashPanel
 			public void actionPerformed(ActionEvent e)
 			{
 				try
-			    {
+				{
 					SendCashPanel.this.sendCash();
 				} catch (Exception ex)
 				{
@@ -269,30 +269,30 @@ public class SendCashPanel
 					JOptionPane.showMessageDialog(
 							SendCashPanel.this.getRootPane().getParent(),
 							"An error occurred when sending ZCL:\n" +
-							errMessage + "\n\n" +
-							"Please check that the Zclassic daemon is running and\n" +
-							"the sending parameters are correct.\n",
-							"Error Sending ZCL", JOptionPane.ERROR_MESSAGE);
+									errMessage + "\n\n" +
+									"Please check that the Zclassic daemon is running and\n" +
+									"the sending parameters are correct.\n",
+									"Error Sending ZCL", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
 
 		// Update the balances via timer and data gathering thread
 		this.addressBalanceGatheringThread = new DataGatheringThread<String[][]>(
-			new DataGatheringThread.DataGatherer<String[][]>()
-			{
-				public String[][] gatherData()
-					throws Exception
+				new DataGatheringThread.DataGatherer<String[][]>()
 				{
-					long start = System.currentTimeMillis();
-					String[][] data = SendCashPanel.this.getAddressPositiveBalanceDataFromWallet();
-					long end = System.currentTimeMillis();
-					Log.info("Gathering of address/balance table data done in " + (end - start) + "ms." );
+					public String[][] gatherData()
+							throws Exception
+					{
+						long start = System.currentTimeMillis();
+						String[][] data = SendCashPanel.this.getAddressPositiveBalanceDataFromWallet();
+						long end = System.currentTimeMillis();
+						Log.info("Gathering of address/balance table data done in " + (end - start) + "ms." );
 
-					return data;
-				}
-			},
-			this.errorReporter, 10000, true);
+						return data;
+					}
+				},
+				this.errorReporter, 10000, true);
 		this.threads.add(addressBalanceGatheringThread);
 
 		ActionListener alBalancesUpdater = new ActionListener()
@@ -319,16 +319,16 @@ public class SendCashPanel
 		// Add a popup menu to the destination address field - for convenience
 		JMenuItem paste = new JMenuItem("Paste address");
 		final JPopupMenu popupMenu = new JPopupMenu();
-        popupMenu.add(paste);
-        paste.addActionListener(new ActionListener()
-        {
+		popupMenu.add(paste);
+		paste.addActionListener(new ActionListener()
+		{
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
 				try
 				{
 					String address = (String)Toolkit.getDefaultToolkit().getSystemClipboard().
-							         getData(DataFlavor.stringFlavor);
+							getData(DataFlavor.stringFlavor);
 					if ((address != null) && (address.trim().length() > 0))
 					{
 						SendCashPanel.this.destinationAddressField.setText(address);
@@ -343,49 +343,49 @@ public class SendCashPanel
 			}
 		});
 
-        this.destinationAddressField.addMouseListener(new MouseAdapter()
-        {
-        	public void mousePressed(MouseEvent e)
-        	{
-                if ((!e.isConsumed()) && e.isPopupTrigger())
-                {
-                    popupMenu.show(e.getComponent(), e.getPoint().x, e.getPoint().y);
-                    e.consume();
-                };
-        	}
+		this.destinationAddressField.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				if ((!e.isConsumed()) && e.isPopupTrigger())
+				{
+					popupMenu.show(e.getComponent(), e.getPoint().x, e.getPoint().y);
+					e.consume();
+				};
+			}
 
-            public void mouseReleased(MouseEvent e)
-            {
-            	if ((!e.isConsumed()) && e.isPopupTrigger())
-            	{
-            		mousePressed(e);
-            	}
-            }
-        });
+			public void mouseReleased(MouseEvent e)
+			{
+				if ((!e.isConsumed()) && e.isPopupTrigger())
+				{
+					mousePressed(e);
+				}
+			}
+		});
 
 	}
 
 
 	private void sendCash()
-		throws WalletCallException, IOException, InterruptedException
+			throws WalletCallException, IOException, InterruptedException
 	{
 		if (balanceAddressCombo.getItemCount() <= 0)
 		{
 			JOptionPane.showMessageDialog(
-				SendCashPanel.this.getRootPane().getParent(),
-				"There are no addresses with a positive balance to send\n" +
-				"ZCL from!",
-				"No Funds Available", JOptionPane.ERROR_MESSAGE);
+					SendCashPanel.this.getRootPane().getParent(),
+					"There are no addresses with a positive balance to send\n" +
+							"ZCL from!",
+							"No Funds Available", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
 		if (this.balanceAddressCombo.getSelectedIndex() < 0)
 		{
 			JOptionPane.showMessageDialog(
-				SendCashPanel.this.getRootPane().getParent(),
-				"Please select a source address with a current positive\n" +
-				"balance to send ZCL from!",
-				"Select Source Address", JOptionPane.ERROR_MESSAGE);
+					SendCashPanel.this.getRootPane().getParent(),
+					"Please select a source address with a current positive\n" +
+							"balance to send ZCL from!",
+							"Select Source Address", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
@@ -421,25 +421,25 @@ public class SendCashPanel
 		// Prevent accidental sending to non-ZCL addresses (as seems to be supported by daemon)
 		if (!installationObserver.isOnTestNet())
 		{
-      //TODO - ZCL
+			//TODO - ZCL
 			if (!(destinationAddress.startsWith("zc") ||
-				  destinationAddress.startsWith("t1")))
+					destinationAddress.startsWith("t1")))
 			{
 				Object[] options = { "OK" };
 
 				JOptionPane.showOptionDialog(
-					SendCashPanel.this.getRootPane().getParent(),
-					"The destination address to send ZCL to:\n" +
-					destinationAddress + "\n"+
-					"does not appear to be a valid ZCL address. ZCL addresses start with t1 or zc!",
-					"Destination Address Invalid",
-					JOptionPane.DEFAULT_OPTION,
-					JOptionPane.ERROR_MESSAGE,
-					null,
-					options,
-					options[0]);
+						SendCashPanel.this.getRootPane().getParent(),
+						"The destination address to send ZCL to:\n" +
+								destinationAddress + "\n"+
+								"does not appear to be a valid ZCL address. ZCL addresses start with t1 or zc!",
+								"Destination Address Invalid",
+								JOptionPane.DEFAULT_OPTION,
+								JOptionPane.ERROR_MESSAGE,
+								null,
+								options,
+								options[0]);
 
-			    return; // Do not send anything!
+				return; // Do not send anything!
 			}
 		}
 
@@ -475,8 +475,8 @@ public class SendCashPanel
 		if (errorMessage != null)
 		{
 			JOptionPane.showMessageDialog(
-				SendCashPanel.this.getRootPane().getParent(),
-				errorMessage, "Sending parameters are incorrect", JOptionPane.ERROR_MESSAGE);
+					SendCashPanel.this.getRootPane().getParent(),
+					errorMessage, "Sending parameters are incorrect", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 
@@ -515,20 +515,20 @@ public class SendCashPanel
 		// Start a data gathering thread specific to the operation being executed - this is done is a separate
 		// thread since the server responds more slowly during JoinSPlits and this blocks he GUI somewhat.
 		final DataGatheringThread<Boolean> opFollowingThread = new DataGatheringThread<Boolean>(
-			new DataGatheringThread.DataGatherer<Boolean>()
-			{
-				public Boolean gatherData()
-					throws Exception
+				new DataGatheringThread.DataGatherer<Boolean>()
 				{
-					long start = System.currentTimeMillis();
-					Boolean result = clientCaller.isSendingOperationComplete(operationStatusID);
-					long end = System.currentTimeMillis();
-					Log.info("Checking for operation " + operationStatusID + " status done in " + (end - start) + "ms." );
+					public Boolean gatherData()
+							throws Exception
+					{
+						long start = System.currentTimeMillis();
+						Boolean result = clientCaller.isSendingOperationComplete(operationStatusID);
+						long end = System.currentTimeMillis();
+						Log.info("Checking for operation " + operationStatusID + " status done in " + (end - start) + "ms." );
 
-					return result;
-				}
-			},
-			this.errorReporter, 2000, true);
+						return result;
+					}
+				},
+				this.errorReporter, 2000, true);
 
 		// Start a timer to update the progress of the operation
 		operationStatusCounter = 0;
@@ -548,7 +548,7 @@ public class SendCashPanel
 						opFollowingThread.setSuspended(true);
 
 						SendCashPanel.this.reportCompleteOperationToTheUser(
-							amount, sourceAddress, destinationAddress);
+								amount, sourceAddress, destinationAddress);
 
 						// Lock the wallet again
 						if (bEncryptedWallet)
@@ -573,7 +573,7 @@ public class SendCashPanel
 					{
 						// Update the progress
 						operationStatusLabel.setText(
-							"<html><span style=\"color:orange;font-weight:bold\">IN PROGRESS</span></html>");
+								"<html><span style=\"color:orange;font-weight:bold\">IN PROGRESS</span></html>");
 						operationStatusCounter += 2;
 						int progress = 0;
 						if (operationStatusCounter <= 100)
@@ -601,12 +601,12 @@ public class SendCashPanel
 
 	public void prepareForSending(String address)
 	{
-	    destinationAddressField.setText(address);
+		destinationAddressField.setText(address);
 	}
 
 
 	private void updateWalletAddressPositiveBalanceComboBox()
-		throws WalletCallException, IOException, InterruptedException
+			throws WalletCallException, IOException, InterruptedException
 	{
 		String[][] newAddressBalanceData = this.addressBalanceGatheringThread.getLastData();
 
@@ -623,8 +623,8 @@ public class SendCashPanel
 		{
 			// Do numeric formatting or else we may get 1.1111E-5
 			comboBoxItems[i] =
-				new DecimalFormat("########0.00######").format(Double.valueOf(lastAddressBalanceData[i][0]))  +
-				" - " + lastAddressBalanceData[i][1];
+					new DecimalFormat("########0.00######").format(Double.valueOf(lastAddressBalanceData[i][0]))  +
+					" - " + lastAddressBalanceData[i][1];
 		}
 
 		int selectedIndex = balanceAddressCombo.getSelectedIndex();
@@ -633,8 +633,8 @@ public class SendCashPanel
 		balanceAddressCombo = new JComboBox<>(comboBoxItems);
 		comboBoxParentPanel.add(balanceAddressCombo);
 		if ((balanceAddressCombo.getItemCount() > 0) &&
-			(selectedIndex >= 0) &&
-			(balanceAddressCombo.getItemCount() > selectedIndex))
+				(selectedIndex >= 0) &&
+				(balanceAddressCombo.getItemCount() > selectedIndex))
 		{
 			balanceAddressCombo.setSelectedIndex(selectedIndex);
 		}
@@ -646,7 +646,7 @@ public class SendCashPanel
 
 
 	private String[][] getAddressPositiveBalanceDataFromWallet()
-		throws WalletCallException, IOException, InterruptedException
+			throws WalletCallException, IOException, InterruptedException
 	{
 		// Z Addresses - they are OK
 		String[] zAddresses = clientCaller.getWalletZAddresses();
@@ -682,9 +682,9 @@ public class SendCashPanel
 			if (Double.valueOf(balance) > 0)
 			{
 				tempAddressBalances[count++] = new String[]
-				{
-					balance, address
-				};
+						{
+								balance, address
+						};
 			}
 		}
 
@@ -694,9 +694,9 @@ public class SendCashPanel
 			if (Double.valueOf(balance) > 0)
 			{
 				tempAddressBalances[count++] = new String[]
-				{
-					balance, address
-				};
+						{
+								balance, address
+						};
 			}
 		}
 
@@ -708,63 +708,63 @@ public class SendCashPanel
 
 
 	private void reportCompleteOperationToTheUser(String amount, String sourceAddress, String destinationAddress)
-		throws InterruptedException, WalletCallException, IOException, URISyntaxException
+			throws InterruptedException, WalletCallException, IOException, URISyntaxException
 	{
 		if (clientCaller.isCompletedOperationSuccessful(operationStatusID))
 		{
 			operationStatusLabel.setText(
-				"<html><span style=\"color:green;font-weight:bold\">SUCCESSFUL</span></html>");
+					"<html><span style=\"color:green;font-weight:bold\">SUCCESSFUL</span></html>");
 			String TXID = clientCaller.getSuccessfulOperationTXID(operationStatusID);
 
 			Object[] options = { "OK", "Copy transaction ID", "View on the blockchain" };
 
 			int option = JOptionPane.showOptionDialog(
-				SendCashPanel.this.getRootPane().getParent(),
-				"Succesfully sent " + amount + " ZCL from address: \n" +
-				sourceAddress + "\n" +
-				"to address: \n" +
-				destinationAddress + "\n\n" +
-				"Transaction ID: " + TXID,
-				"ZCL sent successfully",
-				JOptionPane.DEFAULT_OPTION,
-				JOptionPane.INFORMATION_MESSAGE,
-				null,
-				options,
-				options[0]);
+					SendCashPanel.this.getRootPane().getParent(),
+					"Succesfully sent " + amount + " ZCL from address: \n" +
+							sourceAddress + "\n" +
+							"to address: \n" +
+							destinationAddress + "\n\n" +
+							"Transaction ID: " + TXID,
+							"ZCL sent successfully",
+							JOptionPane.DEFAULT_OPTION,
+							JOptionPane.INFORMATION_MESSAGE,
+							null,
+							options,
+							options[0]);
 
-		    if (option == 1)
-		    {
-		    	// Copy the transaction ID to clipboard
-		    	Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			if (option == 1)
+			{
+				// Copy the transaction ID to clipboard
+				Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 				clipboard.setContents(new StringSelection(TXID), null);
-		    } else if (option == 2)
-		    {
-		    	// Open block explorer
+			} else if (option == 2)
+			{
+				// Open block explorer
 				Log.info("Transaction ID for block explorer is: " + TXID);
 				// TODO: code duplication with transactions table
 				String urlPrefix = "https://zcl-explorer.com/tx/";
 				if (installationObserver.isOnTestNet())
 				{
-          //TODO zcl testnet explorer
+					//TODO zcl testnet explorer
 					urlPrefix = "https://explorer-testnet.zen-solutions.io/tx/";
 				}
 				Desktop.getDesktop().browse(new URL(urlPrefix + TXID).toURI());
-		    }
+			}
 
-		    // Call the backup tracker - to remind the user
-		    this.backupTracker.handleNewTransaction();
+			// Call the backup tracker - to remind the user
+			this.backupTracker.handleNewTransaction();
 		} else
 		{
 			String errorMessage = clientCaller.getOperationFinalErrorMessage(operationStatusID);
 			operationStatusLabel.setText(
-				"<html><span style=\"color:red;font-weight:bold\">ERROR: " + errorMessage + "</span></html>");
+					"<html><span style=\"color:red;font-weight:bold\">ERROR: " + errorMessage + "</span></html>");
 
 			JOptionPane.showMessageDialog(
 					SendCashPanel.this.getRootPane().getParent(),
 					"An error occurred when sending ZCL:\n" +
-					errorMessage + "\n\n" +
-					"Please check that the sending parameters are correct, and try again.\n",
-					"Error Sending ZCL", JOptionPane.ERROR_MESSAGE);
+							errorMessage + "\n\n" +
+							"Please check that the sending parameters are correct, and try again.\n",
+							"Error Sending ZCL", JOptionPane.ERROR_MESSAGE);
 
 		}
 	}
