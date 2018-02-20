@@ -63,15 +63,15 @@ echo "|| Packaging App ||"
 echo "*******************"
 echo ""
 #package jar to app
-jar2app build/jars/ZclassicSwingWallet.jar  -i ./src/resources/images/zclassic-logo.icns
+jar2app build/jars/ZclassicSwingWallet.jar -n ZclassicDesktopWallet  -i ./src/resources/images/zclassic-logo.icns
 
 #add zcld and zcl-cli into the required Contents folder of the App
-cp ./zcld ./ZclassicSwingWallet.app/Contents/zcld
-cp ./zcl-cli ./ZclassicSwingWallet.app/Contents/zcl-cli
+cp ./zcld ./ZclassicDesktopWallet.app/Contents/zcld
+cp ./zcl-cli ./ZclassicDesktopWallet.app/Contents/zcl-cli
 
 
-chmod +x ./ZclassicSwingWallet.app/Contents/zcld
-chmod +x ./ZclassicSwingWallet.app/Contents/zcl-cli
+chmod +x ./ZclassicDesktopWallet.app/Contents/zcld
+chmod +x ./ZclassicDesktopWallet.app/Contents/zcl-cli
 echo ""
 echo "**********************************"
 echo "|| Statically linking libraries ||"
@@ -79,7 +79,7 @@ echo "**********************************"
 echo ""
 
 #statically build required libraries
-dylibbundler -od -b -x ./ZclassicSwingWallet.app/Contents/zcld \
-                    -x ./ZclassicSwingWallet.app/Contents/zcl-cli \
-                    -d ./ZclassicSwingWallet.app/Contents/libs \
+dylibbundler -od -b -x ./ZclassicDesktopWallet.app/Contents/zcld \
+                    -x ./ZclassicDesktopWallet.app/Contents/zcl-cli \
+                    -d ./ZclassicDesktopWallet.app/Contents/libs \
                     -p @executable_path/libs
