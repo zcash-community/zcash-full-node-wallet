@@ -1,5 +1,13 @@
 :: some commands found that can be a start for the clean.bat
 
+:: ------------------------------------------------------------------
+:: [Niels Buekers] 	Clean blockchain folders
+::          		Deletes existing blockchain from user's default
+::					installation directory. Should only be used in
+::					case of a corrupted chainstate. User will need
+::					to redownload entire blockchain if he proceeds.
+::					Wallet, peers and config remains untouched.
+:: ------------------------------------------------------------------
 @echo off
 setlocal
 :PROMPT
