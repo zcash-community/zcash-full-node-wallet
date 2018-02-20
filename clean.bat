@@ -17,8 +17,8 @@ ECHO "Only use this in case of a currupted chainstate."
 SET /P AREYOUSURE=Are you sure (Y/[N])?
 IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 
-:: @RD /S /Q "C:\Users\%USERNAME%\AppData\Roaming\Zclassic\blocks"
-:: @RD /S /Q "C:\Users\%USERNAME%\AppData\Roaming\Zclassic\chainstate"
+ @RD /S /Q "C:\Users\%USERNAME%\AppData\Roaming\Zclassic\blocks"
+ @RD /S /Q "C:\Users\%USERNAME%\AppData\Roaming\Zclassic\chainstate"
 
 :END
 endlocal
