@@ -54,6 +54,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+
 import javax.management.RuntimeErrorException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -703,26 +708,35 @@ extends JFrame
 
 		File zenConfigFile = new File(dir, "zclassic.conf");
 
+    boolean oldConf = false;
 		if (zenConfigFile.exists())
 		{
 
 			Scanner scanner = new Scanner(zenConfigFile);
-			boolean rewrite;
-
 			while (scanner.hasNextLine())
 			{
 
 				String line = scanner.nextLine();
 			  if (line.indexOf("rpcport=8232") > -1)
 				{
-					// RPC Port was 8232 for pre-2018 versions - Reset zclassic.conf
-					Log.info("DELETING zclassic.conf (" + zenConfigFile.getCanonicalPath() +
-							")");
-
-					zenConfigFile.delete();
+					// RPC Port was 8232 for pre-2018 versions - Rename to zclassic_old.conf
+					Log.info("Renaming " + zenConfigFile.getCanonicalPath() +
+							" to zclassic_old.conf");
+          oldConf = true;
+          break;
 			  }
 			}
 		}
+
+    if (oldConf) { // Move old file
+      Path srcPath = FileSystems.getDefault().getPath(zenConfigFile.getCanonicalPath());
+      Path destPath = FileSystems.getDefault().getPath(dir.getCanonicalPath() + "/zclassic_old.conf");
+			try {
+					Files.move(srcPath, destPath, StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
+					Log.info("IO Exception while moving to zclassic_old.conf");
+			}
+    }
 
 		if (!zenConfigFile.exists())
 		{
