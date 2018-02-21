@@ -717,26 +717,25 @@ extends JFrame
 			{
 
 				String line = scanner.nextLine();
-			  if (line.indexOf("rpcport=8232") > -1)
+				if (line.indexOf("rpcport=8232") > -1)
 				{
 					// RPC Port was 8232 for pre-2018 versions - Rename to zclassic_old.conf
 					Log.info("Renaming " + zenConfigFile.getCanonicalPath() +
-							" to zclassic_old.conf");
-          oldConf = true;
-          break;
-			  }
+						" to zclassic_old.conf");
+					oldConf = true;
+					break;
+				}
 			}
 		}
 
-    if (oldConf) { // Move old file
-      Path srcPath = FileSystems.getDefault().getPath(zenConfigFile.getCanonicalPath());
-      Path destPath = FileSystems.getDefault().getPath(dir.getCanonicalPath() + "/zclassic_old.conf");
+		if (oldConf) { // Move old file
+			Path srcPath = FileSystems.getDefault().getPath(zenConfigFile.getCanonicalPath());
 			try {
-					Files.move(srcPath, destPath, StandardCopyOption.REPLACE_EXISTING);
+					Files.move(srcPath, srcPath.resolveSibling("zclassic_old.conf"), StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
 					Log.info("IO Exception while moving to zclassic_old.conf");
 			}
-    }
+		}
 
 		if (!zenConfigFile.exists())
 		{
