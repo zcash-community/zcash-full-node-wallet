@@ -11,6 +11,8 @@ https://github.com/z-classic/zclassic-full-node-wallet/releases
 [Java](https://java.com/en/download/) must be installed.
 
 
+![Zclassic Desktop Wallet](https://github.com/z-classic/zclassic-full-node-wallet/raw/master/docs/WalletPreviewWin.png "Zclassic Desktop Wallet")
+
 
 #### WARNING: Careful with 'watch-only' imports! They will appear in 'addresses', but ***do not*** receive funds to them because you have not fully imported the private key! This UX issue will be fixed.
 
