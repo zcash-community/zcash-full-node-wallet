@@ -111,7 +111,7 @@ The latter needs to be disabled.
 1. **Limitation:** The list of transactions does not show all outgoing ones (specifically outgoing Z address
 transactions). A corresponding issue [#1438](https://github.com/zcash/zcash/issues/1438) has been opened
 for the Zcash developers.
-1. **Limitation:** The CPU percentage shown to be taken by zcld on Linux is the average for the entire lifetime
+1. **Limitation:** The CPU percentage shown to be taken by zcashd on Linux is the average for the entire lifetime
 of the process. This is not very useful. This will be improved in future versions.
 1. **Limitation:** When using a natively compiled wallet version (e.g. `ZcashSwingWallet.exe` for Windows) on a
 very high resolution monitor with a specifically configured DPI scaling (enlargement) factor to make GUI
