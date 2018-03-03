@@ -221,7 +221,7 @@ public class SingleKeyImportDialog
 						SingleKeyImportDialog.this.getRootPane().getParent(),
 						"Error occurred when importing private key:\n" +
 						e.getClass().getName() + ":\n" + e.getMessage() + "\n\n" +
-						"Please ensure that zcld is running, and the key is in the correct \n" +
+						"Please ensure that zcashd is running, and the key is in the correct \n" +
 						"form. Try again later.\n",
 						"Error Importing Private Key", JOptionPane.ERROR_MESSAGE);
 				} finally

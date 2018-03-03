@@ -139,7 +139,7 @@ public class WalletOperations
 				JOptionPane.showMessageDialog(
 						this.parent,
 						"An unexpected error occurred while encrypting the wallet!\n" +
-								"It is recommended to stop and restart both zcld and the GUI wallet! \n" +
+								"It is recommended to stop and restart both zcashd and the GUI wallet! \n" +
 								"\n" + wce.getMessage().replace(",", ",\n"),
 								"Error Encrypting Wallet", JOptionPane.ERROR_MESSAGE);
 				return;
@@ -147,7 +147,7 @@ public class WalletOperations
 
 			JOptionPane.showMessageDialog(
 					this.parent,
-					"The wallet has been encrypted sucessfully and zcld has stopped.\n" +
+					"The wallet has been encrypted sucessfully and zcashd has stopped.\n" +
 							"The GUI wallet will be stopped as well. Please restart the program.\n" +
 							"Additionally, the internal wallet keypool has been flushed. You need\n" +
 							"to make a new backup." +
@@ -217,7 +217,7 @@ public class WalletOperations
 			{
 				this.parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
-				path = this.clientCaller.exportWallet("zclprivatekeys");
+				path = this.clientCaller.exportWallet("zcashprivatekeys");
 				this.backupTracker.handleBackup();
 				this.parent.setCursor(oldCursor);
 
@@ -240,7 +240,7 @@ public class WalletOperations
 					"The wallet private keys have been exported successfully. Full path is: " + 
 							path + "\n" +
 							"You need to protect this file from unauthorized access. Anyone who\n" +
-							"has access to the private keys can spend the Zclassic balance!",
+							"has access to the private keys can spend the Zcash balance!",
 							"Successfully Exported Private Keys", JOptionPane.INFORMATION_MESSAGE);
 
 		} catch (Exception e)

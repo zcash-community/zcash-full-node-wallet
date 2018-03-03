@@ -224,7 +224,7 @@ public class CreateGroupDialog
 							CreateGroupDialog.this.getRootPane().getParent(),
 						"Error occurred when importing private key for group phrase:\n" +
 						e.getClass().getName() + ":\n" + e.getMessage() + "\n\n" +
-						"Please ensure that zcld is running and the key is in the correct \n" +
+						"Please ensure that zcashd is running and the key is in the correct \n" +
 						"form. Try again later.\n",
 						"Error importing private key/group phrase", JOptionPane.ERROR_MESSAGE);
 				} finally
@@ -312,7 +312,7 @@ public class CreateGroupDialog
 				"has been created successfully. All messages sent by individual users to the " +
 				"group will be sent to Z address:\n"
 				+ ZAddress + "\n\n" +
-				"IMPORTANT: Do NOT send any ZCL to this address except in cases of messaging transactions. Any\n" +
+				"IMPORTANT: Do NOT send any ZEC to this address except in cases of messaging transactions. Any\n" +
 				"funds sent to this address may be spent by any user who has access to the group keyphrase!",
 				"Group Successfully Created",
 				JOptionPane.INFORMATION_MESSAGE);

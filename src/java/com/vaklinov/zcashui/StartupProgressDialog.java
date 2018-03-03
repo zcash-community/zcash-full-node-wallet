@@ -51,7 +51,7 @@ public class StartupProgressDialog extends JFrame {
     {
         this.clientCaller = clientCaller;
         
-        URL iconUrl = this.getClass().getClassLoader().getResource("images/zclassic-logo.png");
+        URL iconUrl = this.getClass().getClassLoader().getResource("images/zcash-logo.png");
         imageIcon = new ImageIcon(iconUrl);
         imageLabel.setIcon(imageIcon);
         imageLabel.setBorder(BorderFactory.createEmptyBorder(16, 16, 0, 16));
@@ -62,7 +62,7 @@ public class StartupProgressDialog extends JFrame {
         contentPane.add(imageLabel, BorderLayout.NORTH);
 		JLabel zcashWalletLabel = new JLabel(
 			"<html><span style=\"font-style:italic;font-weight:bold;font-size:2.2em\">" + 
-		    "Zclassic Wallet</span></html>");
+		    "Zcash Wallet</span></html>");
 		zcashWalletLabel.setBorder(BorderFactory.createEmptyBorder(16, 16, 16, 16));
 		// todo - place in a panel with flow center
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 1, 1));
@@ -90,7 +90,7 @@ public class StartupProgressDialog extends JFrame {
             keyFetcher.fetchIfMissing(this);
         }
         
-        Log.info("Splash: checking if zcld is already running...");
+        Log.info("Splash: checking if zcashd is already running...");
         boolean shouldStartZCashd = false;
         try {
             clientCaller.getDaemonRawRuntimeInfo();
@@ -105,13 +105,13 @@ public class StartupProgressDialog extends JFrame {
         }
         
         if (!shouldStartZCashd) {
-        	Log.info("Splash: zcld already running...");
+        	Log.info("Splash: zcashd already running...");
             // What if started by hand but taking long to initialize???
 //            doDispose();
 //            return;
         } else
         {
-        	Log.info("Splash: zcld will be started...");
+        	Log.info("Splash: zcashd will be started...");
         }
         
         final Process daemonProcess = 
@@ -153,7 +153,7 @@ public class StartupProgressDialog extends JFrame {
         //if (daemonProcess != null) // Shutdown only if we started it
         Runtime.getRuntime().addShutdownHook(new Thread() {
             public void run() {
-            	Log.info("Stopping zcld because we started it - now it is alive: " + 
+            	Log.info("Stopping zcashd because we started it - now it is alive: " + 
                 		           StartupProgressDialog.this.isAlive(daemonProcess));
                 try 
                 {
@@ -163,7 +163,7 @@ public class StartupProgressDialog extends JFrame {
 	                while (!StartupProgressDialog.this.waitFor(daemonProcess, 3000))
 	                {
 	                	long end = System.currentTimeMillis();
-	                	Log.info("Waiting for " + ((end - start) / 1000) + " seconds for zcld to exit...");
+	                	Log.info("Waiting for " + ((end - start) / 1000) + " seconds for zcashd to exit...");
 	                	
 	                	if (end - start > 10 * 1000)
 	                	{
@@ -178,14 +178,14 @@ public class StartupProgressDialog extends JFrame {
 	                }
 	            
 	                if (StartupProgressDialog.this.isAlive(daemonProcess)) {
-	                	Log.info("zcld is still alive although we tried to stop it. " +
+	                	Log.info("zcashd is still alive although we tried to stop it. " +
 	                                           "Hopefully it will stop later!");
-	                        //System.out.println("zcld is still alive, killing forcefully");
+	                        //System.out.println("zcashd is still alive, killing forcefully");
 	                        //daemonProcess.destroyForcibly();
 	                    } else
-	                    	Log.info("zcld shut down successfully");
+	                    	Log.info("zcashd shut down successfully");
                 } catch (Exception bad) {
-                	Log.error("Couldn't stop zcld!", bad);
+                	Log.error("Couldn't stop zcashd!", bad);
                 }
             }
         });

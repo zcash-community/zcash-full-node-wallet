@@ -111,10 +111,10 @@ public class TransactionTable extends DataTable {
 
 						Log.info("Transaction ID for block explorer is: " + txID);
 						// https://explorer.zcha.in/transactions/<ID>
-						String urlPrefix = "https://zcl-explorer.com/tx/";
+						String urlPrefix = "https://zcash.blockexplorer.com/tx/";
 						// TODO testnet
 						if (installationObserver.isOnTestNet()) {
-							urlPrefix = "https://explorer-testnet.zen-solutions.io/tx/";
+							urlPrefix = "https://explorer.testnet.z.cash/tx/";
 						}
 
 						Desktop.getDesktop().browse(new URL(urlPrefix + txID).toURI());
@@ -204,7 +204,7 @@ public class TransactionTable extends DataTable {
 			tempPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 			JLabel infoLabel = new JLabel("<html><span style=\"font-size:0.97em;\">"
 					+ "This table shows information about the transaction with technical details as "
-					+ "they appear at the Zclassic network level." + "</span>");
+					+ "they appear at the Zcash network level." + "</span>");
 			infoLabel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			tempPanel.add(infoLabel, BorderLayout.CENTER);
 			this.getContentPane().add(tempPanel, BorderLayout.NORTH);

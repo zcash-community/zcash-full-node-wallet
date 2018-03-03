@@ -76,16 +76,12 @@ public class AboutDialog
 		licensePanel.setLayout(new BorderLayout(3, 3));
 		JTextArea licenseLabel = new JTextArea();
 		licenseLabel.setText(
-			"" + "Copyright (c) 2018 - The Zclassic Team\n\n"
-		    + "Jon Layton <me@jonl.io>"
+			"" + "Copyright (c) 2018\n\n"
+		    + "Mikael Johansson <mikael@johansson.lc>"
 		    + "\n"
-		    + "Donate ZCL: zcF3db2JwLNHa917NfbfFR2EJWXgowFmQ4bvouJEvGmPjLPcH7hyAhpSAFUhm7ANiBJfzMpJHMkp363r7M3GEC8g8oQXJ5n   "
-			+"\n\n"
-		    + "Niels Buekers <niels.buekers@gmail.com>"
-				+ "\n"
-			+ "Donate ZCL: zcgUYH2iKgYJvLP2xnxK3pDa8CFoAAd3qbx1pvnjMbwhLfC89D6UuVPjztKsqz7m2y9vmM2xKxk7WHmuonLrWUL9aitPXBe   "
+		    + "Donate ZEC: zcDBVLn1fxUmnzXBqk5ZctNJFA7xMgsj14dW5m27n8ZbjkkJDimPNHampQaqpdAofoBfCX9GwbUM3b1BNg5uvUz9azpQXVC   "
 		    +"\n\n\n\n"
-		    +"Forked from the ZENCash wallet\n"
+		    +"Forked from the Zclassic wallet\n"
 		    + "Copyright (c) 2016-2017 Ivan Vaklinov <ivan@vaklinov.com> \n" +
 			"\n" +
 			" Permission is hereby granted, free of charge, to any person obtaining a copy\n" +

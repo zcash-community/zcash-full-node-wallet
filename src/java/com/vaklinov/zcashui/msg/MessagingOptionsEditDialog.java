@@ -104,7 +104,7 @@ public class MessagingOptionsEditDialog
 
 		addFormField(detailsPanel, "Automatically add users to contact list? ",
 				     automaticallyAddUsers = new JCheckBox());
-		addFormField(detailsPanel, "Amount of ZCL to send with every message: ", amountTextField = new JTextField(12));
+		addFormField(detailsPanel, "Amount of ZEC to send with every message: ", amountTextField = new JTextField(12));
 		addFormField(detailsPanel, "Transaction fee: ", transactionFeeTextField = new JTextField(12));
 
 		DecimalFormatSymbols decSymbols = new DecimalFormatSymbols(Locale.ROOT);
@@ -216,7 +216,7 @@ public class MessagingOptionsEditDialog
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 2));
 		JLabel tempLabel = new JLabel(name, JLabel.RIGHT);
 		// TODO: hard sizing of labels may not scale!
-		final int width = new JLabel("Amount of ZCL to send with every message: ").getPreferredSize().width + 30;
+		final int width = new JLabel("Amount of ZEC to send with every message: ").getPreferredSize().width + 30;
 		tempLabel.setPreferredSize(new Dimension(width, tempLabel.getPreferredSize().height));
 		tempPanel.add(tempLabel);
 		tempPanel.add(field);

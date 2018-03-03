@@ -114,8 +114,8 @@ public class ZCashClientCaller
 		if ((zcashcli == null) || (!zcashcli.exists()))
 		{
 			throw new IOException(
-				"The Zclassic Desktop Wallet installation directory (" + installDir + ") needs to contain " +
-				"the command line utilities zcld and zcl-cli. zcl-cli is missing!");
+				"The Zcash Desktop Wallet installation directory (" + installDir + ") needs to contain " +
+				"the command line utilities zcashd and zcash-cli. zcash-cli is missing!");
 		}
 
 		zcashd = new File(dir, OSUtil.getZCashd());
@@ -127,8 +127,8 @@ public class ZCashClientCaller
 		if (zcashd == null || (!zcashd.exists()))
 		{
 		    throw new IOException(
-		    	"The Zclassic command line utility " + zcashcli.getCanonicalPath() +
-		    	" was found, but zcld was not found!");
+		    	"The Zcash command line utility " + zcashcli.getCanonicalPath() +
+		    	" was found, but zcashd was not found!");
 		}
 	}
 

@@ -126,7 +126,7 @@ extends WalletTabPanel
 		sendCashPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 
 		JPanel tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		tempPanel.add(new JLabel("Send ZCL from:       "));
+		tempPanel.add(new JLabel("Send ZEC from:       "));
 		tempPanel.add(new JLabel(
 				"<html><span style=\"font-size:0.8em;\">" +
 						"* Only addresses with a confirmed balance are shown as sources for sending!" +
@@ -179,7 +179,7 @@ extends WalletTabPanel
 		tempPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		tempPanel.add(destinationAmountField = new JTextField(13));
 		destinationAmountField.setHorizontalAlignment(SwingConstants.RIGHT);
-		tempPanel.add(new JLabel(" ZCL    "));
+		tempPanel.add(new JLabel(" ZEC    "));
 		amountPanel.add(tempPanel, BorderLayout.SOUTH);
 
 		JPanel feePanel = new JPanel(new BorderLayout());
@@ -188,7 +188,7 @@ extends WalletTabPanel
 		tempPanel.add(transactionFeeField = new JTextField(13));
 		transactionFeeField.setText("0.0001"); // Default value
 		transactionFeeField.setHorizontalAlignment(SwingConstants.RIGHT);
-		tempPanel.add(new JLabel(" ZCL"));
+		tempPanel.add(new JLabel(" ZEC"));
 		feePanel.add(tempPanel, BorderLayout.SOUTH);
 
 		amountAndFeePanel.add(amountPanel);
@@ -211,7 +211,7 @@ extends WalletTabPanel
 		warningPanel.setLayout(new BorderLayout(7, 3));
 		JLabel warningL = new JLabel(
 				"<html><span style=\"font-size:0.8em;\">" +
-						" * When sending ZCL from a T (Transparent) address, the remaining unspent balance is sent to another " +
+						" * When sending ZEC from a T (Transparent) address, the remaining unspent balance is sent to another " +
 						"auto-generated T address. When sending from a Z (Private) address, the remaining unspent balance remains with " +
 						"the Z address. In both cases, the original sending address cannot be used for sending again until the " +
 						"transaction is confirmed. The address is temporarily removed from the list! Freshly mined coins may only "+
@@ -268,11 +268,11 @@ extends WalletTabPanel
 
 					JOptionPane.showMessageDialog(
 							SendCashPanel.this.getRootPane().getParent(),
-							"An error occurred when sending ZCL:\n" +
+							"An error occurred when sending ZEC:\n" +
 									errMessage + "\n\n" +
-									"Please check that the Zclassic daemon is running and\n" +
+									"Please check that the Zcash daemon is running and\n" +
 									"the sending parameters are correct.\n",
-									"Error Sending ZCL", JOptionPane.ERROR_MESSAGE);
+									"Error Sending ZEC", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -374,7 +374,7 @@ extends WalletTabPanel
 			JOptionPane.showMessageDialog(
 					SendCashPanel.this.getRootPane().getParent(),
 					"There are no addresses with a positive balance to send\n" +
-							"ZCL from!",
+							"ZEC from!",
 							"No Funds Available", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -384,7 +384,7 @@ extends WalletTabPanel
 			JOptionPane.showMessageDialog(
 					SendCashPanel.this.getRootPane().getParent(),
 					"Please select a source address with a current positive\n" +
-							"balance to send ZCL from!",
+							"balance to send ZEC from!",
 							"Select Source Address", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
@@ -418,10 +418,10 @@ extends WalletTabPanel
 			errorMessage = "Destination address is invalid; it is too long.";
 		}
 
-		// Prevent accidental sending to non-ZCL addresses (as seems to be supported by daemon)
+		// Prevent accidental sending to non-ZEC addresses (as seems to be supported by daemon)
 		if (!installationObserver.isOnTestNet())
 		{
-			//TODO - ZCL
+			//TODO - ZEC
 			if (!(destinationAddress.startsWith("zc") ||
 					destinationAddress.startsWith("t1") || destinationAddress.startsWith("t3")))
 			{
@@ -429,9 +429,9 @@ extends WalletTabPanel
 
 				JOptionPane.showOptionDialog(
 						SendCashPanel.this.getRootPane().getParent(),
-						"The destination address to send ZCL to:\n" +
+						"The destination address to send ZEC to:\n" +
 								destinationAddress + "\n"+
-								"does not appear to be a valid ZCL address. ZCL addresses start with t1, t3 or zc!",
+								"does not appear to be a valid ZEC address. ZEC addresses start with t1, t3 or zc!",
 								"Destination Address Invalid",
 								JOptionPane.DEFAULT_OPTION,
 								JOptionPane.ERROR_MESSAGE,
@@ -720,12 +720,12 @@ extends WalletTabPanel
 
 			int option = JOptionPane.showOptionDialog(
 					SendCashPanel.this.getRootPane().getParent(),
-					"Succesfully sent " + amount + " ZCL from address: \n" +
+					"Succesfully sent " + amount + " ZEC from address: \n" +
 							sourceAddress + "\n" +
 							"to address: \n" +
 							destinationAddress + "\n\n" +
 							"Transaction ID: " + TXID,
-							"ZCL sent successfully",
+							"ZEC sent successfully",
 							JOptionPane.DEFAULT_OPTION,
 							JOptionPane.INFORMATION_MESSAGE,
 							null,
@@ -742,11 +742,10 @@ extends WalletTabPanel
 				// Open block explorer
 				Log.info("Transaction ID for block explorer is: " + TXID);
 				// TODO: code duplication with transactions table
-				String urlPrefix = "https://zcl-explorer.com/tx/";
+				String urlPrefix = "https://zcash.blockexplorer.com/tx/";
 				if (installationObserver.isOnTestNet())
 				{
-					//TODO zcl testnet explorer
-					urlPrefix = "https://explorer-testnet.zen-solutions.io/tx/";
+					urlPrefix = "https://explorer.testnet.z.cash/tx/";
 				}
 				Desktop.getDesktop().browse(new URL(urlPrefix + TXID).toURI());
 			}
@@ -761,10 +760,10 @@ extends WalletTabPanel
 
 			JOptionPane.showMessageDialog(
 					SendCashPanel.this.getRootPane().getParent(),
-					"An error occurred when sending ZCL:\n" +
+					"An error occurred when sending ZEC:\n" +
 							errorMessage + "\n\n" +
 							"Please check that the sending parameters are correct, and try again.\n",
-							"Error Sending ZCL", JOptionPane.ERROR_MESSAGE);
+							"Error Sending ZEC", JOptionPane.ERROR_MESSAGE);
 
 		}
 	}

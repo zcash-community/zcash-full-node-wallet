@@ -27,7 +27,7 @@
  * THE SOFTWARE.
  *
 -->
-<project name="ZclassicSwingWallet" basedir="../.." default="buildit">
+<project name="ZcashSwingWallet" basedir="../.." default="buildit">
 
     <property name="src.dir"     value="src"/>
 	<property name="lib.dir"     value="lib"/>
@@ -100,45 +100,45 @@
 
     <target name="ubuntuPackage" depends="jar,copyothers">
     	<mkdir dir="${ubuntu.package.dir}"/>
-	    <deb destfile="${ubuntu.package.dir}/zclassic-desktop-gui-wallet_0.0.1_all.deb"
+	    <deb destfile="${ubuntu.package.dir}/zcash-desktop-gui-wallet_0.0.1_all.deb"
 	    	 control="${src.dir}/resources/ubuntu-package"
 	    	 verbose="true">
 
 	      <data src="${jar.dir}/${ant.project.name}.jar" type="file">
-	        <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet"/>
+	        <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet"/>
 	      </data>
 	      <data src="${jar.dir}/bitcoinj-core-0.14.5.jar" type="file">
-	        <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet"/>
+	        <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet"/>
 	      </data>
 	      <data src="${jar.dir}/bitcoinj-core-0.14.5_LICENSE.txt" type="file">
-	        <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet"/>
+	        <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet"/>
 	      </data>
 		  <data src="${jar.dir}/sqlite-jdbc-3.21.0.jar" type="file">
-			 <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet"/>
+			 <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet"/>
 		  </data>
 		  <data src="${jar.dir}/sqlite-jdbc-3.21.0_LICENSE.txt" type="file">
-			 <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet"/>
+			 <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet"/>
 		  </data>
 
 			<!-- TODO: As of Nov 2017 the IPFS wallet integration is suspended.
             <data src="${jar.dir}/go-ipfs/ipfs" type="file">
-              <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet/go-ipfs"/>
+              <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet/go-ipfs"/>
             </data>
             <data src="${jar.dir}/go-ipfs/LICENSE" type="file">
-              <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet/go-ipfs"/>
+              <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet/go-ipfs"/>
             </data>
             <data src="${jar.dir}/go-ipfs/README.md" type="file">
-              <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet/go-ipfs"/>
+              <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet/go-ipfs"/>
             </data>
             -->
-	      <data src="${src.dir}/resources/ubuntu-package/zclassic-desktop-gui-wallet" type="file">
+	      <data src="${src.dir}/resources/ubuntu-package/zcash-desktop-gui-wallet" type="file">
 	        <mapper type="perm" filemode="755" prefix="/usr/bin"/>
 	      </data>
-	      <data src="${src.dir}/resources/ubuntu-package/ZclassicWallet.desktop" type="file">
+	      <data src="${src.dir}/resources/ubuntu-package/ZcashWallet.desktop" type="file">
 	        <mapper type="perm" filemode="755" prefix="/usr/share/applications"/>
 	      </data>
-	      <data src="${src.dir}/resources/ubuntu-package/ZCL-icon.png" type="file">
-	        <mapper type="perm" filemode="755" prefix="/usr/lib/zclassic-gui-wallet"/>
+	      <data src="${src.dir}/resources/ubuntu-package/ZEC-icon.png" type="file">
+	        <mapper type="perm" filemode="755" prefix="/usr/lib/zcash-gui-wallet"/>
 	      </data>
 	    </deb>
 	</target>

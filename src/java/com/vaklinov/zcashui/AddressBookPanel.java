@@ -77,7 +77,7 @@ public class AddressBookPanel extends JPanel {
         newContactButton.addActionListener(new NewContactActionListener());
         panel.add(newContactButton);
 
-        sendCashButton = new JButton("Send ZCL");
+        sendCashButton = new JButton("Send ZEC");
         sendCashButton.addActionListener(new SendCashActionListener());
         sendCashButton.setEnabled(false);
         panel.add(sendCashButton);
@@ -255,7 +255,7 @@ public class AddressBookPanel extends JPanel {
 
             JPopupMenu menu = new JPopupMenu();
 
-            JMenuItem sendCash = new JMenuItem("Send ZCL to "+entry.name);
+            JMenuItem sendCash = new JMenuItem("Send ZEC to "+entry.name);
             sendCash.addActionListener(new SendCashActionListener());
             menu.add(sendCash);
 
@@ -292,7 +292,7 @@ public class AddressBookPanel extends JPanel {
                 return;
             }
             String name = entries.get(row).name;
-            sendCashButton.setText("Send ZCL to "+name);
+            sendCashButton.setText("Send ZEC to "+name);
             sendCashButton.setEnabled(true);
             deleteContactButton.setText("Delete contact "+name);
             deleteContactButton.setEnabled(true);

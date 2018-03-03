@@ -54,7 +54,7 @@ public class PasswordEncryptionDialog
 
 		this.upperLabel.setText(
 			"<html>The wallet.dat file will be encrypted with a password. If the operation is successful, " +
-            "zcld will automatically stop and will need to be restarted. The GUI wallet will also be stopped " +
+            "zcashd will automatically stop and will need to be restarted. The GUI wallet will also be stopped " +
             "and will need to be restarted. Please enter the password:</html>");
 
 		JLabel confLabel = new JLabel("Confirmation: ");

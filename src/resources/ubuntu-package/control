@@ -1,8 +1,8 @@
-Package: zclassic-desktop-gui-wallet
+Package: zcash-desktop-gui-wallet
 Version: 0.0.1
 Section: misc
 Priority: low
 Architecture: all
-Description: Zclassic Desktop GUI Wallet
-Maintainer: zclassic.org
+Description: Zcash Desktop GUI Wallet
+Maintainer: github.com/johanssonlc
 Depends: default-jdk, zcl

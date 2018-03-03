@@ -69,7 +69,7 @@ public class StatusUpdateErrorReporter
 			lastReportedErrorTime = time;
 		}
 
-		String settingsDirectory = ".ZclassicSwingWallet";
+		String settingsDirectory = ".ZcashSwingWallet";
 
 		try
 		{
