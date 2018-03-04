@@ -870,7 +870,7 @@ public class MessagingStorage
 
 	// Stores messages of one type - sent/received for one contact
 	// Root directory may be like:
-	// ~/.ZclassicSwingWallet/messaging/contact_XXXX/sent
+	// ~/.ZcashSwingWallet/messaging/contact_XXXX/sent
 	static class SentOrReceivedMessagesStore
 	{
 		private File rootDir;

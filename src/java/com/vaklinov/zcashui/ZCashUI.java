@@ -162,7 +162,7 @@ extends JFrame
 		tabs.addTab("My Addresses ",
 				new ImageIcon(cl.getResource("images/own-addresses.png")),
 				addresses = new AddressesPanel(this, clientCaller, errorReporter));
-		tabs.addTab("Send ZCL ",
+		tabs.addTab("Send ZEC ",
 				new ImageIcon(cl.getResource("images/send.png")),
 				sendPanel = new SendCashPanel(clientCaller, errorReporter, installationObserver, backupTracker));
 		tabs.addTab("Address Book ",
@@ -598,7 +598,7 @@ extends JFrame
 				}
 			}
 
-			// If zcld is currently not running, do a startup of the daemon as a child process
+			// If zcashd is currently not running, do a startup of the daemon as a child process
 			// It may be started but not ready - then also show dialog
 			ZCashInstallationObserver initialInstallationObserver =
 					new ZCashInstallationObserver(OSUtil.getProgramDirectory());
@@ -727,33 +727,6 @@ extends JFrame
 		File zcashConfigFile = new File(dir, "zcash.conf");
 
     		boolean oldConf = false;
-		/*if (zenConfigFile.exists())
-		{
-
-			Scanner scanner = new Scanner(zenConfigFile);
-			while (scanner.hasNextLine())
-			{
-
-				String line = scanner.nextLine();
-				if (line.indexOf("rpcport=8232") > -1)
-				{
-					// RPC Port was 8232 for pre-2018 versions - Rename to zclassic_old.conf
-					Log.info("Renaming " + zenConfigFile.getCanonicalPath() +
-						" to zcash_old.conf");
-					oldConf = true;
-					break;
-				}
-			}
-		}*/
-
-		//if (oldConf) { // Move old file
-		//	Path srcPath = FileSystems.getDefault().getPath(zenConfigFile.getCanonicalPath());
-		//	try {
-		//			Files.move(srcPath, srcPath.resolveSibling("zcash_old.conf"), StandardCopyOption.REPLACE_EXISTING);
-		//	} catch (IOException e) {
-		//			Log.info("IO Exception while moving to zcash_old.conf");
-		//	}
-		//}
 
 		if (!zcashConfigFile.exists())
 		{
