@@ -1,5 +1,7 @@
 # [Zcash](http://z.cash/) Full-Node Desktop Wallet
 
+![Zcash Desktop Wallet](https://github.com/johanssonlc/zcash-full-node-wallet/raw/master/docs/ZcashWalletPreview.png "Zcash Desktop Wallet")
+
 ### Supports T and Z addresses, messaging, and more.
 
 
