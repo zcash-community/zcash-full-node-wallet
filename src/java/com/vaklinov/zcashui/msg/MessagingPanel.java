@@ -1214,7 +1214,7 @@ public class MessagingPanel
 	        	"transaction is sufficient).",
 		        "Z address to send/receive messages has Insufficient Balance", JOptionPane.ERROR_MESSAGE);
 
-	            // Restore controls and move to the send zcl tab etc.
+	            // Restore controls and move to the send zec tab etc.
 		        this.sendButton.setEnabled(true);
 				this.writeMessageTextArea.setEnabled(true);
 

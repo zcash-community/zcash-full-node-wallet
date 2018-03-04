@@ -2,9 +2,6 @@
 
 ### Supports T and Z addresses, messaging, and more.
 
-### Download the latest release:
-https://github.com/johanssonlc/zcash-full-node-wallet/releases
-
 
 **Platforms:** Windows, Mac, Linux
 
@@ -92,7 +89,7 @@ Running the .jar will automatically set up `~/.zcash/zcash.conf` for you. In som
 ```
 rpcuser=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
 rpcpassword=ENTER-RANDOM-ALPHANUMERICAL-PASSWORD
-rpcport=8023
+rpcport=8232
 #addnode=...
 
 ```
@@ -120,6 +117,10 @@ Windows you need to right-click on `ZcashSwingWallet.exe` and choose option:
 ```
 Properties >> Compatibility >> Override high DPI scaling behavior >> Scaling performed by: (Application)
 ```
+
+### Donations
+Mikael Johansson <mikael@johansson.lc>
+Donate ZEC: zcDBVLn1fxUmnzXBqk5ZctNJFA7xMgsj14dW5m27n8ZbjkkJDimPNHampQaqpdAofoBfCX9GwbUM3b1BNg5uvUz9azpQXVC
 
 ### License
 Originally forked from the [ZENCash Swing Wallet](https://github.com/ZencashOfficial/zencash-swing-wallet-ui).

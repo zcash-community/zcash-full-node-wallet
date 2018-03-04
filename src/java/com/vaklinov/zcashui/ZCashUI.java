@@ -724,10 +724,10 @@ extends JFrame
 			}
 		}
 
-		File zenConfigFile = new File(dir, "zcash.conf");
+		File zcashConfigFile = new File(dir, "zcash.conf");
 
-    boolean oldConf = false;
-		if (zenConfigFile.exists())
+    		boolean oldConf = false;
+		/*if (zenConfigFile.exists())
 		{
 
 			Scanner scanner = new Scanner(zenConfigFile);
@@ -744,26 +744,26 @@ extends JFrame
 					break;
 				}
 			}
-		}
+		}*/
 
-		if (oldConf) { // Move old file
-			Path srcPath = FileSystems.getDefault().getPath(zenConfigFile.getCanonicalPath());
-			try {
-					Files.move(srcPath, srcPath.resolveSibling("zcash_old.conf"), StandardCopyOption.REPLACE_EXISTING);
-			} catch (IOException e) {
-					Log.info("IO Exception while moving to zcash_old.conf");
-			}
-		}
+		//if (oldConf) { // Move old file
+		//	Path srcPath = FileSystems.getDefault().getPath(zenConfigFile.getCanonicalPath());
+		//	try {
+		//			Files.move(srcPath, srcPath.resolveSibling("zcash_old.conf"), StandardCopyOption.REPLACE_EXISTING);
+		//	} catch (IOException e) {
+		//			Log.info("IO Exception while moving to zcash_old.conf");
+		//	}
+		//}
 
-		if (!zenConfigFile.exists())
+		if (!zcashConfigFile.exists())
 		{
 
-			Log.info("zcash.conf (" + zenConfigFile.getCanonicalPath() +
+			Log.info("zcash.conf (" + zcashConfigFile.getCanonicalPath() +
 					") does not exist. It will be created with default settings.");
 
 			Random r = new Random(System.currentTimeMillis());
 
-			PrintStream configOut = new PrintStream(new FileOutputStream(zenConfigFile));
+			PrintStream configOut = new PrintStream(new FileOutputStream(zcashConfigFile));
 
 			configOut.println("#############################################################################");
 			configOut.println("#                         Zcash Configuration File                            #");
@@ -781,7 +781,7 @@ extends JFrame
 					Math.abs(r.nextInt()));
 			configOut.println("");
 			configOut.println("rpcallowip=127.0.0.1");
-			configOut.println("rpcport=8023");
+			configOut.println("rpcport=8232");
 			configOut.println("# Well-known nodes to connect to (speeds up acquiring additional peers)");
 
 			for(String node : getAddNodes()) {
