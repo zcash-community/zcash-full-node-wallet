@@ -1,6 +1,6 @@
 # [Zcash](http://z.cash/) Full-Node Desktop Wallet
 
-![Zcash Desktop Wallet](https://github.com/johanssonlc/zcash-full-node-wallet/raw/master/docs/ZcashWalletPreview.png "Zcash Desktop Wallet")
+![Zcash Desktop Wallet](https://github.com/zcash-community/zcash-full-node-wallet/raw/master/docs/ZcashWalletPreview.png "Zcash Desktop Wallet")
 
 ### Supports T and Z addresses, messaging, and more.
 
@@ -44,7 +44,7 @@
 
    First, clone this Git repository:
    ```
-   git clone https://github.com/johanssonlc/zcash-full-node-wallet
+   git clone https://github.com/zcash-community/zcash-full-node-wallet
    ```
    Enter:
    ```
@@ -127,7 +127,7 @@ Donate ZEC: zcDBVLn1fxUmnzXBqk5ZctNJFA7xMgsj14dW5m27n8ZbjkkJDimPNHampQaqpdAofoBf
 ### License
 Originally forked from the [ZENCash Swing Wallet](https://github.com/ZencashOfficial/zencash-swing-wallet-ui).
 
-This program is distributed under an [MIT License](https://github.com/johanssonlc/zcash-full-node-wallet/raw/master/LICENSE).
+This program is distributed under an [MIT License](https://github.com/zcash-community/zcash-full-node-wallet/raw/master/LICENSE).
 
 ### Disclaimer
 

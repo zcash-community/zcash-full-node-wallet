@@ -110,9 +110,7 @@ public class TransactionTable extends DataTable {
 						txID = txID.replaceAll("\"", ""); // In case it has quotes
 
 						Log.info("Transaction ID for block explorer is: " + txID);
-						// https://explorer.zcha.in/transactions/<ID>
 						String urlPrefix = "https://zcash.blockexplorer.com/tx/";
-						// TODO testnet
 						if (installationObserver.isOnTestNet()) {
 							urlPrefix = "https://explorer.testnet.z.cash/tx/";
 						}
