@@ -79,7 +79,7 @@ public class AboutDialog
 			"" + "Copyright (c) 2018\n\n"
 		    + "Mikael Johansson <mikael@johansson.lc>"
 		    + "\n"
-		    + "Donate ZEC: zcDBVLn1fxUmnzXBqk5ZctNJFA7xMgsj14dW5m27n8ZbjkkJDimPNHampQaqpdAofoBfCX9GwbUM3b1BNg5uvUz9azpQXVC   "
+		    + "Donate ZEC: t1ZuuZYVKCsTA9iPJT4WgmQgHJrqHpjxU3E   "
 		    +"\n\n\n\n"
 		    +"Forked from the Zclassic wallet\n"
 		    + "Copyright (c) 2016-2017 Ivan Vaklinov <ivan@vaklinov.com> \n" +
