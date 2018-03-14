@@ -122,7 +122,7 @@ Properties >> Compatibility >> Override high DPI scaling behavior >> Scaling per
 
 ### Donations
 Mikael Johansson <mikael@johansson.lc>
-Donate ZEC: zcDBVLn1fxUmnzXBqk5ZctNJFA7xMgsj14dW5m27n8ZbjkkJDimPNHampQaqpdAofoBfCX9GwbUM3b1BNg5uvUz9azpQXVC
+Donate ZEC: t1ZuuZYVKCsTA9iPJT4WgmQgHJrqHpjxU3E
 
 ### License
 Originally forked from the [ZENCash Swing Wallet](https://github.com/ZencashOfficial/zencash-swing-wallet-ui).
