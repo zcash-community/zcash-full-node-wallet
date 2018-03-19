@@ -16,10 +16,10 @@ import java.security.DigestInputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Logger;
+import java.util.Base64;
 
 import javax.swing.JOptionPane;
 import javax.swing.ProgressMonitorInputStream;
-import javax.xml.bind.DatatypeConverter;
 
 import com.vaklinov.zcashui.OSUtil.OS_TYPE;
 
@@ -159,7 +159,7 @@ public class ProvingKeyFetcher {
             byte [] temp = new byte[0x1 << 13];
             while(dis.read(temp) >= 0);
             byte [] digest = sha256.digest();
-            return SHA256.equalsIgnoreCase(DatatypeConverter.printHexBinary(digest));
+            return SHA256.equalsIgnoreCase(Base64.getEncoder().encodeToString(digest));
         }
     }
 }
