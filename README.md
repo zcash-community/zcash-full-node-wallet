@@ -7,7 +7,7 @@
 
 **Platforms:** Windows, Mac, Linux
 
-[Java](https://java.com/en/download/) must be installed.
+[Java](https://java.com/en/download/) version 8 or higher must be installed.
 
 
 #### WARNING: Careful with 'watch-only' imports! They will appear in 'addresses', but ***do not*** receive funds to them because you have not fully imported the private key! This UX issue will be fixed.
@@ -21,7 +21,7 @@
 
 ##### 1. Operating System and Tools
 
-   You will need Git, Java (JDK7 or later), and Ant.  
+   You will need Git, Java (JDK8 or later), and Ant.  
 
    **MacOS -**
 
