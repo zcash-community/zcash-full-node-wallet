@@ -1,4 +1,4 @@
-## [Zcash](https://github.com/zcash-community/) Desktop GUI Wallet known security issues
+## [Zcash Full-Node Desktop Wallet](https://github.com/zcash-community/zcash-full-node-wallet/) Desktop GUI Wallet known security issues
 
 This document describes various security-related vulnerabilities in the GUI wallet that have become known after release and users should be aware of them!
 
