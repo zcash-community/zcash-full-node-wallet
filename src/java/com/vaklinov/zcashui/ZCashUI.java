@@ -125,7 +125,7 @@ extends JFrame
 	public ZCashUI(StartupProgressDialog progressDialog)
 			throws IOException, InterruptedException, WalletCallException
 	{
-		super("Zcash Desktop GUI Wallet 1.0.0");
+		super("Zcash Desktop GUI Wallet 1.0.0-rc1");
 
 		if (progressDialog != null)
 		{
