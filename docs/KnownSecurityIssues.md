@@ -1,4 +1,4 @@
-## [Zcash](https://githud.com/johanssonlc/) Desktop GUI Wallet known security issues
+## [Zcash](https://github.com/zcash-community/) Desktop GUI Wallet known security issues
 
 This document describes various security-related vulnerabilities in the GUI wallet that have become known after release and users should be aware of them!
 
