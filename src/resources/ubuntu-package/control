@@ -1,8 +1,8 @@
 Package: zcash-desktop-gui-wallet
-Version: 0.0.1
+Version: 1.0.0-rc1
 Section: misc
 Priority: low
 Architecture: all
 Description: Zcash Desktop GUI Wallet
-Maintainer: github.com/johanssonlc
-Depends: default-jdk, zcl
+Maintainer: github.com/zcash-community
+Depends: default-jdk, zcash
