@@ -100,7 +100,7 @@
 
     <target name="ubuntuPackage" depends="jar,copyothers">
     	<mkdir dir="${ubuntu.package.dir}"/>
-	    <deb destfile="${ubuntu.package.dir}/zcash-desktop-gui-wallet_0.0.1_all.deb"
+	    <deb destfile="${ubuntu.package.dir}/zcash-desktop-gui-wallet_1.0.0-rc1_all.deb"
 	    	 control="${src.dir}/resources/ubuntu-package"
 	    	 verbose="true">
 
