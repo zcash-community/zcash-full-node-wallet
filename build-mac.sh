@@ -35,19 +35,6 @@ else
   rm -rf macdylibbundler 
 fi
 
-if [ ! -e ./zcashd ]
-then
-	echo "please provide zcashd in the root directory"
-else
-	echo "found zcashd - OK"
-fi
-
-if [ ! -e ./zcash-cli ]
-then
-	echo "please provide zcash-cli in the root directory"
-else
-	echo "found zcash-cli - OK"
-fi
 echo ""
 echo "******************"
 echo "|| building JAR ||"
@@ -65,13 +52,6 @@ echo ""
 #package jar to app
 jar2app build/jars/ZcashSwingWallet.jar -n ZcashDesktopWallet  -i ./src/resources/images/zcash-logo.icns
 
-#add zcld and zcl-cli into the required Contents folder of the App
-cp ./zcashd ./ZcashDesktopWallet.app/Contents/zcashd
-cp ./zcash-cli ./ZcashDesktopWallet.app/Contents/zcash-cli
-
-
-chmod +x ./ZcashDesktopWallet.app/Contents/zcashd
-chmod +x ./ZcashDesktopWallet.app/Contents/zcash-cli
 echo ""
 echo "**********************************"
 echo "|| Statically linking libraries ||"
@@ -79,7 +59,5 @@ echo "**********************************"
 echo ""
 
 #statically build required libraries
-dylibbundler -od -b -x ./ZcashDesktopWallet.app/Contents/zcashd \
-                    -x ./ZcashDesktopWallet.app/Contents/zcash-cli \
-                    -d ./ZcashDesktopWallet.app/Contents/libs \
+dylibbundler -od -b -d ./ZcashDesktopWallet.app/Contents/libs \
                     -p @executable_path/libs

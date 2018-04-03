@@ -125,8 +125,8 @@ extends WalletTabPanel
 				this.getClass().getClassLoader().getResource("images/zcash-logo-small.png")));
 		tempPanel.add(logoLabel);
 		// TODO: use relative size
-		JLabel zcLabel = new JLabel(" Zcash Wallet ");
-		zcLabel.setFont(new Font("Helvetica", Font.BOLD | Font.ITALIC, 28));
+		JLabel zcLabel = new JLabel("CASH");
+		zcLabel.setFont(new Font("Helvetica", Font.BOLD, 28));
 		tempPanel.add(zcLabel);
 		tempPanel.setToolTipText("Powered by Zcash");
 		balanceStatusPanel.add(tempPanel, BorderLayout.WEST);
