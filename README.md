@@ -1,4 +1,4 @@
-# [Zcash](https://z.cash/) Full-Node Desktop Wallet
+# [Zcash](https://z.cash/) Full-Node Desktop Wallet v1.0.0-rc1
 
 ![Zcash Desktop Wallet](https://github.com/zcash-community/zcash-full-node-wallet/raw/master/docs/ZcashWalletPreview.png "Zcash Desktop Wallet")
 
