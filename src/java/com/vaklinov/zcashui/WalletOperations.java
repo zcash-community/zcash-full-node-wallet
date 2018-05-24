@@ -147,7 +147,7 @@ public class WalletOperations
 
 			JOptionPane.showMessageDialog(
 					this.parent,
-					"The wallet has been encrypted sucessfully and zcashd has stopped.\n" +
+					"The wallet has been encrypted successfully and zcashd has stopped.\n" +
 							"The GUI wallet will be stopped as well. Please restart the program.\n" +
 							"Additionally, the internal wallet keypool has been flushed. You need\n" +
 							"to make a new backup." +

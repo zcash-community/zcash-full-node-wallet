@@ -88,7 +88,7 @@ public class ZCashInstallationObserver
 			zcashcli = OSUtil.findZCashCommand(OSUtil.getZCashCli());
 		}
 
-		Log.info("Using Zcash daemon and rpc tools: " +
+		Log.info("Using Zcash daemon and RPC tools: " +
 		                   "zcashd: "    + ((zcashd != null) ? zcashd.getCanonicalPath() : "<MISSING>") + ", " +
 		                   "zcash-cli: " + ((zcashcli != null) ? zcashcli.getCanonicalPath() : "<MISSING>"));
 
@@ -124,7 +124,7 @@ public class ZCashInstallationObserver
 		return getDaemonInfoForUNIXLikeOS("zcashd");
 	}
 
-	// So far tested on Mac OS X and Linux - expected to work on other UNIXes as well
+	// So far tested on macOS and Linux - expected to work on other UNIXes as well
 	public static synchronized DaemonInfo getDaemonInfoForUNIXLikeOS(String daemonName)
 		throws IOException, InterruptedException
 	{
@@ -245,7 +245,7 @@ public class ZCashInstallationObserver
 					{
 						info.status = DAEMON_STATUS.RUNNING;
 						foundZCash = true;
-						//System.out.println("zcash process data is: " + line);
+						//System.out.println("zcashd process data is: " + line);
 					}
 				} else if ((i >= 4) && foundZCash)
 				{

@@ -347,7 +347,7 @@ extends WalletTabPanel
 			System.out.print(daemonInfo.status);
 		}
 
-		// TODO: Get the start date right after ZCash release - from first block!!!
+		// TODO: Get the start date right after Zcash release - from first block!!!
 		final Date startDate = new Date("06 Nov 2016 02:00:00 GMT");
 		final Date nowDate = new Date(System.currentTimeMillis());
 
@@ -386,7 +386,7 @@ extends WalletTabPanel
 		//String connections = " \u26D7";
 		String tickSymbol = " \u2705";
 		OS_TYPE os = OSUtil.getOSType();
-		// Handling special symbols on Mac OS/Windows
+		// Handling special symbols on macOS/Windows
 		// TODO: isolate OS-specific symbol stuff in separate code
 		if ((os == OS_TYPE.MAC_OS) || (os == OS_TYPE.WINDOWS))
 		{
