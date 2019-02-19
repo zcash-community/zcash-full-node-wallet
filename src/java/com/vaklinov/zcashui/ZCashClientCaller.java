@@ -95,7 +95,7 @@ public class ZCashClientCaller
 	}
 
 
-	// ZCash client program and daemon
+	// Zcash client program and daemon
 	private File zcashcli, zcashd;
 
 
@@ -242,7 +242,7 @@ public class ZCashClientCaller
 	    	JsonObject trans = jsonTransactions.get(i).asObject();
 
 	    	// Needs to be the same as in getWalletZReceivedTransactions()
-	    	// TODO: some day refactor to use object containers
+	    	// TODO: someday refactor to use object containers
 	    	strTransactions[i][0] = "\u2606T (Public)";
 	    	strTransactions[i][1] = trans.getString("category", "ERROR!");
 	    	strTransactions[i][2] = trans.get("confirmations").toString();
@@ -289,7 +289,7 @@ public class ZCashClientCaller
 
 		    	String txID = trans.getString("txid", "ERROR!");
 		    	// Needs to be the same as in getWalletPublicTransactions()
-		    	// TODO: some day refactor to use object containers
+		    	// TODO: someday refactor to use object containers
 		    	currentTransaction[0] = "\u2605Z (Private)";
 		    	currentTransaction[1] = "receive";
 		    	currentTransaction[2] = this.getWalletTransactionConfirmations(txID);
@@ -421,7 +421,7 @@ public class ZCashClientCaller
 	}
 
 
-	// return UNIX time as tring
+	// return UNIX time as string
 	public synchronized String getWalletTransactionTime(String txID)
 		throws WalletCallException, IOException, InterruptedException
 	{
@@ -508,7 +508,7 @@ public class ZCashClientCaller
 		}
 
 		// The JSON Builder has a problem with double values that have no fractional part
-		// it serializes them as integers that ZCash does not accept. So we do a replacement
+		// it serializes them as integers that Zcash does not accept. So we do a replacement
 		// TODO: find a better/cleaner way to format the amount
 		toArgument.set("amount", "\uFFFF\uFFFF\uFFFF\uFFFF\uFFFF");
 
@@ -527,7 +527,7 @@ public class ZCashClientCaller
 
 		DecimalFormatSymbols decSymbols = new DecimalFormatSymbols(Locale.ROOT);
 
-		// Properly format teh transaction fee as a number
+		// Properly format the transaction fee as a number
 		if ((transactionFee == null) || (transactionFee.trim().length() <= 0))
 		{
 			transactionFee = "0.0001"; // Default value
@@ -605,7 +605,7 @@ public class ZCashClientCaller
 		DecimalFormatSymbols decSymbols = new DecimalFormatSymbols(Locale.ROOT);
 
 		// TODO: The JSON Builder has a problem with double values that have no fractional part
-		// it serializes them as integers that ZCash does not accept. This will work with the
+		// it serializes them as integers that Zcash does not accept. This will work with the
 		// fractional amounts always used for messaging
 		toArgument.set("amount", new DecimalFormat("########0.00######", decSymbols).format(amount));
 
@@ -830,7 +830,7 @@ public class ZCashClientCaller
    			 if ((respObject.getDouble("code", -1) == -15) &&
    				 (respObject.getString("message", "ERR").indexOf("unencrypted wallet") != -1))
    			 {
-   				 // Obviously unencrupted
+   				 // Obviously unencrypted
    				 return false;
    			 } else
    			 {
@@ -842,7 +842,7 @@ public class ZCashClientCaller
    			 if ((respObject.getDouble("code", -1) == -15) &&
    				 (respObject.getString("message", "ERR").indexOf("unencrypted wallet") != -1))
    			 {
-   				 // Obviously unencrupted
+   				 // Obviously unencrypted
    				 return false;
    			 } else
    			 {

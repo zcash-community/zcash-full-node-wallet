@@ -146,7 +146,7 @@ public class TransactionTable extends DataTable {
 						if (!isZAddress) {
 							JOptionPane.showMessageDialog(parent,
 									"The selected transaction does not have as destination a Z (private) \n"
-											+ "address or it is unkonwn (not listed) and thus no memo information \n"
+											+ "address or it is unknown (not listed) and thus no memo information \n"
 											+ "about this transaction is available.",
 									"No Memo Available", JOptionPane.ERROR_MESSAGE);
 							return;
@@ -155,7 +155,7 @@ public class TransactionTable extends DataTable {
 						Log.info("Transaction ID for Memo field is: " + txID);
 						Log.info("Account for Memo field is: " + acc);
 						parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-						// TODO: some day support outgoing Z transactions
+						// TODO: someday support outgoing Z transactions
 						String MemoField = caller.getMemoField(acc, txID);
 						parent.setCursor(oldCursor);
 						Log.info("Memo field is: " + MemoField);

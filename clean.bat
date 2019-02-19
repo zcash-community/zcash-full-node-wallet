@@ -13,7 +13,7 @@ setlocal
 :PROMPT
 ECHO "This operation will remove your current blockchain."
 ECHO "You will need to redownload it completely."
-ECHO "Only use this in case of a currupted chainstate."
+ECHO "Only use this in case of a corrupted chainstate."
 SET /P AREYOUSURE=Are you sure (Y/[N])?
 IF /I "%AREYOUSURE%" NEQ "Y" GOTO END
 

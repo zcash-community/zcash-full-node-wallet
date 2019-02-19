@@ -328,7 +328,7 @@ public class OSUtil
 			
 	    } else if (os == OS_TYPE.WINDOWS)
 	    {
-	    	// A probable Windows directory is a ZCash dir in Program Files
+	    	// A probable Windows directory is a Zcash dir in Program Files
 	    	String programFiles = System.getenv("PROGRAMFILES");
 	    	if ((programFiles != null) && (!programFiles.isEmpty()))
 	    	{

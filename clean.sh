@@ -10,7 +10,7 @@
 
 echo "This operation will remove your current blockchain."
 echo "You will need to redownload it completely."
-echo "Only use this in case of a currupted chainstate."
+echo "Only use this in case of a corrupted chainstate."
 
 read -p "Are you sure you want to delete your entire ZEC blockchain? (y/N) " -n 1 -r
 echo    # (optional) move to a new line

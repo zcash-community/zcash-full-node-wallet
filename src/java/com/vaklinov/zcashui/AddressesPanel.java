@@ -57,7 +57,7 @@ import com.vaklinov.zcashui.ZCashClientCaller.WalletCallException;
 
 
 /**
- * Addresses panel - shows T/Z addresses and their balnces.
+ * Addresses panel - shows T/Z addresses and their balances.
  *
  * @author Ivan Vaklinov <ivan@vaklinov.com>
  */
@@ -263,8 +263,8 @@ public class AddressesPanel
 				backupMessage =
 				"\n\nIt is necessary to back up the wallet after creating a new Z address. The wallet needs\n" +
 				"to be backed up to a safe location that can survive any data loss on the PC where the wallet\n" +
-				"is currenly located. Not backing up the wallet may result in loss of funds in case of data\n" +
-				"loss on the current PC. To backup the wallet, use menu option: Wallet >> Backup\n";
+				"is currently located. Not backing up the wallet may result in loss of funds in case of data\n" +
+				"loss on the current PC. To back up the wallet, use menu option: Wallet >> Backup\n";
 			}
 
 			JOptionPane.showMessageDialog(
@@ -351,7 +351,7 @@ public class AddressesPanel
 		// Z Addresses - they are OK
 		String[] zAddresses = clientCaller.getWalletZAddresses();
 
-		// T Addresses listed with the list received by addr comamnd
+		// T Addresses listed with the list received by addr command
 		String[] tAddresses = this.clientCaller.getWalletAllPublicAddresses();
 		Set<String> tStoredAddressSet = new HashSet<>();
 		for (String address : tAddresses)

@@ -720,7 +720,7 @@ extends WalletTabPanel
 
 			int option = JOptionPane.showOptionDialog(
 					SendCashPanel.this.getRootPane().getParent(),
-					"Succesfully sent " + amount + " ZEC from address: \n" +
+					"Successfully sent " + amount + " ZEC from address: \n" +
 							sourceAddress + "\n" +
 							"to address: \n" +
 							destinationAddress + "\n\n" +

@@ -8,15 +8,15 @@ When wallet problems occur, the information about the errors that caused the iss
 ```
 Linux:    ~/.ZcashSwingWallet/ZcashGUIWallet_xxxx_xx_debug.log 
 Windows:  %LOCALAPPDATA%/ZcashSwingWallet/ZcashGUIWallet_xxxx_xx_debug.log
-Mac OS:   ~/Library/Application Support/ZcashSwingWallet/ZcashGUIWallet_xxxx_xx_debug.log
+macOS:   ~/Library/Application Support/ZcashSwingWallet/ZcashGUIWallet_xxxx_xx_debug.log
 ```
 `zcashd` that is automatically started by the wallet, stores its logs at locations:
 ```
 Linux:    ~/.zcash/debug.log, 
 Windows:  %APPDATA%/Zcash/debug.log
-Mac OS:   ~/Library/Application Support/Zcash/debug.log
+macOS:   ~/Library/Application Support/Zcash/debug.log
  ```
-The log files are the first place too look for clues as to the nature of problem.
+The log files are the first place to look for clues as to the nature of problem.
 
 ### Common Problem 1 - wallet fails during start up
 
@@ -29,7 +29,7 @@ works in 90%+ of cases is to start `zcashd` manually with a `-reindex` option fr
 ```
 zcashd -reindex
 ```
-For non-technical users here is some information on how to open a terminal on [Windows](https://www.lifewire.com/how-to-open-command-prompt-2618089) and [Mac OS](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac). The full command on Mac OS is:
+For non-technical users here is some information on how to open a terminal on [Windows](https://www.lifewire.com/how-to-open-command-prompt-2618089) and [macOS](https://www.wikihow.com/Open-a-Terminal-Window-in-Mac). The full command on macOS is:
 ```
 /Applications/ZcashWallet.app/Contents/Java/zcashd -reindex
 ```
